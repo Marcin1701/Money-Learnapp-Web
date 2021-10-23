@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+// Common
+@import "src/app/common/navbar/app-common-navbar.component";
+
+// Pages
+@import "src/app/pages/app-pages.component";
+@import "src/app/pages/home/app-pages-home.component";
+
+body, html {
+  height: 100%;
+  background-image: url("assets/background.png");
+}
