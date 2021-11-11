@@ -1,0 +1,62 @@
+<div class="login-page-card">
+  <mat-card class="login-card">
+    <span>
+      <mat-card-title class="login-card-title">
+      <img src="assets/logo.png" alt="Szkatułkowy Ambaras!">
+    </mat-card-title>
+    </span>
+    <span>
+       <mat-card-content class="form-container">
+      <div class="login-card-form">
+        <form [formGroup]="registerAccountFormGroup" (ngSubmit)="this.registerAccountFormGroup.markAllAsTouched(); onSubmit()">
+          <span>
+            <mat-form-field class="login-card-form-field width-form" appearance="outline">
+              <mat-label>Imię</mat-label>
+              <input name="firstName" matInput formControlName="firstName" [placeholder]="'Podaj swoje imię'">
+              <mat-error>Pole wymagane!</mat-error>
+            </mat-form-field>
+            <mat-form-field class="login-card-form-field width-form" appearance="outline">
+              <mat-label>Nazwisko</mat-label>
+              <input name="lastName" matInput formControlName="lastName" [placeholder]="'Podaj nazwisko'">
+              <mat-error>Pole wymagane!</mat-error>
+            </mat-form-field>
+          </span>
+          <span>
+            <mat-form-field class="login-card-form-field width-form" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input name="email" type="email" formControlName="email" matInput [placeholder]="'Podaj email'">
+              <mat-error>Pole wymagane!</mat-error>
+            </mat-form-field>
+            <mat-form-field class="login-card-form-field width-form" appearance="outline">
+              <mat-label>Login</mat-label>
+              <input name="login" matInput formControlName="login" [placeholder]="'Podaj login'">
+              <mat-error>Pole wymagane!</mat-error>
+            </mat-form-field>
+          </span>
+          <span>
+            <mat-form-field class="login-card-form-field width-form" appearance="outline">
+              <mat-label>Hasło</mat-label>
+              <input name="password" type="password" formControlName="password" matInput [placeholder]="'Podaj swoje hasło'">
+              <mat-error>Podaj swoje hasło!</mat-error>
+            </mat-form-field>
+             <mat-form-field class="login-card-form-field width-form" appearance="outline">
+              <mat-label>Powtórz hasło</mat-label>
+              <input type="password" matInput [placeholder]="'Powtórz hasło'">
+              <mat-error>Podaj swoje hasło!</mat-error>
+            </mat-form-field>
+          </span>
+          <div class="account-types-radio">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" name="accountType">
+              <mat-radio-button [checked]="true" class="radio-account-type" [value]="'student'" (change)="changeRadioValue($event)">Uczeń</mat-radio-button>
+              <mat-radio-button class="radio-account-type" [value]="'teacher'" (change)="changeRadioValue($event)">Nauczyciel</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <span class="button-container" (click)="registerAccountFormGroup.markAllAsTouched()">
+            <button [disabled]="registerAccountFormGroup.invalid" class="login-button-confirm sign-up" type="submit">Zarejestruj się!</button>
+          </span>
+        </form>
+      </div>
+    </mat-card-content>
+    </span>
+  </mat-card>
+</div>
