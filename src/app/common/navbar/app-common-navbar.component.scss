@@ -1,3 +1,100 @@
-mr-app-common-navbar {
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
 
+#sidebar-wrapper .sidebar-heading {
+  margin-bottom: 5%;
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.toggle {
+  display: none;
+}
+
+.navbar-width {
+  float: left;
+  display: flex;
+  max-width: 250px;
+  min-width: 250px;
+}
+
+.navbar-font {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.bottom-margin {
+  margin-bottom: 6%;
+  padding-top: 3%;
+}
+
+.full-width {
+  width: 80%;
+}
+
+.btn {
+  &:active {
+    background: lightgreen;
+    color: white;
+  }
+
+  &:hover {
+    background: lightgreen;
+    color: white;
+  }
+}
+
+.collapse-arrow {
+  cursor: pointer;
+  margin-top: 100%;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    color: lightgreen;
+  }
+}
+
+.small-border {
+  width: 20px;
+  min-width: 20px;
+  max-width: 20px;
+  height: 100%;
+  background-color: silver;
+  display: flex;
+  float: left;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: lightgreen;
+    cursor: pointer;
+  }
 }

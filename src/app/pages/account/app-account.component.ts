@@ -17,6 +17,8 @@ export class AppAccountComponent implements OnInit {
     const token = 'Your token: ' + localStorage.getItem('token');
     if (localStorage.getItem('token')) {
       this.token = token;
+      // Construct creator
+      this.router.navigateByUrl('/creator').then(null);
     } else {
       this.router.navigateByUrl('/').then(null);
     }
