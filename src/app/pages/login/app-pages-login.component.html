@@ -8,27 +8,25 @@
     <span>
        <mat-card-content class="form-container">
       <div class="login-card-form">
-        <form>
+        <form [formGroup]="loginFormGroup" (ngSubmit)="loginFormGroup.markAllAsTouched(); onSubmit()">
           <div>
             <mat-form-field class="login-card-form-field" appearance="outline">
               <mat-label>Email/Login</mat-label>
-              <input matInput [formControl]="loginFormControl" [errorStateMatcher]="matcher" [placeholder]="'Wpisz adres e-mail lub login!'">
-              <mat-error *ngIf="loginFormControl.hasError('required')">
-                Podaj adres email lub login!
-              </mat-error>
+              <input name="login" matInput formControlName="login" [placeholder]="'Wpisz adres e-mail lub login!'">
+              <mat-error>Podaj adres email lub login!</mat-error>
             </mat-form-field>
           </div>
           <div>
             <mat-form-field class="login-card-form-field" appearance="outline">
               <mat-label>Hasło</mat-label>
-              <input type="password" matInput [formControl]="loginFormControl" [errorStateMatcher]="matcher" [placeholder]="'Podaj swoje hasło!'">
-              <mat-error *ngIf="loginFormControl.hasError('required')">
-                Podaj swoje hasło!
-              </mat-error>
+              <input matInput type="password" formControlName="password" [placeholder]="'Podaj swoje hasło!'">
+              <mat-error>Podaj swoje hasło!</mat-error>
             </mat-form-field>
           </div>
           <span class="button-container">
-            <button class="login-button-confirm log-in" type="submit">Zaloguj się!</button>
+            <button [class.invalid-button-background-color]='loginFormGroup.invalid'
+                    [disabled]="loginFormGroup.invalid"
+                    class="login-button-confirm log-in" type="submit">Zaloguj się!</button>
             <button routerLink="/register" class="login-button-confirm sign-up" type="submit">Zarejestruj się!</button>
           </span>
         </form>

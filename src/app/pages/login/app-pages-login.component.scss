@@ -81,3 +81,17 @@
   margin-right: 5%;
   width: 80%;
 }
+
+.invalid-button-background-color {
+  background-color: #504747;
+  cursor: default;
+
+  &:hover {
+    background-color: #504747;
+  }
+
+  &:active {
+    background-color: #504747;
+    box-shadow: 0 5px #666;
+  }
+}

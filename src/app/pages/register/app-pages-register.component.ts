@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {Validators} from '@angular/forms';
-import {ErrorStateMatcherClass} from '../../common/matchers/ErrorStateMatcher.class';
-import {NewAccount} from '../../spec/Models';
+import {NewAccount} from '../../spec/defs';
 import {MatRadioChange} from '@angular/material/radio';
 import { FormBuilder } from '@angular/forms';
+import {MoneySandboxService} from '../../services/money-sandbox.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -22,11 +23,13 @@ export class AppPagesRegisterComponent {
   selectedAccountType = 'student';
   newAccount: NewAccount;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private moneySandboxService: MoneySandboxService,
+              private router: Router) {
   }
 
   onSubmit() {
-    console.log(this.mapRegisterAccountFormGroupIntoNewAccount());
+    this.moneySandboxService.register(this.mapRegisterAccountFormGroupIntoNewAccount()).subscribe(() => this.router.navigateByUrl('/'));
   }
 
   changeRadioValue($event: MatRadioChange) {

@@ -8,7 +8,7 @@
     <span>
        <mat-card-content class="form-container">
       <div class="login-card-form">
-        <form [formGroup]="registerAccountFormGroup" (ngSubmit)="this.registerAccountFormGroup.markAllAsTouched(); onSubmit()">
+        <form [formGroup]="registerAccountFormGroup" (ngSubmit)="registerAccountFormGroup.markAllAsTouched(); onSubmit()">
           <span>
             <mat-form-field class="login-card-form-field width-form" appearance="outline">
               <mat-label>Imię</mat-label>
@@ -52,7 +52,11 @@
             </mat-radio-group>
           </div>
           <span class="button-container" (click)="registerAccountFormGroup.markAllAsTouched()">
-            <button [disabled]="registerAccountFormGroup.invalid" class="login-button-confirm sign-up" type="submit">Zarejestruj się!</button>
+            <button [class.invalid-button-background-color]='registerAccountFormGroup.invalid'
+                    [disabled]="registerAccountFormGroup.invalid"
+                    class="login-button-confirm sign-up"
+                    type="submit">Zarejestruj się!
+            </button>
           </span>
         </form>
       </div>

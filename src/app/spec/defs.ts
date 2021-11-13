@@ -1,3 +1,8 @@
+export interface LoginRequest {
+  login: string;
+  password: string;
+}
+
 export interface NewAccount {
   firstName: string;
   lastName: string;
@@ -5,4 +10,8 @@ export interface NewAccount {
   email: string;
   password: string;
   accountType: string;
+}
+
+export interface JsonWebTokenResponse {
+  jsonWebToken: string;
 }

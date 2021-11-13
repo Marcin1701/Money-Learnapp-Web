@@ -15,6 +15,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppPagesRegisterComponent} from './pages/register/app-pages-register.component';
 import {MatRadioModule} from '@angular/material/radio';
+import {AppAccountComponent} from './pages/account/app-account.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatRadioModule} from '@angular/material/radio';
     AppPagesHomeComponent,
     AppCommonNavbarComponent,
     AppPagesLoginComponent,
-    AppPagesRegisterComponent
+    AppPagesRegisterComponent,
+    AppAccountComponent
   ],
   imports: [
     BrowserModule,

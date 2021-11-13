@@ -93,6 +93,20 @@
   margin-right: 3%;
 }
 
+.invalid-button-background-color {
+  background-color: #504747;
+  cursor: default;
+
+  &:hover {
+    background-color: #504747;
+  }
+
+  &:active {
+    background-color: #504747;
+    box-shadow: 0 5px #666;
+  }
+}
+
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
   background-color: #3e8e41;
 }
