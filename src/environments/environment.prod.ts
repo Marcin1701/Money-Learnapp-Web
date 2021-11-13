@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'https://money-sandbox.herokuapp.com/api',
+  apiUrl: 'https://szkatulkowy-ambaras.herokuapp.com/api',
   production: true
 };
