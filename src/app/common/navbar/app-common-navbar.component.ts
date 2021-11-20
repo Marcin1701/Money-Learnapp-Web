@@ -7,14 +7,8 @@ import {Router} from '@angular/router';
   styleUrls: ['app-common-navbar.component.scss']
 })
 export class AppCommonNavbarComponent {
-  toggled = false;
 
   constructor(private router: Router) {
-  }
-
-  toggle() {
-    this.toggled = !this.toggled;
-    console.log(this.toggled);
   }
 
   isRedirected(): boolean {

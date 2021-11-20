@@ -21,6 +21,17 @@ import {AppAccountCreatorNewQuestionComponent} from './pages/account/creator/new
 import {AppAccountCreatorNewFormComponent} from './pages/account/creator/new-form/app-account-creator-new-form.component';
 import {AppAccountCreatorShowFormsComponent} from './pages/account/creator/show-forms/app-account-creator-show-forms.component';
 import {AppAccountCreatorShowQuestionsComponent} from './pages/account/creator/show-questions/app-account-creator-show-questions.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {AppCreatorSingleChoiceComponent} from './pages/account/creator/new-question/questions-container/single-choice/app-creator-single-choice.component';
+import {AppCreatorMultipleChoiceComponent} from './pages/account/creator/new-question/questions-container/multiple-choice/app-creator-multiple-choice.component';
+import {AppCreatorSortedListComponent} from './pages/account/creator/new-question/questions-container/sorted-list/app-creator-sorted-list.component';
+import {AppCreatorDragAndDropComponent} from './pages/account/creator/new-question/questions-container/drag-and-drop/app-creator-drag-and-drop.component';
+import {MatIconModule} from '@angular/material/icon';
+import {AppCreatorSingleChoiceDialogComponent} from './pages/account/creator/new-question/questions-container/single-choice/dialog/app-creator-single-choice-dialog.component';
+import {AppCreatorMultipleChoiceDialogComponent} from './pages/account/creator/new-question/questions-container/multiple-choice/dialog/app-creator-multiple-choice-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -36,7 +47,13 @@ import {AppAccountCreatorShowQuestionsComponent} from './pages/account/creator/s
     AppAccountCreatorNewQuestionComponent,
     AppAccountCreatorNewFormComponent,
     AppAccountCreatorShowFormsComponent,
-    AppAccountCreatorShowQuestionsComponent
+    AppAccountCreatorShowQuestionsComponent,
+    AppCreatorSingleChoiceComponent,
+    AppCreatorMultipleChoiceComponent,
+    AppCreatorSortedListComponent,
+    AppCreatorDragAndDropComponent,
+    AppCreatorSingleChoiceDialogComponent,
+    AppCreatorMultipleChoiceDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +65,12 @@ import {AppAccountCreatorShowQuestionsComponent} from './pages/account/creator/s
     MatInputModule,
     ReactiveFormsModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    DragDropModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

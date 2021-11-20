@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Uzupełnij swoje pytanie:</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Treść pytania</mat-label>
+    <input matInput>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cofnij</button>
+  <button mat-button cdkFocusInitial>Modyfikuj</button>
+</div>
