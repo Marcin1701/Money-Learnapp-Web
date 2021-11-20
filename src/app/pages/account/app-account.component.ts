@@ -23,4 +23,8 @@ export class AppAccountComponent implements OnInit {
       this.router.navigateByUrl('/').then(null);
     }
   }
+
+  logout() {
+
+  }
 }

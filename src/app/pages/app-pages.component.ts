@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -6,6 +7,14 @@ import {Component} from '@angular/core';
   templateUrl: 'app-pages.component.html',
   styleUrls: ['./app-pages.component.scss']
 })
-export class AppPagesComponent {
+export class AppPagesComponent implements OnInit {
 
+  constructor(private router: Router) {
+  }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.router.navigateByUrl('/account').then(null);
+    }
+  }
 }

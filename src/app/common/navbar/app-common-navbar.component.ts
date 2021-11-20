@@ -14,4 +14,9 @@ export class AppCommonNavbarComponent {
   isRedirected(): boolean {
     return this.router.url !== '/creator';
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/').then(null);
+  }
 }
