@@ -1,11 +1,38 @@
-<h1 mat-dialog-title>Uzupełnij swoje pytanie:</h1>
-<div mat-dialog-content>
-  <mat-form-field appearance="outline">
-    <mat-label>Treść pytania</mat-label>
-    <input matInput>
-  </mat-form-field>
+<div mat-dialog-title class="full-width">
+  <span class="title-header">
+    Uzupełnij swoje pytanie:
+  </span>
+  <span class="title-header secondary-title">
+    Poprawna odpowiedź:
+  </span>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cofnij</button>
-  <button mat-button cdkFocusInitial>Modyfikuj</button>
+<div>
+  <form [formGroup]="singleChoiceFormGroup" (ngSubmit)="singleChoiceFormGroup.markAllAsTouched(); onSubmit()">
+    <mat-radio-group>
+      <div formArrayName="singleChoiceValues">
+        <div class="container" *ngFor="let content of singleChoiceValues.controls; index as i">
+          <div class="row">
+            <div class="col-sm" [formGroupName]="i">
+              <mat-form-field appearance="outline">
+                <mat-label>Treść pytania</mat-label>
+                <input type="text" matInput formControlName="value">
+                <mat-error>Pole wymagane!</mat-error>
+              </mat-form-field>
+              <span>
+                <span class="add-option-icon" *ngIf="i === singleChoiceValues.controls.length - 1" (click)="addSingleChoice()"><mat-icon>add_circle</mat-icon></span>
+                <span *ngIf="singleChoiceValues.controls.length > 1" class="delete-option-icon" (click)="removeSingleChoice(i)"><mat-icon>delete_forever</mat-icon></span>
+              </span>
+            </div>
+            <div class="col-sm radio-correct">
+              <mat-radio-button (change)="changeCorrectValue($event)" [value]="i"></mat-radio-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-radio-group>
+  </form>
+  <div mat-dialog-actions>
+    <button mat-button mat-raised-button class="btn btn-danger" (click)="onNoClick()">Anuluj</button>
+    <button mat-button mat-raised-button class="btn btn-success" type="submit" (click)="onSubmit()" cdkFocusInitial>Utwórz</button>
+  </div>
 </div>

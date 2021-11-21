@@ -11,14 +11,15 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class AppCreatorSingleChoiceComponent {
 
-  singleChoiceContent: SingleChoiceContent;
+  singleChoiceContent: SingleChoiceContent = { singleChoiceOptions: [], correctSingleChoiceOptionIndex: -1 };
 
   constructor(public dialog: MatDialog,
               private _snackBar: MatSnackBar) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AppCreatorSingleChoiceDialogComponent, {
-      width: '400px',
+      width: '800px',
+      height: '600px',
       data: this.singleChoiceContent,
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -27,6 +28,7 @@ export class AppCreatorSingleChoiceComponent {
         this.openSnackBar('Zmodyfikowano pytanie', 'Ok');
       }
       this.singleChoiceContent = result;
+      dialogRef.close();
     });
   }
 
