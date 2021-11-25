@@ -8,7 +8,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 75%;
   height: 60%;
 }
@@ -116,6 +116,5 @@
 }
 
 ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-  border-color:blue;
+  border-color: blue;
 }
-

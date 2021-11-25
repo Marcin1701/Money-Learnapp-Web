@@ -1,16 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mr-app-pages',
   templateUrl: 'app-pages.component.html',
-  styleUrls: ['./app-pages.component.scss']
+  styleUrls: ['./app-pages.component.scss'],
 })
 export class AppPagesComponent implements OnInit {
-
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {

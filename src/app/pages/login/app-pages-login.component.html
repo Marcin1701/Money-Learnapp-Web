@@ -2,36 +2,66 @@
   <mat-card class="login-card">
     <span>
       <mat-card-title class="login-card-title">
-      <img src="assets/logo.png" alt="Szkatułkowy Ambaras!">
-    </mat-card-title>
+        <img src="assets/logo.png" alt="Szkatułkowy Ambaras!" />
+      </mat-card-title>
     </span>
     <span>
-       <mat-card-content class="form-container">
-      <div class="login-card-form">
-        <form [formGroup]="loginFormGroup" (ngSubmit)="loginFormGroup.markAllAsTouched(); onSubmit()">
-          <div>
-            <mat-form-field class="login-card-form-field" appearance="outline">
-              <mat-label>Email/Login</mat-label>
-              <input name="login" matInput formControlName="login" [placeholder]="'Wpisz adres e-mail lub login!'">
-              <mat-error>Podaj adres email lub login!</mat-error>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class="login-card-form-field" appearance="outline">
-              <mat-label>Hasło</mat-label>
-              <input matInput type="password" formControlName="password" [placeholder]="'Podaj swoje hasło!'">
-              <mat-error>Podaj swoje hasło!</mat-error>
-            </mat-form-field>
-          </div>
-          <span class="button-container">
-            <button [class.invalid-button-background-color]='loginFormGroup.invalid'
-                    [disabled]="loginFormGroup.invalid"
-                    class="login-button-confirm log-in" type="submit">Zaloguj się!</button>
-            <button routerLink="/register" class="login-button-confirm sign-up" type="submit">Zarejestruj się!</button>
-          </span>
-        </form>
-      </div>
-    </mat-card-content>
+      <mat-card-content class="form-container">
+        <div class="login-card-form">
+          <form
+            [formGroup]="loginFormGroup"
+            (ngSubmit)="loginFormGroup.markAllAsTouched(); onSubmit()"
+          >
+            <div>
+              <mat-form-field
+                class="login-card-form-field"
+                appearance="outline"
+              >
+                <mat-label>Email/Login</mat-label>
+                <input
+                  name="login"
+                  matInput
+                  formControlName="login"
+                  [placeholder]="'Wpisz adres e-mail lub login!'"
+                />
+                <mat-error>Podaj adres email lub login!</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field
+                class="login-card-form-field"
+                appearance="outline"
+              >
+                <mat-label>Hasło</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  formControlName="password"
+                  [placeholder]="'Podaj swoje hasło!'"
+                />
+                <mat-error>Podaj swoje hasło!</mat-error>
+              </mat-form-field>
+            </div>
+            <span class="button-container">
+              <button
+                [class.invalid-button-background-color]="loginFormGroup.invalid"
+                [disabled]="loginFormGroup.invalid"
+                class="login-button-confirm log-in"
+                type="submit"
+              >
+                Zaloguj się!
+              </button>
+              <button
+                routerLink="/register"
+                class="login-button-confirm sign-up"
+                type="submit"
+              >
+                Zarejestruj się!
+              </button>
+            </span>
+          </form>
+        </div>
+      </mat-card-content>
     </span>
   </mat-card>
 </div>

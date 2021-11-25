@@ -1,20 +1,20 @@
-import {Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {AppCreatorSingleChoiceDialogComponent} from './dialog/app-creator-single-choice-dialog.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AppCreatorSingleChoiceDialogComponent } from './dialog/app-creator-single-choice-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'mr-app-creator-single-choice',
   templateUrl: 'app-creator-single-choice.component.html',
-  styleUrls: ['app-creator-single-choice.component.scss']
+  styleUrls: ['app-creator-single-choice.component.scss'],
 })
 export class AppCreatorSingleChoiceComponent {
+  singleChoiceContent: SingleChoiceContent = {
+    singleChoiceOptions: [],
+    correctSingleChoiceOptionIndex: -1,
+  };
 
-  singleChoiceContent: SingleChoiceContent = { singleChoiceOptions: [], correctSingleChoiceOptionIndex: -1 };
-
-  constructor(public dialog: MatDialog,
-              private _snackBar: MatSnackBar) {}
+  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AppCreatorSingleChoiceDialogComponent, {
@@ -22,8 +22,7 @@ export class AppCreatorSingleChoiceComponent {
       height: '600px',
       data: this.singleChoiceContent,
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("Resulst", result);
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.openSnackBar('Zmodyfikowano pytanie', 'Ok');
       }

@@ -1,10 +1,7 @@
-import {Component} from '@angular/core';
-
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'mr-app-pages-home',
-    templateUrl: 'app-pages-home.component.html',
+  selector: 'mr-app-pages-home',
+  templateUrl: 'app-pages-home.component.html',
 })
-export class AppPagesHomeComponent {
-
-}
+export class AppPagesHomeComponent {}
