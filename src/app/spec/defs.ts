@@ -21,3 +21,14 @@ export interface Question {
   type: string;
   structure: any;
 }
+
+export interface SingleChoiceQuestionResponse {
+  creationDate: string;
+  question: {
+    answerTime: string;
+    correctSingleChoiceIndex: number;
+    name: string;
+    question: string;
+    singleChoiceOptions: string[];
+  };
+}

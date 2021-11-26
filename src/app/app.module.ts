@@ -36,6 +36,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {AppShowSingleChoiceComponent} from './pages/account/creator/show-questions/single-choice/app-show-single-choice.component';
 import {MatTableModule} from '@angular/material/table';
 import {AppCommonNothingFoundComponent} from './common/nothing-found/app-common-nothing-found.component';
+import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import {CustomPaginator} from './common/custom-components/CustomPaginatorConfiguration';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,7 @@ import {AppCommonNothingFoundComponent} from './common/nothing-found/app-common-
     AppCreatorSingleChoiceDialogComponent,
     AppCreatorMultipleChoiceDialogComponent,
     AppShowSingleChoiceComponent,
-    AppCommonNothingFoundComponent
+    AppCommonNothingFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,8 +80,11 @@ import {AppCommonNothingFoundComponent} from './common/nothing-found/app-common-
     MatSnackBarModule,
     MatTabsModule,
     MatTableModule,
+    MatPaginatorModule,
   ],
-  providers: [],
+  providers: [
+    { provide: MatPaginatorIntl, useValue: CustomPaginator() }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
