@@ -15,3 +15,9 @@ export interface NewAccount {
 export interface JsonWebTokenResponse {
   jsonWebToken: string;
 }
+
+export interface Question {
+  creationDate?: Date;
+  type: string;
+  structure: any;
+}

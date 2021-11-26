@@ -32,6 +32,10 @@ import { AppCreatorMultipleChoiceDialogComponent } from './pages/account/creator
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
+import {AppShowSingleChoiceComponent} from './pages/account/creator/show-questions/single-choice/app-show-single-choice.component';
+import {MatTableModule} from '@angular/material/table';
+import {AppCommonNothingFoundComponent} from './common/nothing-found/app-common-nothing-found.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppCreatorDragAndDropComponent,
     AppCreatorSingleChoiceDialogComponent,
     AppCreatorMultipleChoiceDialogComponent,
+    AppShowSingleChoiceComponent,
+    AppCommonNothingFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +76,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatTabsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

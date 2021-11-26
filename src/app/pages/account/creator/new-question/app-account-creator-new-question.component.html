@@ -41,6 +41,7 @@
           </mr-app-creator-drag-and-drop>
           <mr-app-creator-single-choice
             *ngIf="selectedOption[0].value === 'Jednokrotny Wybór'"
+            (addQuestion)="prepareQuestion($event)"
           >
           </mr-app-creator-single-choice>
           <mr-app-creator-sorted-list
@@ -55,4 +56,5 @@
       </div>
     </div>
   </div>
+  <div></div>
 </div>
