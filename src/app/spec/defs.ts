@@ -12,6 +12,15 @@ export interface NewAccount {
   accountType: string;
 }
 
+export interface AccountResponse {
+  login: string;
+  firstName: string;
+  lastName: string;
+  accountType: string;
+  email: string;
+  creationDate: string;
+}
+
 export interface JsonWebTokenResponse {
   jsonWebToken: string;
 }

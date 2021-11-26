@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {AccountResponse} from '../../spec/defs';
+import {MoneySandboxService} from '../../services/money-sandbox.service';
 
 @Component({
   selector: 'mr-app-account',
@@ -9,18 +11,30 @@ import { Router } from '@angular/router';
 export class AppAccountComponent implements OnInit {
   token: string | null;
 
-  constructor(private router: Router) {}
+  account: AccountResponse;
+
+  constructor(private router: Router, private httpService: MoneySandboxService) {}
 
   ngOnInit(): void {
     const token = 'Your token: ' + localStorage.getItem('token');
     if (localStorage.getItem('token')) {
       this.token = token;
-      // Construct creator
-      this.router.navigateByUrl('/creator').then(null);
+      this.httpService.getAccount().subscribe(account => this.account = account);
     } else {
       this.router.navigateByUrl('/').then(null);
     }
   }
 
-  logout() {}
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/').then(null);
+  }
+
+  translateAccountType(accountType: string): string {
+    switch (accountType) {
+      case 'teacher': return 'Nauczyciel';
+      case 'student': return 'Uczeń';
+    }
+    return '';
+  }
 }

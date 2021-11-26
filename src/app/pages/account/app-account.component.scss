@@ -1,0 +1,133 @@
+.card-display {
+  display: inline-flex;
+}
+
+.menu-container {
+  margin-left: 5%;
+  margin-top: 8%;
+  float: left;
+  width: 30%;
+}
+
+.profile-container {
+  width: 50%;
+  margin-top: 8%;
+  margin-left: 5%;
+}
+
+.top-margin {
+  margin-top: 7%;
+}
+
+.action-menu-button {
+  width: 70%;
+  padding: 15px 25px;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button-behaviour {
+  margin-right: 5%;
+  color: #fff;
+  background-color: #04AA6D;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+
+  &:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+.logout-button {
+  margin-right: 5%;
+  color: #fff;
+  background-color: #ef4a4a;
+
+  &:hover {
+    background-color: #d52f2f;
+  }
+}
+
+.card {
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer
+}
+
+.card:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #c6ecbe;
+  transform: scaleY(1);
+  transition: all 0.5s;
+  transform-origin: bottom
+}
+
+.card:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #3e8e41;
+  transform: scaleY(0);
+  transition: all 0.5s;
+  transform-origin: bottom
+}
+
+.card:hover::after {
+  transform: scaleY(1)
+}
+
+.fonts {
+  font-size: 11px
+}
+
+.social-list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0
+}
+
+.social-list li {
+  padding: 10px;
+  color: #3e8e41;
+  font-size: 19px
+}
+
+.buttons button:nth-child(1) {
+  border: 1px solid #3e8e41 !important;
+  color: #3e8e41;
+  height: 40px
+}
+
+.buttons button:nth-child(1):hover {
+  border: 1px solid #3e8e41 !important;
+  color: #fff;
+  height: 40px;
+  background-color: #3e8e41
+}
+
+.buttons button:nth-child(2) {
+  border: 1px solid #3e8e41 !important;
+  background-color: #3e8e41;
+  color: #fff;
+  height: 40px
+}

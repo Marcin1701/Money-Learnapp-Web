@@ -1,3 +1,36 @@
 <div class="creator-container">
-  <mr-account-creator-component></mr-account-creator-component>
+  <div class="card text-center menu-container card-display">
+    <div class="card-header"></div>
+    <div class="card-body">
+        <button routerLink="/creator" class="action-menu-button button-behaviour top-margin">Kreator</button>
+        <button href="#" class="action-menu-button button-behaviour top-margin">Klasy</button>
+        <button href="#" class="action-menu-button button-behaviour top-margin">Zarządzanie Uczniami</button>
+        <button (click)="logout()" class="action-menu-button logout-button top-margin bottom-margin">Wyloguj się</button>
+    </div>
+    <div class="card-footer text-muted"></div>
+  </div>
+  <div class="card text-center profile-container card-display">
+    <div class="card-header"></div>
+    <div class="container mt-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-7">
+          <div class="card p-3 py-4">
+            <div class="text-center"><img src="assets/avatar.png" alt="" width="100" class="rounded-circle"> </div>
+            <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">{{translateAccountType(account.accountType)}}</span>
+              <div class="px-4 mt-1">
+                <p class="top-margin">{{account.lastName}} {{account.firstName}}</p>
+                <p>Adres email: {{account.email}}</p>
+                <p>Login: {{account.login}}</p>
+                <p>Dołączyłeś: {{account.creationDate | date : 'short'}}</p>
+              </div>
+              <div class="buttons">
+                <button class="btn btn-outline-primary px-4 top-margin">Ustawienia</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted"></div>
+  </div>
 </div>

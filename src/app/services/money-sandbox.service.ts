@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {JsonWebTokenResponse, LoginRequest, NewAccount, Question, SingleChoiceQuestionResponse} from '../spec/defs';
+import {AccountResponse, JsonWebTokenResponse, LoginRequest, NewAccount, Question, SingleChoiceQuestionResponse} from '../spec/defs';
 import { Observable } from 'rxjs';
-import {NonNullAssert} from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +10,14 @@ import {NonNullAssert} from '@angular/compiler';
 export class MoneySandboxService {
   constructor(private http: HttpClient) {}
 
-  validateToken(token: string): Observable<JsonWebTokenResponse> {
+  validateToken(): Observable<JsonWebTokenResponse> {
     return this.http.get<JsonWebTokenResponse>(environment.apiUrl + '/entry/validate',
-      {
-        headers: new HttpHeaders().set('Authorization', token)
-      });
+      {headers: this.getHeaders()});
+  }
+
+  getAccount(): Observable<AccountResponse> {
+    return this.http.get<AccountResponse>(environment.apiUrl + '/account',
+      {headers: this.getHeaders()});
   }
 
   login(loginRequest: LoginRequest): Observable<JsonWebTokenResponse> {
@@ -33,16 +35,17 @@ export class MoneySandboxService {
     return this.http.post(environment.apiUrl + '/question/new', question,
       {
         observe: 'response',
-        // tslint:disable-next-line:no-non-null-assertion
-        headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')!)
+        headers: this.getHeaders()
       });
   }
 
   loadSingleChoiceQuestions(): Observable<SingleChoiceQuestionResponse[]> {
     return this.http.get<SingleChoiceQuestionResponse[]>(environment.apiUrl + '/question/single_choice',
-      {
-        // tslint:disable-next-line:no-non-null-assertion
-        headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')!)
-      });
+      {headers: this.getHeaders()});
+  }
+
+  private getHeaders(): HttpHeaders {
+    // tslint:disable-next-line:no-non-null-assertion
+    return new HttpHeaders().set('Authorization', localStorage.getItem('token')!);
   }
 }

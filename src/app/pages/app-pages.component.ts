@@ -13,7 +13,7 @@ export class AppPagesComponent implements OnInit {
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     if (token) {
-      this.httpService.validateToken(token).subscribe(result => {
+      this.httpService.validateToken().subscribe(result => {
         if (result) {
           localStorage.setItem('token', result.jsonWebToken);
           this.router.navigateByUrl('/account').then(null);
