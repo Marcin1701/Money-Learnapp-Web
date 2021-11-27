@@ -38,16 +38,28 @@ import {MatTableModule} from '@angular/material/table';
 import {AppCommonNothingFoundComponent} from './common/nothing-found/app-common-nothing-found.component';
 import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import {CustomPaginator} from './common/custom-components/CustomPaginatorConfiguration';
+import {AppAccountClassComponent} from './pages/account/class/app-account-class.component';
+import {AppAccountClassNavbarComponent} from './pages/account/class/navbar/app-account-class-navbar.component';
+import {AppAccountClassListComponent} from './pages/account/class/list/app-account-class-list.component';
+import {AppAccountClassStudentsAddComponent} from './pages/account/class/students/add/app-account-class-students-add.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {AppAccountClassStudentsShowComponent} from './pages/account/class/students/show/app-account-class-students-show.component';
+import {MatSortModule} from '@angular/material/sort';
+import {AppAccountClassStudentsShowDetailsComponent} from './pages/account/class/students/show/details/app-account-class-students-show-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
+    // Pages
     AppPagesComponent,
     AppPagesHomeComponent,
-    AppCommonNavbarComponent,
     AppPagesLoginComponent,
     AppPagesRegisterComponent,
     AppAccountComponent,
+
+    // Creator
     AppAccountCreatorComponent,
     AppAccountCreatorNewQuestionComponent,
     AppAccountCreatorNewFormComponent,
@@ -60,7 +72,20 @@ import {CustomPaginator} from './common/custom-components/CustomPaginatorConfigu
     AppCreatorSingleChoiceDialogComponent,
     AppCreatorMultipleChoiceDialogComponent,
     AppShowSingleChoiceComponent,
+
+    // Class
+    AppAccountClassComponent,
+    AppAccountClassNavbarComponent,
+    AppAccountClassListComponent,
+
+    // Students
+    AppAccountClassStudentsAddComponent,
+    AppAccountClassStudentsShowComponent,
+    AppAccountClassStudentsShowDetailsComponent,
+
+    // Utils
     AppCommonNothingFoundComponent,
+    AppCommonNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +106,9 @@ import {CustomPaginator} from './common/custom-components/CustomPaginatorConfigu
     MatTabsModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatSortModule,
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: CustomPaginator() }

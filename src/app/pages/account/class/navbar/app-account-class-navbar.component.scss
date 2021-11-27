@@ -1,0 +1,52 @@
+.card-display {
+  display: inline-flex;
+}
+
+.menu-container {
+  margin-left: 3%;
+  margin-top: 3%;
+  float: left;
+  width: 20%;
+}
+
+.top-margin {
+  margin-top: 7%;
+}
+
+.action-menu-button {
+  width: 80%;
+  padding: 15px 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button-behaviour {
+  margin-right: 5%;
+  color: #fff;
+  background-color: #04AA6D;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+
+  &:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+.logout-button {
+  margin-right: 5%;
+  color: #fff;
+  background-color: #ef4a4a;
+
+  &:hover {
+    background-color: #d52f2f;
+  }
+}

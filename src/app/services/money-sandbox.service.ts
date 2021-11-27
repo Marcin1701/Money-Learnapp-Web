@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AccountResponse, JsonWebTokenResponse, LoginRequest, NewAccount, Question, SingleChoiceQuestionResponse} from '../spec/defs';
+import {
+  AccountResponse, GeneratedPassword,
+  JsonWebTokenResponse,
+  LoginRequest,
+  NewAccount,
+  Question,
+  SingleChoiceQuestionResponse,
+  StudentRequest, StudentResponse
+} from '../spec/defs';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -42,6 +50,15 @@ export class MoneySandboxService {
   loadSingleChoiceQuestions(): Observable<SingleChoiceQuestionResponse[]> {
     return this.http.get<SingleChoiceQuestionResponse[]>(environment.apiUrl + '/question/single_choice',
       {headers: this.getHeaders()});
+  }
+
+  addNewStudent(studentRequest: StudentRequest): Observable<GeneratedPassword> {
+    return this.http.post<GeneratedPassword>(environment.apiUrl + '/students/new', studentRequest,
+      { headers: this.getHeaders() });
+  }
+
+  getAllTeacherStudents(): Observable<StudentResponse[]> {
+    return this.http.get<StudentResponse[]>(environment.apiUrl + '/students/all', { headers: this.getHeaders() });
   }
 
   private getHeaders(): HttpHeaders {

@@ -1,0 +1,112 @@
+.card-display {
+  display: inline-flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  width: 65%;
+}
+
+.right-margin {
+  margin-right: 3%;
+}
+
+.action-menu-button {
+  width: 20%;
+  padding: 15px 25px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button-behaviour {
+  margin-right: 5%;
+  color: #fff;
+  background-color: #04AA6D;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+
+  &:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+.logout-button {
+  margin-right: 5%;
+  color: #fff;
+  background-color: #ef4a4a;
+
+  &:hover {
+    background-color: #d52f2f;
+  }
+}
+
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #3e8e41!important;
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #3e8e41!important;
+  // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #3e8e41!important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+  color: #3e8e41!important;
+  opacity: 0.8!important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+  caret-color: #3e8e41!important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+  caret-color: #3e8e41!important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+  color: rgba(0,0,0,.6)!important;
+  // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #3e8e41!important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #3e8e41!important;
+}
+
+.invalid-button-background-color {
+  background-color: #504747;
+  cursor: default;
+
+  &:hover {
+    background-color: #504747;
+  }
+
+  &:active {
+    background-color: #504747;
+    box-shadow: 0 5px #666;
+  }
+}
+

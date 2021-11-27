@@ -17,4 +17,8 @@ export class AppCommonNavbarComponent {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/').then(null);
   }
+
+  return() {
+    this.router.navigateByUrl('/account').then(null);
+  }
 }

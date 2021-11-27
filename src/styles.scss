@@ -5,6 +5,9 @@
 @import "src/app/pages/app-pages.component";
 @import "src/app/pages/home/app-pages-home.component";
 
+@import "./scss-overrides/mat-form-filed.scss";
+@import "./scss-overrides/card.scss";
+
 body, html {
   height: 100%;
   background-image: url("assets/background.png");

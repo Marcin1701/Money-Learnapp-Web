@@ -25,6 +25,10 @@ export interface JsonWebTokenResponse {
   jsonWebToken: string;
 }
 
+export interface GeneratedPassword {
+  generatedPassword: string;
+}
+
 export interface Question {
   creationDate?: Date;
   type: string;
@@ -40,4 +44,26 @@ export interface SingleChoiceQuestionResponse {
     question: string;
     singleChoiceOptions: string[];
   };
+}
+
+export interface StudentRequest {
+  firstName: string;
+  lastName: string;
+  login: string;
+  email?: string;
+  className?: string;
+  accountType: string;
+  isCreatorAllowed: boolean;
+  isTemporaryPasswordActive: boolean;
+}
+
+export interface StudentResponse {
+  firstName: string;
+  lastName: string;
+  className: string;
+  login: string;
+  email: string;
+  creationDate: string;
+  isCreatorAllowed: boolean;
+  isTemporaryPasswordActive: boolean;
 }

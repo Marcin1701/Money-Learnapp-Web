@@ -8,6 +8,10 @@ import { AppAccountCreatorNewQuestionComponent } from './pages/account/creator/n
 import { AppAccountCreatorNewFormComponent } from './pages/account/creator/new-form/app-account-creator-new-form.component';
 import { AppAccountCreatorShowFormsComponent } from './pages/account/creator/show-forms/app-account-creator-show-forms.component';
 import { AppAccountCreatorShowQuestionsComponent } from './pages/account/creator/show-questions/app-account-creator-show-questions.component';
+import {AppAccountClassComponent} from './pages/account/class/app-account-class.component';
+import {AppAccountClassListComponent} from './pages/account/class/list/app-account-class-list.component';
+import {AppAccountClassStudentsAddComponent} from './pages/account/class/students/add/app-account-class-students-add.component';
+import {AppAccountClassStudentsShowComponent} from './pages/account/class/students/show/app-account-class-students-show.component';
 
 const routes: Routes = [
   {
@@ -44,6 +48,24 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'class',
+    component: AppAccountClassComponent,
+    children: [
+      {
+        path: 'show-class',
+        component: AppAccountClassListComponent
+      },
+      {
+        path: 'students-show',
+        component: AppAccountClassStudentsShowComponent,
+      },
+      {
+        path: 'students-add',
+        component: AppAccountClassStudentsAddComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

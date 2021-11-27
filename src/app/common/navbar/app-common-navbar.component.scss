@@ -63,40 +63,16 @@
 
 .btn {
   &:active {
-    background: lightgreen;
+    background: #04AA6D;
     color: white;
   }
 
   &:hover {
-    background: lightgreen;
+    background: #3e8e41;
     color: white;
   }
 }
 
-.collapse-arrow {
-  cursor: pointer;
-  margin-top: 100%;
-  display: flex;
-  justify-content: center;
-
-  &:hover {
-    color: lightgreen;
-  }
-}
-
-.small-border {
-  width: 20px;
-  min-width: 20px;
-  max-width: 20px;
-  height: 100%;
-  background-color: silver;
-  display: flex;
-  float: left;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background-color: lightgreen;
-    cursor: pointer;
-  }
+.logout-button {
+  margin-top: 70%;
 }

@@ -1,0 +1,23 @@
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card p-3 py-4">
+          <div class="text-center"><img src="assets/avatar.png" alt="" width="100" class="rounded-circle"> </div>
+          <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">Uczeń</span>
+            <div class="px-4 mt-1">
+              <p class="top-margin">{{student.lastName}} {{student.firstName}}</p>
+              <p *ngIf="student.email && student.email.length">Adres email: {{student.email}}</p>
+              <p>Login: {{student.login}}</p>
+              <p class="joined-text">Dołączył: {{student.creationDate | date : 'short'}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <mat-checkbox class="checkbox-class" [(ngModel)]="checked" (ngModelChange)="changeCheckbox(checked)">Zezwól na dostęp do kreatora.</mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+
