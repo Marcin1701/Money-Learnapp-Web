@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {
   AccountResponse, GeneratedPassword,
   JsonWebTokenResponse,
@@ -59,6 +59,13 @@ export class MoneySandboxService {
 
   getAllTeacherStudents(): Observable<StudentResponse[]> {
     return this.http.get<StudentResponse[]>(environment.apiUrl + '/students/all', { headers: this.getHeaders() });
+  }
+
+  toggleCreatorAllowance(id: string) {
+    return this.http.get(environment.apiUrl + '/students/toggle-creator-allowance', {
+      observe: 'response',
+      params: new HttpParams().append('id', id),
+      headers: this.getHeaders() });
   }
 
   private getHeaders(): HttpHeaders {

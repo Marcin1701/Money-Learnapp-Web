@@ -58,6 +58,7 @@ export interface StudentRequest {
 }
 
 export interface StudentResponse {
+  id: string;
   firstName: string;
   lastName: string;
   className: string;

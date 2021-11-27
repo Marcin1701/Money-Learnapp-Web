@@ -64,6 +64,7 @@ export class AppAccountClassStudentsShowComponent implements OnInit, AfterViewIn
   private mapStudentResponseToStudentTableModel(students: StudentResponse[]) {
     this.students.data = students.map((student, index) => {
       return {
+        id: student.id,
         index: index + 1,
         firstName: student.firstName,
         lastName: student.lastName,
@@ -104,6 +105,7 @@ export class AppAccountClassStudentsShowComponent implements OnInit, AfterViewIn
 }
 
 export interface StudentTableModel {
+  id: string;
   index: number;
   firstName: string;
   lastName: string;
