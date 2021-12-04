@@ -1,38 +1,63 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {MoneySandboxService} from '../../../../../services/money-sandbox.service';
 import {SingleChoiceQuestionResponse} from '../../../../../spec/defs';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {SelectionModel} from '@angular/cdk/collections';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort, Sort} from '@angular/material/sort';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
 
 @Component({
   selector: 'mr-app-show-single-choice-component',
   templateUrl: 'app-show-single-choice.component.html',
   styleUrls: ['app-show-single-choice.component.scss'],
 })
-export class AppShowSingleChoiceComponent implements OnInit {
+export class AppShowSingleChoiceComponent implements OnInit, AfterViewInit {
+
+  @Input()
+  select: boolean;
+
+  @Output()
+  selectItem = new EventEmitter<string>();
 
   singleChoiceQuestions = new MatTableDataSource<SingleChoiceTableModel>();
-  singleChoicePagedQuestions = new MatTableDataSource<SingleChoiceTableModel>();
+  selection = new SelectionModel<SingleChoiceTableModel>(true, []);
+  questions: SingleChoiceQuestionResponse[];
 
-  columns = ['index', 'name', 'text', 'date', 'optionCount'];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  pageSize = 5;
-  currentPage = 1;
+  columns: string[];
 
-  constructor(private httpService: MoneySandboxService, private _snackBar: MatSnackBar) {
+  constructor(private httpService: MoneySandboxService, private _snackBar: MatSnackBar, private _liveAnnouncer: LiveAnnouncer) {
+  }
+
+  ngAfterViewInit(): void {
+    this.singleChoiceQuestions.paginator = this.paginator;
+    this.singleChoiceQuestions.sort = this.sort;
   }
 
   ngOnInit(): void {
+    this.select ?
+      this.columns = ['select', 'index', 'name', 'text', 'date', 'optionCount'] :
+      this.columns = ['index', 'name', 'text', 'date', 'optionCount'];
     this.httpService.loadSingleChoiceQuestions().subscribe(result => {
       if (result.length) {
+        this.questions = result;
         this.mapSingleChoiceToTableModels(result);
-        this.singleChoicePagedQuestions = this.singleChoiceQuestions;
-        this.changePage();
       }
     }, () => {
       this._snackBar.open('Nieoczekiwany błąd!', 'Ok', { duration: 2000 });
     });
+  }
+
+  sortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`).then(null);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared').then(null);
+    }
   }
 
   private mapSingleChoiceToTableModels(questions: SingleChoiceQuestionResponse[]) {
@@ -47,14 +72,15 @@ export class AppShowSingleChoiceComponent implements OnInit {
     });
   }
 
-  changePage($event?: PageEvent) {
-    // TODO PAGINACJA
-/*    const temporaryQuestions = this.singleChoiceQuestions.data;
-    if ($event) {
-      this.singleChoicePagedQuestions.data =
-    } else {
-      this.singleChoicePagedQuestions.data = temporaryQuestions.splice(this.currentPage - 1, this.pageSize);
-    }*/
+  checkboxLabel(row?: SingleChoiceTableModel): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.index + 1}`;
+  }
+
+  isAllSelected() {
+    return this.selection.selected.length === this.singleChoiceQuestions.data.length;
   }
 }
 

@@ -8,15 +8,11 @@
     <span>
       <mat-card-content class="form-container">
         <div class="login-card-form">
-          <form
-            [formGroup]="registerAccountFormGroup"
-            (ngSubmit)="registerAccountFormGroup.markAllAsTouched(); onSubmit()"
-          >
+          <form [formGroup]="registerAccountFormGroup" (ngSubmit)="registerAccountFormGroup.markAllAsTouched(); onSubmit()">
             <span>
               <mat-form-field
                 class="login-card-form-field width-form"
-                appearance="outline"
-              >
+                appearance="outline">
                 <mat-label>Imię</mat-label>
                 <input
                   name="firstName"
@@ -97,27 +93,6 @@
                 <mat-error>Podaj swoje hasło!</mat-error>
               </mat-form-field>
             </span>
-            <div class="account-types-radio">
-              <mat-radio-group
-                aria-labelledby="example-radio-group-label"
-                class="example-radio-group"
-                name="accountType"
-              >
-                <mat-radio-button
-                  [checked]="true"
-                  class="radio-account-type"
-                  [value]="'student'"
-                  (change)="changeRadioValue($event)"
-                  >Uczeń</mat-radio-button
-                >
-                <mat-radio-button
-                  class="radio-account-type"
-                  [value]="'teacher'"
-                  (change)="changeRadioValue($event)"
-                  >Nauczyciel</mat-radio-button
-                >
-              </mat-radio-group>
-            </div>
             <span
               class="button-container"
               (click)="registerAccountFormGroup.markAllAsTouched()"

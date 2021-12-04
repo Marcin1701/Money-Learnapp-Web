@@ -19,7 +19,6 @@ export class AppPagesRegisterComponent {
     login: ['', Validators.required],
     password: ['', Validators.required],
   });
-  selectedAccountType = 'student';
   newAccount: NewAccount;
 
   constructor(
@@ -34,10 +33,6 @@ export class AppPagesRegisterComponent {
       .subscribe(() => this.router.navigateByUrl('/'));
   }
 
-  changeRadioValue($event: MatRadioChange) {
-    this.selectedAccountType = $event.value;
-  }
-
   private mapRegisterAccountFormGroupIntoNewAccount(): NewAccount {
     return {
       firstName: this.registerAccountFormGroup.controls['firstName'].value,
@@ -45,7 +40,6 @@ export class AppPagesRegisterComponent {
       email: this.registerAccountFormGroup.controls['email'].value,
       login: this.registerAccountFormGroup.controls['login'].value,
       password: this.registerAccountFormGroup.controls['password'].value,
-      accountType: this.selectedAccountType,
     };
   }
 }

@@ -3,10 +3,9 @@
     <div class="card-header"></div>
     <div class="card-body">
         <button routerLink="/creator/show-questions" class="action-menu-button button-behaviour top-margin">Kreator</button>
-        <button routerLink="/class/show-class" class="action-menu-button button-behaviour top-margin">Klasy</button>
         <button href="#" class="action-menu-button button-behaviour top-margin">Przeglądaj Aktywność</button>
-        <button href="#" class="action-menu-button button-behaviour top-margin">Raportuj</button>
-        <button (click)="logout()" class="action-menu-button logout-button top-margin bottom-margin">Wyloguj się</button>
+        <button href="#" class="action-menu-button button-behaviour top-margin">Wygeneruj Raporty</button>
+        <button (click)="logout()" class="action-menu-button logout-button top-margin bottom-margin">Wyloguj Się</button>
     </div>
     <div class="card-footer text-muted"></div>
   </div>
@@ -17,9 +16,8 @@
         <div class="col-md-7">
           <div class="card p-3 py-4">
             <div class="text-center"><img src="assets/avatar.png" alt="" width="100" class="rounded-circle"> </div>
-            <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">{{translateAccountType(account.accountType)}}</span>
+            <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">{{account.lastName}} {{account.firstName}}</span>
               <div class="px-4 mt-1">
-                <p class="top-margin">{{account.lastName}} {{account.firstName}}</p>
                 <p>Adres email: {{account.email}}</p>
                 <p>Login: {{account.login}}</p>
                 <p>Dołączyłeś: {{account.creationDate | date : 'short'}}</p>

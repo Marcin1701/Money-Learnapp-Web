@@ -1,10 +1,16 @@
 <div>
-  <mat-tab-group>
-    <mat-tab label="Jednokrotny Wybór" aria-label>
-      <mr-app-show-single-choice-component></mr-app-show-single-choice-component>
-    </mat-tab>
-    <mat-tab label="Wielokrotny Wybór">Wielokrotny Wybór - In progress...</mat-tab>
-    <mat-tab label="Lista Uporządkowana">Lista Uporządkowana - In progress...</mat-tab>
-    <mat-tab label="Przeciąganie Elementów">Przeciąganie Elementów - In progress...</mat-tab>
-  </mat-tab-group>
+  <div class="card text-center menu-container card-display">
+    <div class="card-header"></div>
+    <div class="card-body">
+      <mat-tab-group>
+        <mat-tab label="Jednokrotny Wybór" aria-label>
+          <mr-app-show-single-choice-component [select]="false"></mr-app-show-single-choice-component>
+        </mat-tab>
+        <mat-tab label="Wielokrotny Wybór">Wielokrotny Wybór - In progress...</mat-tab>
+        <mat-tab label="Lista Uporządkowana">Lista Uporządkowana - In progress...</mat-tab>
+        <mat-tab label="Przeciąganie Elementów">Przeciąganie Elementów - In progress...</mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="card-footer"></div>
+  </div>
 </div>

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {
-  AccountResponse, GeneratedPassword,
+  AccountResponse, FormRequest, FormResponse,
   JsonWebTokenResponse,
   LoginRequest,
   NewAccount,
   Question,
   SingleChoiceQuestionResponse,
-  StudentRequest, StudentResponse
 } from '../spec/defs';
 import { Observable } from 'rxjs';
 
@@ -39,7 +38,7 @@ export class MoneySandboxService {
     return this.http.post(environment.apiUrl + '/entry/new', newUser);
   }
 
-  addQuestion(question: Question) {
+  addQuestion(question: Question): Observable<any> {
     return this.http.post(environment.apiUrl + '/question/new', question,
       {
         observe: 'response',
@@ -52,24 +51,19 @@ export class MoneySandboxService {
       {headers: this.getHeaders()});
   }
 
-  addNewStudent(studentRequest: StudentRequest): Observable<GeneratedPassword> {
-    return this.http.post<GeneratedPassword>(environment.apiUrl + '/students/new', studentRequest,
-      { headers: this.getHeaders() });
-  }
-
-  getAllTeacherStudents(): Observable<StudentResponse[]> {
-    return this.http.get<StudentResponse[]>(environment.apiUrl + '/students/all', { headers: this.getHeaders() });
-  }
-
-  toggleCreatorAllowance(id: string) {
-    return this.http.get(environment.apiUrl + '/students/toggle-creator-allowance', {
-      observe: 'response',
-      params: new HttpParams().append('id', id),
-      headers: this.getHeaders() });
+  getForms(): Observable<FormResponse[]> {
+    return this.http.get<FormResponse[]>(environment.apiUrl + '/form/all', { headers: this.getHeaders() });
   }
 
   private getHeaders(): HttpHeaders {
     // tslint:disable-next-line:no-non-null-assertion
     return new HttpHeaders().set('Authorization', localStorage.getItem('token')!);
+  }
+
+  addForm(form: FormRequest) {
+    return this.http.post(environment.apiUrl + '/form/add', form, {
+      observe: 'response',
+      headers: this.getHeaders()
+    });
   }
 }

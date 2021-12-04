@@ -1,54 +1,12 @@
-<div class="navbar-width">
-  <div class="bg-light border-right" id="sidebar-wrapper">
-    <img
-      src="assets/logo.png"
-      alt="Kreator nowych arkuszy!"
-      width="250"
-      height="150"
-    />
-    <div class="list-group list-group-flush align-items-center">
-      <button
-        type="button"
-        routerLink="/creator/new-question"
-        class="btn btn-light bottom-margin full-width navbar-font"
-      >
-        Nowe pytanie
-      </button>
-      <button
-        type="button"
-        routerLink="/creator/new-form"
-        class="btn btn-light bottom-margin full-width navbar-font"
-      >
-        Nowy arkusz
-      </button>
-      <button
-        type="button"
-        routerLink="/creator/show-questions"
-        class="btn btn-light bottom-margin full-width navbar-font"
-      >
-        Twoje Pytania
-      </button>
-      <button
-        type="button"
-        routerLink="/creator/show-forms"
-        class="btn btn-light bottom-margin full-width navbar-font"
-      >
-        Twoje Arkusze
-      </button>
-      <button
-        type="button"
-        (click)="logout()"
-        class="btn btn-light bottom-margin full-width navbar-font logout-button"
-      >
-        Wyloguj się
-      </button>
-      <button
-        type="button"
-        (click)="return()"
-        class="btn btn-light bottom-margin full-width navbar-font"
-      >
-        Wróć
-      </button>
-    </div>
+<div class="card text-center menu-container card-display">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <button routerLink="/creator/new-question" class="action-menu-button button-behaviour top-margin">Nowe Pytanie</button>
+    <button routerLink="/creator/new-form" class="action-menu-button button-behaviour top-margin">Nowy Arkusz</button>
+    <button routerLink="/creator/show-questions" class="action-menu-button button-behaviour top-margin">Twoje Pytania</button>
+    <button routerLink="/creator/show-forms" class="action-menu-button button-behaviour top-margin">Twoje Arkusze</button>
+    <button (click)="return()" class="action-menu-button button-behaviour top-margin">Wróć</button>
+    <button (click)="logout()" class="action-menu-button logout-button top-margin bottom-margin">Wyloguj Się</button>
   </div>
+  <div class="card-footer text-muted"></div>
 </div>

@@ -9,24 +9,18 @@ export interface NewAccount {
   login: string;
   email: string;
   password: string;
-  accountType: string;
 }
 
 export interface AccountResponse {
   login: string;
   firstName: string;
   lastName: string;
-  accountType: string;
   email: string;
   creationDate: string;
 }
 
 export interface JsonWebTokenResponse {
   jsonWebToken: string;
-}
-
-export interface GeneratedPassword {
-  generatedPassword: string;
 }
 
 export interface Question {
@@ -36,6 +30,7 @@ export interface Question {
 }
 
 export interface SingleChoiceQuestionResponse {
+  id: string;
   creationDate: string;
   question: {
     answerTime: string;
@@ -46,25 +41,30 @@ export interface SingleChoiceQuestionResponse {
   };
 }
 
-export interface StudentRequest {
-  firstName: string;
-  lastName: string;
-  login: string;
-  email?: string;
-  className?: string;
-  accountType: string;
-  isCreatorAllowed: boolean;
-  isTemporaryPasswordActive: boolean;
+export interface MultipleChoiceQuestionResponse {
+  id: string;
 }
 
-export interface StudentResponse {
+export interface DragAndDropQuestionResponse {
   id: string;
-  firstName: string;
-  lastName: string;
-  className: string;
-  login: string;
-  email: string;
+}
+
+export interface OrderedListQuestionResponse {
+  id: string;
+}
+
+export interface FormResponse {
+  questions: number;
+  name: string;
+  answerTime: number;
   creationDate: string;
-  isCreatorAllowed: boolean;
-  isTemporaryPasswordActive: boolean;
+  answers: number;
+  isPublic: boolean;
+}
+
+export interface FormRequest {
+  questionIds: string[];
+  name: string;
+  difficulty: number;
+  answerTime: number;
 }

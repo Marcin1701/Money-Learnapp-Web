@@ -1,0 +1,68 @@
+.menu-container {
+  width: 70%;
+}
+
+.answer-input {
+  margin-right: 3%;
+}
+
+.accept-buttons {
+  float: right;
+  margin-bottom: 3%;
+}
+
+.name-input {
+  width: 425px;
+  margin-right: 3%;
+}
+
+.action-menu-button {
+  width: 10%;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button-behaviour {
+  margin-right: 5%;
+  color: #fff;
+  background-color: #04AA6D;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+
+  &:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+.invalid-button-background-color {
+  background-color: #504747;
+  cursor: default;
+
+  &:hover {
+    background-color: #504747;
+  }
+
+  &:active {
+    background-color: #504747;
+    box-shadow: 0 5px #666;
+  }
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: center;
+}

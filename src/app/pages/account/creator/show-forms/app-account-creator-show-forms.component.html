@@ -1,3 +1,47 @@
-<div class="show-forms-container">
-  <h1>Show forms!</h1>
+<div>
+  <div class="card text-center menu-container card-display">
+    <div class="card-header"></div>
+    <div class="card-body">
+      <mat-form-field appearance="outline">
+        <mat-label>Filtruj</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+      </mat-form-field>
+      <table mat-table [dataSource]="forms" matSort (matSortChange)="sortChange($event)" class="mat-elevation-z8 full-width table-positioning">
+        <ng-container matColumnDef="index">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Nr</th>
+          <td mat-cell *matCellDef="let form">{{form.index}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Nazwa</th>
+          <td mat-cell *matCellDef="let form">{{form.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="answerTime">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Czas na odp.</th>
+          <td mat-cell *matCellDef="let form">{{form.answerTime}}</td>
+        </ng-container>
+        <ng-container matColumnDef="creationDate">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Data utworz.</th>
+          <td mat-cell *matCellDef="let form">{{form.creationDate | date: 'short'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="numberOfQuestions">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Liczba pyt.</th>
+          <td mat-cell *matCellDef="let form">{{form.numberOfQuestions}}</td>
+        </ng-container>
+        <ng-container matColumnDef="numberOfAnswers">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Liczba udzielonych odp.</th>
+          <td mat-cell *matCellDef="let form">{{form.numberOfAnswers}}</td>
+        </ng-container>
+        <ng-container matColumnDef="isPublic">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Publiczny</th>
+          <td mat-cell *matCellDef="let form">{{form.isPublic}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row (click)="selectForm(row)" *matRowDef="let row; columns: columns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+    <div class="card-footer text-muted">
+      Kliknij w wiersz, aby podejrzeć szczegóły.
+    </div>
+  </div>
 </div>

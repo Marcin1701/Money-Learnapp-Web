@@ -24,7 +24,7 @@ import { AppAccountCreatorShowQuestionsComponent } from './pages/account/creator
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppCreatorSingleChoiceComponent } from './pages/account/creator/new-question/questions-container/single-choice/app-creator-single-choice.component';
 import { AppCreatorMultipleChoiceComponent } from './pages/account/creator/new-question/questions-container/multiple-choice/app-creator-multiple-choice.component';
-import { AppCreatorSortedListComponent } from './pages/account/creator/new-question/questions-container/sorted-list/app-creator-sorted-list.component';
+import { AppCreatorOrderedListComponent } from './pages/account/creator/new-question/questions-container/ordered-list/app-creator-ordered-list.component';
 import { AppCreatorDragAndDropComponent } from './pages/account/creator/new-question/questions-container/drag-and-drop/app-creator-drag-and-drop.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AppCreatorSingleChoiceDialogComponent } from './pages/account/creator/new-question/questions-container/single-choice/dialog/app-creator-single-choice-dialog.component';
@@ -38,15 +38,9 @@ import {MatTableModule} from '@angular/material/table';
 import {AppCommonNothingFoundComponent} from './common/nothing-found/app-common-nothing-found.component';
 import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import {CustomPaginator} from './common/custom-components/CustomPaginatorConfiguration';
-import {AppAccountClassComponent} from './pages/account/class/app-account-class.component';
-import {AppAccountClassNavbarComponent} from './pages/account/class/navbar/app-account-class-navbar.component';
-import {AppAccountClassListComponent} from './pages/account/class/list/app-account-class-list.component';
-import {AppAccountClassStudentsAddComponent} from './pages/account/class/students/add/app-account-class-students-add.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {AppAccountClassStudentsShowComponent} from './pages/account/class/students/show/app-account-class-students-show.component';
 import {MatSortModule} from '@angular/material/sort';
-import {AppAccountClassStudentsShowDetailsComponent} from './pages/account/class/students/show/details/app-account-class-students-show-details.component';
 
 @NgModule({
   declarations: [
@@ -67,21 +61,11 @@ import {AppAccountClassStudentsShowDetailsComponent} from './pages/account/class
     AppAccountCreatorShowQuestionsComponent,
     AppCreatorSingleChoiceComponent,
     AppCreatorMultipleChoiceComponent,
-    AppCreatorSortedListComponent,
+    AppCreatorOrderedListComponent,
     AppCreatorDragAndDropComponent,
     AppCreatorSingleChoiceDialogComponent,
     AppCreatorMultipleChoiceDialogComponent,
     AppShowSingleChoiceComponent,
-
-    // Class
-    AppAccountClassComponent,
-    AppAccountClassNavbarComponent,
-    AppAccountClassListComponent,
-
-    // Students
-    AppAccountClassStudentsAddComponent,
-    AppAccountClassStudentsShowComponent,
-    AppAccountClassStudentsShowDetailsComponent,
 
     // Utils
     AppCommonNothingFoundComponent,

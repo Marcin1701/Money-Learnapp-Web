@@ -16,9 +16,7 @@ export class AppAccountComponent implements OnInit {
   constructor(private router: Router, private httpService: MoneySandboxService) {}
 
   ngOnInit(): void {
-    const token = 'Your token: ' + localStorage.getItem('token');
     if (localStorage.getItem('token')) {
-      this.token = token;
       this.httpService.getAccount().subscribe(account => this.account = account);
     } else {
       this.router.navigateByUrl('/').then(null);
@@ -30,11 +28,11 @@ export class AppAccountComponent implements OnInit {
     this.router.navigateByUrl('/').then(null);
   }
 
-  translateAccountType(accountType: string): string {
+  /*translateAccountType(accountType: string): string {
     switch (accountType) {
       case 'teacher': return 'Nauczyciel';
       case 'student': return 'Uczeń';
     }
     return '';
-  }
+  }*/
 }
