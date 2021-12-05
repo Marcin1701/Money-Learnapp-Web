@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatTableDataSource} from '@angular/material/table';
 import {FormResponse} from '../../../../spec/defs';
+import {AppAccountCreatorFormDetailsComponent} from './form-details/app-account-creator-form-details.component';
 
 @Component({
   selector: 'mr-account-creator-new-question-component',
@@ -18,8 +19,11 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   forms = new MatTableDataSource<FormTableModel>();
+  responseForms: FormResponse[] = [];
+
   pageSize = 8;
   columns = ['index', 'name', 'answerTime', 'creationDate', 'numberOfQuestions', 'numberOfAnswers', 'isPublic'];
+  pending = true;
 
   constructor(private httpService: MoneySandboxService,
               private _liveAnnouncer: LiveAnnouncer,
@@ -28,6 +32,7 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
 
   ngOnInit(): void {
     this.httpService.getForms().subscribe(forms => {
+      this.pending = false;
       forms && forms.length ?
         this.mapStudentResponseToStudentTableModel(forms) :
         this._snackBar.open('Nie posiadasz żadnych arkuszy', '', { duration: 1000 });
@@ -48,6 +53,7 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
   }
 
   private mapStudentResponseToStudentTableModel(forms: FormResponse[]) {
+    this.responseForms = forms;
     this.forms.data = forms.map((form, index) => {
       return {
         index: index,
@@ -67,10 +73,10 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
   }
 
   selectForm(form: FormTableModel) {
-/*    const dialogRef = this.dialog.open(, {
+    const dialogRef = this.dialog.open(AppAccountCreatorFormDetailsComponent, {
       width: '800px',
       height: '600px',
-      data: form,
+      data: this.responseForms[form.index - 1],
     });
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
@@ -82,7 +88,7 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
         });
       }
       dialogRef.close();
-    });*/
+    });
   }
 }
 

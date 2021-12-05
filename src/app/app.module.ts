@@ -41,17 +41,24 @@ import {CustomPaginator} from './common/custom-components/CustomPaginatorConfigu
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSortModule} from '@angular/material/sort';
+import {AppCommonSpinnerComponent} from './common/spinner/app-common-spinner.component';
+import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer-component';
+import {AppAccountCreatorFormDetailsComponent} from './pages/account/creator/show-forms/form-details/app-account-creator-form-details.component';
+import {AppPagesHomeFormListComponent} from './pages/home/form-list/app-pages-home-form-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    // Pages
+    // Core
     AppPagesComponent,
-    AppPagesHomeComponent,
     AppPagesLoginComponent,
     AppPagesRegisterComponent,
     AppAccountComponent,
+
+    // Home
+    AppPagesHomeComponent,
+    AppPagesHomeFormListComponent,
 
     // Creator
     AppAccountCreatorComponent,
@@ -66,10 +73,15 @@ import {MatSortModule} from '@angular/material/sort';
     AppCreatorSingleChoiceDialogComponent,
     AppCreatorMultipleChoiceDialogComponent,
     AppShowSingleChoiceComponent,
+    AppAccountCreatorFormDetailsComponent,
+
+    // Answer
+    AppPagesAnswerComponent,
 
     // Utils
     AppCommonNothingFoundComponent,
-    AppCommonNavbarComponent
+    AppCommonNavbarComponent,
+    AppCommonSpinnerComponent
   ],
   imports: [
     BrowserModule,

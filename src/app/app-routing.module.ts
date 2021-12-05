@@ -8,11 +8,17 @@ import { AppAccountCreatorNewQuestionComponent } from './pages/account/creator/n
 import { AppAccountCreatorNewFormComponent } from './pages/account/creator/new-form/app-account-creator-new-form.component';
 import { AppAccountCreatorShowFormsComponent } from './pages/account/creator/show-forms/app-account-creator-show-forms.component';
 import { AppAccountCreatorShowQuestionsComponent } from './pages/account/creator/show-questions/app-account-creator-show-questions.component';
+import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer-component';
+import {AppPagesLoginComponent} from './pages/login/app-pages-login.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AppPagesComponent,
+  },
+  {
+    path: 'login',
+    component: AppPagesLoginComponent,
   },
   {
     path: 'register',
@@ -43,6 +49,10 @@ const routes: Routes = [
         component: AppAccountCreatorShowQuestionsComponent,
       },
     ],
+  },
+  {
+    path: 'answer',
+    component: AppPagesAnswerComponent
   }
 ];
 

@@ -1,3 +1,58 @@
-mr-app-pages-home {
+.text-small {
+  font-size: 0.9rem !important;
+}
 
+.header {
+  background: rgb(23,94,22);
+  background: linear-gradient(90deg, rgba(23,94,22,1) 0%, rgba(9,121,41,1) 14%, rgba(12,224,201,0.9864320728291317) 100%);
+}
+
+.menu-logo {
+  width: 300px;
+  height: 60px;
+}
+
+.log-in {
+  color: #fff;
+  background-color: #66b796;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+
+  &:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+.login-button-confirm {
+  margin-top: 5%;
+  padding: 9px 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.buttons-container {
+  width: 100%;
+}
+
+.right-margin {
+  display: inline-flex;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+
+.menu-right-margin {
+  //margin-right: 2%;
+}
+
+.entry-buttons-container {
+  width: 30%;
 }

@@ -1,4 +1,5 @@
-<ng-container *ngIf="singleChoiceQuestions.data.length; else noQuestions">
+<ng-container *ngIf="!pending; else spinner">
+  <ng-container *ngIf="singleChoiceQuestions.data.length; else noQuestions">
     <div>
       <table mat-table matSort (matSortChange)="sortChange($event)" [dataSource]="singleChoiceQuestions" class="mat-elevation-z8 full-width table-positioning">
         <ng-container *ngIf="select" matColumnDef="select">
@@ -35,8 +36,12 @@
         <tr mat-row *matRowDef="let row; columns: columns;" (click)="selection.toggle(row); selectItem.emit(questions[row.index - 1].id)"></tr>
       </table>
     </div>
-  <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
   </ng-container>
   <ng-template #noQuestions>
     <mr-app-common-nothing-found></mr-app-common-nothing-found>
   </ng-template>
+</ng-container>
+<ng-template #spinner>
+  <mr-app-common-spinner></mr-app-common-spinner>
+</ng-template>

@@ -15,6 +15,7 @@ export class AppPagesLoginComponent {
     login: ['', Validators.required],
     password: ['', Validators.required],
   });
+  pendingLogin = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,10 +25,12 @@ export class AppPagesLoginComponent {
   ) {}
 
   onSubmit() {
+    this.pendingLogin = true;
     this.moneySandboxService
       .login(this.mapLoginAccountFormGroupIntoLoginRequest())
       .subscribe((jwt) => {
         if (jwt) {
+          this.pendingLogin = false;
           localStorage.setItem('token', jwt.jsonWebToken);
           this.router.navigateByUrl('/account');
         }

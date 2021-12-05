@@ -37,10 +37,11 @@
         <span class="accept-buttons">
           <button type=submit class="action-menu-button button-behaviour top-margin"
                   [class.invalid-button-background-color]="newFormGroup.invalid || questionIds.length === 0"
-                  [disabled]="newFormGroup.invalid || questionIds.length === 0" (click)="onSubmit()">Dodaj</button>
+                  [disabled]="newFormGroup.invalid || questionIds.length === 0" (click)="onSubmit()">
+            <span *ngIf="pending" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Dodaj</button>
           <button class="action-menu-button button-behaviour top-margin"
                   [class.invalid-button-background-color]="newFormGroup.invalid || questionIds.length === 0"
-                  [disabled]="newFormGroup.invalid || questionIds.length === 0">Podgląd</button>
+                  [disabled]="newFormGroup.invalid || questionIds.length === 0" (click)="preview()">Podgląd</button>
         </span>
         <div class="card-footer">
           Kolejność wyboru jest kolejnością podczas odpowiedzi.

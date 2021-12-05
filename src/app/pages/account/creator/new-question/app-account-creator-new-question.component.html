@@ -1,56 +1,24 @@
 <div class="new-question-container">
   <div cdkDropListGroup>
     <div class="example-container card card-position select-question-type">
-      <div
-        (mouseover)="disableItems()"
-        cdkDropList
-        [cdkDropListData]="items"
-        class="example-list"
-        cdkDropListSortingDisabled
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div
-          class="example-box text-alignment"
-          [cdkDragDisabled]="item.disabled"
-          *ngFor="let item of items"
-          cdkDrag
-        >
+      <div (mouseover)="disableItems()" cdkDropList [cdkDropListData]="items" class="example-list"
+           cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)">
+        <div class="example-box text-alignment" [cdkDragDisabled]="item.disabled" *ngFor="let item of items" cdkDrag>
           {{ item.value }}
         </div>
       </div>
     </div>
-    <div
-      class="
-        example-container
-        card card-position
-        select-question-type
-        drop-area
-      "
-    >
+    <div class="example-container card card-position select-question-type drop-area">
       <h2 class="text-alignment">Przeciągnij element tutaj!</h2>
-      <div
-        cdkDropList
-        [cdkDropListData]="selectedOption"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)"
-      >
+      <div cdkDropList [cdkDropListData]="selectedOption" class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngIf="selectedOption.length === 2" cdkDrag>
-          <mr-app-creator-drag-and-drop
-            *ngIf="selectedOption[0].value === 'Przeciąganie Elementów'"
-          >
+          <mr-app-creator-drag-and-drop *ngIf="selectedOption[0].value === 'Przeciąganie Elementów'">
           </mr-app-creator-drag-and-drop>
-          <mr-app-creator-single-choice
-            *ngIf="selectedOption[0].value === 'Jednokrotny Wybór'"
-            (addQuestion)="prepareQuestion($event)"
-          >
+          <mr-app-creator-single-choice *ngIf="selectedOption[0].value === 'Jednokrotny Wybór'" (addQuestion)="prepareQuestion($event)">
           </mr-app-creator-single-choice>
-          <mr-app-creator-sorted-list
-            *ngIf="selectedOption[0].value === 'Lista Uporządkowana'"
-          >
+          <mr-app-creator-sorted-list *ngIf="selectedOption[0].value === 'Lista Uporządkowana'">
           </mr-app-creator-sorted-list>
-          <mr-app-creator-multiple-choice
-            *ngIf="selectedOption[0].value === 'Wielokrotny Wybór'"
-          >
+          <mr-app-creator-multiple-choice *ngIf="selectedOption[0].value === 'Wielokrotny Wybór'">
           </mr-app-creator-multiple-choice>
         </div>
       </div>

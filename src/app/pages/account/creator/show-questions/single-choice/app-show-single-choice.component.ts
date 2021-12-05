@@ -24,6 +24,7 @@ export class AppShowSingleChoiceComponent implements OnInit, AfterViewInit {
   singleChoiceQuestions = new MatTableDataSource<SingleChoiceTableModel>();
   selection = new SelectionModel<SingleChoiceTableModel>(true, []);
   questions: SingleChoiceQuestionResponse[];
+  pending = true;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -43,6 +44,7 @@ export class AppShowSingleChoiceComponent implements OnInit, AfterViewInit {
       this.columns = ['select', 'index', 'name', 'text', 'date', 'optionCount'] :
       this.columns = ['index', 'name', 'text', 'date', 'optionCount'];
     this.httpService.loadSingleChoiceQuestions().subscribe(result => {
+      this.pending = false;
       if (result.length) {
         this.questions = result;
         this.mapSingleChoiceToTableModels(result);
