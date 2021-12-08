@@ -15,10 +15,16 @@
             </li>
           </ul>
         </div>
-        <span class="entry-buttons-container">
+        <span class="entry-buttons-container" *ngIf="!isLoggedIn; else logoutOption">
           <button routerLink="/login" class="login-button-confirm log-in right-margin" type="submit">Zaloguj</button>
           <button routerLink="/register" class="login-button-confirm log-in right-margin" type="submit">Zarejestruj</button>
         </span>
+        <ng-template #logoutOption>
+          <span class="entry-buttons-container">
+            <button routerLink="/account" class="login-button-confirm log-in right-margin" type="submit">Profil</button>
+            <button (click)="logout()" class="login-button-confirm log-in right-margin" type="submit">Wyloguj się</button>
+          </span>
+        </ng-template>
       </div>
     </nav>
   </header>

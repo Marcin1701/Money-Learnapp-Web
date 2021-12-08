@@ -32,7 +32,7 @@ export class AppPagesLoginComponent {
         if (jwt) {
           this.pendingLogin = false;
           localStorage.setItem('token', jwt.jsonWebToken);
-          this.router.navigateByUrl('/account');
+          this.router.navigateByUrl('/').then(null);
         }
       }, (error) => {
         if (error.status === 401) {

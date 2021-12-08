@@ -10,6 +10,7 @@ import { AppAccountCreatorShowFormsComponent } from './pages/account/creator/sho
 import { AppAccountCreatorShowQuestionsComponent } from './pages/account/creator/show-questions/app-account-creator-show-questions.component';
 import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer-component';
 import {AppPagesLoginComponent} from './pages/login/app-pages-login.component';
+import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -27,10 +28,12 @@ const routes: Routes = [
   {
     path: 'account',
     component: AppAccountComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'creator',
     component: AppAccountCreatorComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'new-form',
