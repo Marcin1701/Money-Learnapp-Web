@@ -1,0 +1,15 @@
+<div class="question-container">
+  <div class="question-name" *ngIf="singleChoice.question">
+    {{singleChoice.question.name}}
+  </div>
+  <div class="radio-container">
+    <mat-radio-group class="radio-group">
+      <mat-radio-button *ngFor="let choice of singleChoice.question.singleChoiceOptions"
+                        class="radio-button"
+                        (change)="checkSingleChoice($event)"
+                        [value]="choice">
+          {{choice}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>

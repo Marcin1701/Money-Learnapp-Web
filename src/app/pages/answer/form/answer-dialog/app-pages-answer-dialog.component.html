@@ -1,0 +1,14 @@
+<div class="dialog-container">
+  <form [formGroup]="nameFormGroup" (ngSubmit)="nameFormGroup.markAllAsTouched(); onSubmit()">
+    <div>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Email/Login</mat-label>
+        <input name="name" matInput formControlName="name" [placeholder]="'Podaj swoją nazwę'"/>
+        <mat-error>Pole wymagane!</mat-error>
+      </mat-form-field>
+    </div>
+    <button [class.invalid-button-background-color]="nameFormGroup.invalid" [disabled]="nameFormGroup.invalid"
+            (click)="onSubmit()" class="login-button-confirm log-in" type="submit">
+      Ok</button>
+  </form>
+</div>

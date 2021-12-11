@@ -1,0 +1,22 @@
+.dialog-container {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.form-field {
+  margin-top: 5%;
+}
+
+.invalid-button-background-color {
+  background-color: #504747;
+  cursor: default;
+
+  &:hover {
+    background-color: #504747;
+  }
+
+  &:active {
+    background-color: #504747;
+    box-shadow: 0 5px #666;
+  }
+}

@@ -42,9 +42,17 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSortModule} from '@angular/material/sort';
 import {AppCommonSpinnerComponent} from './common/spinner/app-common-spinner.component';
-import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer-component';
+import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer.component';
 import {AppAccountCreatorFormDetailsComponent} from './pages/account/creator/show-forms/form-details/app-account-creator-form-details.component';
 import {AppPagesHomeFormListComponent} from './pages/home/form-list/app-pages-home-form-list.component';
+import {AppPagesAnswerFormComponent} from './pages/answer/form/app-pages-answer-form.component';
+import {AppPagesAnswerFormSingleChoiceComponent} from './pages/answer/form/answers/single-choice-answer/app-pages-answer-form-single-choice.component';
+import {AppPagesAnswerFormOrderedListComponent} from './pages/answer/form/answers/ordered-list-answer/app-pages-answer-form-ordered-list.component';
+import {AppPagesAnswerFormMultipleChoiceComponent} from './pages/answer/form/answers/multiple-choice-answer/app-pages-answer-form-multiple-choice.component';
+import {AppPagesAnswerFormDragAndDropComponent} from './pages/answer/form/answers/drag-and-drop-answer/app-pages-answer-form-drag-and-drop.component';
+import {AppPagesAnswerDialogComponent} from './pages/answer/form/answer-dialog/app-pages-answer-dialog.component';
+import {AppCommonBigSpinnerComponent} from './common/big-spinner/app-common-big-spinner.component';
+import {AppPagesAnswerScoreComponent} from './pages/answer/form/score/app-pages-answer-score.component';
 
 @NgModule({
   declarations: [
@@ -77,11 +85,19 @@ import {AppPagesHomeFormListComponent} from './pages/home/form-list/app-pages-ho
 
     // Answer
     AppPagesAnswerComponent,
+    AppPagesAnswerFormComponent,
+    AppPagesAnswerFormSingleChoiceComponent,
+    AppPagesAnswerFormOrderedListComponent,
+    AppPagesAnswerFormMultipleChoiceComponent,
+    AppPagesAnswerFormDragAndDropComponent,
+    AppPagesAnswerDialogComponent,
+    AppPagesAnswerScoreComponent,
 
-    // Utils
+    // Common
     AppCommonNothingFoundComponent,
     AppCommonNavbarComponent,
-    AppCommonSpinnerComponent
+    AppCommonSpinnerComponent,
+    AppCommonBigSpinnerComponent
   ],
   imports: [
     BrowserModule,

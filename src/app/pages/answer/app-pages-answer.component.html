@@ -1,3 +1,24 @@
-<h1>
-  Answer is here! Preview? {{isPreview}}
-</h1>
+<div class="answer-form-container">
+  <div>
+    <div class="card text-center menu-container card-display">
+      <div class="card-header">
+        <span *ngIf="formToAnswer?.name">{{formToAnswer.name}}</span>
+      </div>
+      <div class="card-body">
+        <div *ngIf="!pending">
+          <mr-app-pages-answer-form
+            [form]="formToAnswer"
+            [isLoggedIn]="false"
+            [isPreview]="isPreview"
+          ></mr-app-pages-answer-form>
+        </div>
+        <div *ngIf="pending">
+          <div class="spinner-container">
+            <mr-app-common-big-spinner></mr-app-common-big-spinner>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>

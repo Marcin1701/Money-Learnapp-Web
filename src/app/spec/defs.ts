@@ -53,12 +53,21 @@ export interface OrderedListQuestionResponse {
   id: string;
 }
 
+export interface FormToAnswerResponse {
+  id: string;
+  name: string;
+  questions: any[];
+  difficulty: number;
+  creationDate: string;
+}
+
 export interface FormResponse {
   id: string;
   questions: number;
   name: string;
   answerTime: number;
   creationDate: string;
+  difficulty: number;
   answers: number;
   isPublic: boolean;
 }
@@ -68,4 +77,53 @@ export interface FormRequest {
   name: string;
   difficulty: number;
   answerTime: number;
+}
+
+export interface AnswersRequest {
+  formId: string;
+  answerer?: string;
+  answers: {
+    questionType: string;
+    answer: any;
+  }[];
+}
+
+export interface SingleChoiceAnswer {
+  questionId: string;
+  optionChosen: number;
+}
+
+export interface MultipleChoiceAnswer {
+  questionId: string;
+  optionChosen: number[];
+}
+
+export interface SingleChoiceAnswer {
+  chosenOption: number;
+}
+
+export interface SingleChoiceAnswer {
+  chosenOption: number;
+}
+
+export interface ResultsResponse {
+  percentage: string;
+  allQuestions: number;
+  correctAnswers: number;
+  wrongAnswers: number;
+}
+
+export interface HomeFormResponse {
+  id: string;
+  firstName: string;
+  lastName: string;
+  login?: string;
+  email?: string;
+  questions: number;
+  name: string;
+  answerTime: number;
+  creationDate: string;
+  difficulty: number;
+  answers: number;
+  isPublic: boolean;
 }

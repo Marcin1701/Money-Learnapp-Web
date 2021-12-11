@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {
-  AccountResponse, FormRequest, FormResponse,
+  AccountResponse, AnswersRequest, FormRequest, FormResponse, FormToAnswerResponse, HomeFormResponse,
   JsonWebTokenResponse,
   LoginRequest,
   NewAccount,
-  Question,
+  Question, ResultsResponse,
   SingleChoiceQuestionResponse,
 } from '../spec/defs';
 import { Observable } from 'rxjs';
@@ -52,12 +52,19 @@ export class MoneySandboxService {
   }
 
   getForms(): Observable<FormResponse[]> {
-    return this.http.get<FormResponse[]>(environment.apiUrl + '/form/all', { headers: this.getHeaders() });
+    return this.http.get<FormResponse[]>(environment.apiUrl + '/form', { headers: this.getHeaders() });
   }
 
-  private getHeaders(): HttpHeaders {
-    // tslint:disable-next-line:no-non-null-assertion
-    return new HttpHeaders().set('Authorization', localStorage.getItem('token')!);
+  getHomePageListForms(): Observable<HomeFormResponse[]> {
+    return this.http.get<HomeFormResponse[]>(environment.apiUrl + '/form/public');
+  }
+
+  getFormToAnswerById(id: string): Observable<FormToAnswerResponse> {
+    return this.http.get<FormToAnswerResponse>(environment.apiUrl + '/answer/form', { params: { id: id }});
+  }
+
+  addAnswers(answers: AnswersRequest): Observable<ResultsResponse> {
+    return this.http.post<ResultsResponse>(environment.apiUrl + '/answer/send', answers);
   }
 
   addForm(form: FormRequest) {
@@ -65,5 +72,10 @@ export class MoneySandboxService {
       observe: 'response',
       headers: this.getHeaders()
     });
+  }
+
+  private getHeaders(): HttpHeaders {
+    // tslint:disable-next-line:no-non-null-assertion
+    return new HttpHeaders().set('Authorization', localStorage.getItem('token')!);
   }
 }

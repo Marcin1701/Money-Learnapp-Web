@@ -1,0 +1,32 @@
+.question-container {
+  text-align: left;
+  margin-left: 3%;
+}
+
+.question-name {
+  color: #878080;
+  margin-left: 2%;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radio-button {
+  width: fit-content;
+  margin: 10px;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: #3e8e41;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #3e8e41;
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: blue;
+}

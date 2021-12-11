@@ -8,7 +8,7 @@ import { AppAccountCreatorNewQuestionComponent } from './pages/account/creator/n
 import { AppAccountCreatorNewFormComponent } from './pages/account/creator/new-form/app-account-creator-new-form.component';
 import { AppAccountCreatorShowFormsComponent } from './pages/account/creator/show-forms/app-account-creator-show-forms.component';
 import { AppAccountCreatorShowQuestionsComponent } from './pages/account/creator/show-questions/app-account-creator-show-questions.component';
-import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer-component';
+import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer.component';
 import {AppPagesLoginComponent} from './pages/login/app-pages-login.component';
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 
