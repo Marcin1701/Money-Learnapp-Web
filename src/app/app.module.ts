@@ -53,6 +53,12 @@ import {AppPagesAnswerFormDragAndDropComponent} from './pages/answer/form/answer
 import {AppPagesAnswerDialogComponent} from './pages/answer/form/answer-dialog/app-pages-answer-dialog.component';
 import {AppCommonBigSpinnerComponent} from './common/big-spinner/app-common-big-spinner.component';
 import {AppPagesAnswerScoreComponent} from './pages/answer/form/score/app-pages-answer-score.component';
+import {RoleService} from './services/role.service';
+import {LogoutService} from './services/logout.service';
+import {AppPagesAdminUsersComponent} from './pages/admin/users/app-pages-admin-users.component';
+import {AppPagesAdminPublicityComponent} from './pages/admin/publicity/app-pages-admin-publicity.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -93,6 +99,10 @@ import {AppPagesAnswerScoreComponent} from './pages/answer/form/score/app-pages-
     AppPagesAnswerDialogComponent,
     AppPagesAnswerScoreComponent,
 
+    // Admin
+    AppPagesAdminUsersComponent,
+    AppPagesAdminPublicityComponent,
+
     // Common
     AppCommonNothingFoundComponent,
     AppCommonNavbarComponent,
@@ -121,9 +131,13 @@ import {AppPagesAnswerScoreComponent} from './pages/answer/form/score/app-pages-
     MatSelectModule,
     MatCheckboxModule,
     MatSortModule,
+    MatTooltipModule,
+    ClipboardModule,
   ],
   providers: [
-    { provide: MatPaginatorIntl, useValue: CustomPaginator() }
+    { provide: MatPaginatorIntl, useValue: CustomPaginator() },
+    RoleService,
+    LogoutService
   ],
   bootstrap: [AppComponent],
 })

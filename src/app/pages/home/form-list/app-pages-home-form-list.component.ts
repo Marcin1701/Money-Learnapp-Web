@@ -19,7 +19,6 @@ export class AppPagesHomeFormListComponent implements OnInit {
   ngOnInit() {
     this.httpService.getHomePageListForms().subscribe(forms => {
       this.forms = forms;
-      console.log(this.forms);
     });
   }
 

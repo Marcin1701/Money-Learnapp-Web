@@ -11,6 +11,9 @@ import { AppAccountCreatorShowQuestionsComponent } from './pages/account/creator
 import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer.component';
 import {AppPagesLoginComponent} from './pages/login/app-pages-login.component';
 import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
+import {AppPagesAdminUsersComponent} from './pages/admin/users/app-pages-admin-users.component';
+import {AuthAdminGuardService} from './services/auth-admin-guard.service';
+import {AppPagesAdminPublicityComponent} from './pages/admin/publicity/app-pages-admin-publicity.component';
 
 const routes: Routes = [
   {
@@ -52,6 +55,20 @@ const routes: Routes = [
         component: AppAccountCreatorShowQuestionsComponent,
       },
     ],
+  },
+  {
+    path: 'admin',
+    canActivate: [AuthAdminGuardService],
+    children: [
+      {
+        path: 'users',
+        component: AppPagesAdminUsersComponent,
+      },
+      {
+        path: 'publicity',
+        component: AppPagesAdminPublicityComponent,
+      }
+    ]
   },
   {
     path: 'answer',

@@ -58,7 +58,6 @@ export class AppPagesAnswerFormComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          console.log(result);
           this.answer.answerer = result;
           this.sendAnswers();
         }

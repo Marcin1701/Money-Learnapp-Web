@@ -11,6 +11,10 @@ export interface NewAccount {
   password: string;
 }
 
+export interface AccountRole {
+  role: string;
+}
+
 export interface AccountResponse {
   login: string;
   firstName: string;

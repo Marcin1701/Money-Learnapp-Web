@@ -8,6 +8,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatTableDataSource} from '@angular/material/table';
 import {FormResponse} from '../../../../spec/defs';
 import {AppAccountCreatorFormDetailsComponent} from './form-details/app-account-creator-form-details.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'mr-account-creator-new-question-component',
@@ -20,15 +21,18 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
   @ViewChild(MatSort) sort: MatSort;
   forms = new MatTableDataSource<FormTableModel>();
   responseForms: FormResponse[] = [];
+  formLinks: string[] = [];
 
+  iconAction = false;
   pageSize = 8;
-  columns = ['index', 'name', 'answerTime', 'creationDate', 'numberOfQuestions', 'numberOfAnswers', 'isPublic'];
+  columns = ['index', 'name', 'answerTime', 'creationDate', 'numberOfQuestions', 'numberOfAnswers', 'isPublic', 'link', 'solve'];
   pending = true;
 
   constructor(private httpService: MoneySandboxService,
               private _liveAnnouncer: LiveAnnouncer,
               public dialog: MatDialog,
-              private _snackBar: MatSnackBar) {}
+              private _snackBar: MatSnackBar,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.httpService.getForms().subscribe(forms => {
@@ -54,9 +58,10 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
 
   private mapStudentResponseToStudentTableModel(forms: FormResponse[]) {
     this.responseForms = forms;
+    this.createFormLinks();
     this.forms.data = forms.map((form, index) => {
       return {
-        index: index,
+        index: index + 1,
         name: form.name,
         answerTime: form.answerTime,
         creationDate: form.creationDate,
@@ -67,28 +72,43 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
     });
   }
 
+  private createFormLinks() {
+    this.responseForms.forEach(form => {
+      this.formLinks.push(window.location.href.replace('/creator/show-forms', '/answer?id=' + form.id));
+    });
+  }
+
   applyFilter($event: KeyboardEvent) {
     const filterValue = ($event.target as HTMLInputElement).value;
     this.forms.filter = filterValue.trim().toLowerCase();
   }
 
   selectForm(form: FormTableModel) {
-    const dialogRef = this.dialog.open(AppAccountCreatorFormDetailsComponent, {
-      width: '800px',
-      height: '600px',
-      data: this.responseForms[form.index - 1],
-    });
-    dialogRef.afterClosed().subscribe((data) => {
-      if (data) {
-        this.forms.data.map(formData => {
-          if (formData.index === data.index) {
-            return data;
-          }
-          console.log(data);
-        });
-      }
-      dialogRef.close();
-    });
+    if (!this.iconAction) {
+      const dialogRef = this.dialog.open(AppAccountCreatorFormDetailsComponent, {
+        width: '800px',
+        height: '600px',
+        data: this.responseForms[form.index - 1],
+      });
+      dialogRef.afterClosed().subscribe((data) => {
+        if (data) {
+          this.forms.data.map(formData => {
+            if (formData.index === data.index) {
+              return data;
+            }
+          });
+        }
+        dialogRef.close();
+      });
+    }
+  }
+
+  copyLink() {
+    this._snackBar.open('Skopiowano link do schowka', '', { duration: 500 });
+  }
+
+  solve(index: number) {
+    window.open(this.formLinks[index - 1], '_blank');
   }
 }
 

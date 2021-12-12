@@ -13,6 +13,5 @@ export class AppAccountCreatorFormDetailsComponent {
 
   constructor(public dialogRef: MatDialogRef<AppCreatorSingleChoiceComponent>,
               @Inject(MAT_DIALOG_DATA) public form: FormTableModel) {
-    console.log(form);
   }
 }

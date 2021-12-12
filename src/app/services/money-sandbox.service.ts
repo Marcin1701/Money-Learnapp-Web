@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {
-  AccountResponse, AnswersRequest, FormRequest, FormResponse, FormToAnswerResponse, HomeFormResponse,
+  AccountResponse, AccountRole, AnswersRequest, FormRequest, FormResponse, FormToAnswerResponse, HomeFormResponse,
   JsonWebTokenResponse,
   LoginRequest,
   NewAccount,
@@ -25,6 +25,10 @@ export class MoneySandboxService {
   getAccount(): Observable<AccountResponse> {
     return this.http.get<AccountResponse>(environment.apiUrl + '/account',
       {headers: this.getHeaders()});
+  }
+
+  getAccountRole(): Observable<AccountRole> {
+    return this.http.get<AccountRole>(environment.apiUrl + '/account/role', { headers: this.getHeaders() });
   }
 
   login(loginRequest: LoginRequest): Observable<JsonWebTokenResponse> {

@@ -17,3 +17,11 @@
   background-color: #04AA6D;
   color: white;
 }
+
+.icon-action {
+  cursor: pointer;
+
+  &:hover {
+   color: black;
+  }
+}

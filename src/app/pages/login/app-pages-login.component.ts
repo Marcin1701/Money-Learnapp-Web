@@ -4,6 +4,7 @@ import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { LoginRequest } from '../../spec/defs';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {RoleService} from '../../services/role.service';
 
 @Component({
   selector: 'mr-app-pages-login',
@@ -21,7 +22,8 @@ export class AppPagesLoginComponent {
     private formBuilder: FormBuilder,
     private moneySandboxService: MoneySandboxService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private roleService: RoleService,
   ) {}
 
   onSubmit() {
@@ -30,11 +32,18 @@ export class AppPagesLoginComponent {
       .login(this.mapLoginAccountFormGroupIntoLoginRequest())
       .subscribe((jwt) => {
         if (jwt) {
-          this.pendingLogin = false;
           localStorage.setItem('token', jwt.jsonWebToken);
-          this.router.navigateByUrl('/').then(null);
+          this.moneySandboxService.getAccountRole().subscribe(role => {
+            this.roleService.setRole(role.role);
+            this.pendingLogin = false;
+            this.router.navigateByUrl('/').then(null);
+          }, () => {
+            this.pendingLogin = false;
+            this._snackBar.open('Wystąpił błąd!', 'Ok', { duration: 2000 });
+          });
         }
       }, (error) => {
+        this.pendingLogin = false;
         if (error.status === 401) {
           this._snackBar.open('Niepoprawne dane logowania!', 'Ok', { duration: 2000 });
         } else {
