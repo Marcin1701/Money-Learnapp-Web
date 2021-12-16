@@ -12,13 +12,17 @@ import {FormResponse, HomeFormResponse} from '../../../spec/defs';
 export class AppPagesHomeFormListComponent implements OnInit {
 
   forms: HomeFormResponse[];
+  pending = true;
 
   constructor(private router: Router, private httpService: MoneySandboxService) {
   }
 
   ngOnInit() {
     this.httpService.getHomePageListForms().subscribe(forms => {
-      this.forms = forms;
+      if (forms) {
+        this.pending = false;
+        this.forms = forms;
+      }
     });
   }
 

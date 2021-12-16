@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img class="menu-logo" src="assets/logo-horizontal.png" alt="Szkatułkowy Ambaras!"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main_nav">
+      <ul class="navbar-nav" *ngIf="isLoggedIn">
+        <li class="nav-item dropdown margin-right">
+          <a class="nav-link dropdown-toggle action-menu-button button-behaviour" data-bs-toggle="dropdown"> Kreator </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item" routerLink="/creator/new-question"> Nowe pytanie</a></li>
+            <li><a class="dropdown-item" routerLink="/creator/new-form"> Nowy arkusz </a></li>
+            <li><a class="dropdown-item" routerLink="/creator/show-questions"> Twoje pytania </a></li>
+            <li><a class="dropdown-item" routerLink="/creator/show-forms"> Twoje arkusze </a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown margin-right">
+          <a class="nav-link dropdown-toggle action-menu-button button-behaviour" href="#" data-bs-toggle="dropdown"> Przeglądaj aktywność </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"> ... </a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown margin-right">
+          <a class="nav-link dropdown-toggle action-menu-button button-behaviour" href="#" data-bs-toggle="dropdown"> Raporty </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"> ... </a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item " *ngIf="!isLoggedIn"><a class="nav-link action-menu-button button-behaviour" routerLink="/login"> Zaloguj się </a></li>
+        <li class="nav-item " *ngIf="!isLoggedIn"><a class="nav-link action-menu-button button-behaviour" routerLink="/register"> Zarejestruj </a></li>
+        <li class="nav-item " *ngIf="isLoggedIn"><a class="nav-link action-menu-button button-behaviour" routerLink="/account"> Profil </a></li>
+        <li class="nav-item " *ngIf="isLoggedIn"><a class="nav-link action-menu-button button-behaviour" (click)="logoutService.logout()"> Wyloguj się </a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

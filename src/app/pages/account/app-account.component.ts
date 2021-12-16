@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {AccountResponse} from '../../spec/defs';
 import {MoneySandboxService} from '../../services/money-sandbox.service';
 import {RoleService} from '../../services/role.service';
@@ -18,7 +18,8 @@ export class AppAccountComponent implements OnInit {
   constructor(private router: Router,
               private httpService: MoneySandboxService,
               private roleService: RoleService,
-              private logoutService: LogoutService) {}
+              private logoutService: LogoutService) {
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {

@@ -1,32 +1,6 @@
 <div class="home-container">
   <header class="header sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
-      <div class="container"><a class="navbar-brand" href="#">
-        <strong class="h6 mb-0 font-weight-bold text-uppercase">
-          <img class="menu-logo" src="assets/logo-horizontal.png" alt="Szkatułkowy Ambaras!">
-        </strong></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <button routerLink="/login" class="login-button-confirm log-in menu-right-margin" type="submit">1</button>
-                <button routerLink="/login" class="login-button-confirm log-in menu-right-margin" type="submit">2</button>
-                <button routerLink="/login" class="login-button-confirm log-in menu-right-margin" type="submit">3</button>
-            </li>
-          </ul>
-        </div>
-        <span class="entry-buttons-container" *ngIf="!isLoggedIn; else logoutOption">
-          <button routerLink="/login" class="login-button-confirm log-in right-margin" type="submit">Zaloguj</button>
-          <button routerLink="/register" class="login-button-confirm log-in right-margin" type="submit">Zarejestruj</button>
-        </span>
-        <ng-template #logoutOption>
-          <span class="entry-buttons-container">
-            <button routerLink="/account" class="login-button-confirm log-in right-margin" type="submit">Profil</button>
-            <button (click)="logout()" class="login-button-confirm log-in right-margin" type="submit">Wyloguj się</button>
-          </span>
-        </ng-template>
-      </div>
-    </nav>
+    <mr-app-pages-home-menu [isLoggedIn]="isLoggedIn"></mr-app-pages-home-menu>
   </header>
   <mr-app-pages-home-form-list></mr-app-pages-home-form-list>
 </div>

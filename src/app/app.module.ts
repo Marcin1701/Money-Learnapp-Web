@@ -59,6 +59,7 @@ import {AppPagesAdminUsersComponent} from './pages/admin/users/app-pages-admin-u
 import {AppPagesAdminPublicityComponent} from './pages/admin/publicity/app-pages-admin-publicity.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import {AppPagesHomeMenuComponent} from './pages/home/menu/app-pages-home-menu.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     // Home
     AppPagesHomeComponent,
     AppPagesHomeFormListComponent,
+    AppPagesHomeMenuComponent,
 
     // Creator
     AppAccountCreatorComponent,
