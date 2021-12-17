@@ -1,0 +1,12 @@
+<div class="card text-center menu-container card-display">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <button routerLink="/activity/summary" class="action-menu-button button-behaviour top-margin">Podsumowanie</button>
+    <button routerLink="/activity/answers" class="action-menu-button button-behaviour top-margin">Twoje odpowiedzi</button>
+    <button routerLink="/activity/answerers" class="action-menu-button button-behaviour top-margin">Odpowiedzi na Twoje arkusze</button>
+    <button (click)="return()" class="action-menu-button button-behaviour top-margin">Wróć</button>
+    <button (click)="logout()" class="action-menu-button logout-button top-margin bottom-margin">Wyloguj Się</button>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+<router-outlet></router-outlet>

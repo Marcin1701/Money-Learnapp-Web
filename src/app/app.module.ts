@@ -60,6 +60,10 @@ import {AppPagesAdminPublicityComponent} from './pages/admin/publicity/app-pages
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {AppPagesHomeMenuComponent} from './pages/home/menu/app-pages-home-menu.component';
+import {AppAccountActivityComponent} from './pages/account/activity/app-account-activity.component';
+import {AppAccountActivitySummaryComponent} from './pages/account/activity/summary/app-account-activity-summary.component';
+import {AppAccountActivityAnswersComponent} from './pages/account/activity/answers/app-account-activity-answers.component';
+import {AppAccountActivityAnswerersComponent} from './pages/account/activity/answerers/app-account-activity-answerers.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +94,12 @@ import {AppPagesHomeMenuComponent} from './pages/home/menu/app-pages-home-menu.c
     AppCreatorMultipleChoiceDialogComponent,
     AppShowSingleChoiceComponent,
     AppAccountCreatorFormDetailsComponent,
+
+    // Activity
+    AppAccountActivityComponent,
+    AppAccountActivitySummaryComponent,
+    AppAccountActivityAnswersComponent,
+    AppAccountActivityAnswerersComponent,
 
     // Answer
     AppPagesAnswerComponent,

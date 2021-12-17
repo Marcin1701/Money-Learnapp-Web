@@ -16,6 +16,7 @@ export interface AccountRole {
 }
 
 export interface AccountResponse {
+  id: string;
   login: string;
   firstName: string;
   lastName: string;
@@ -86,6 +87,7 @@ export interface FormRequest {
 export interface AnswersRequest {
   formId: string;
   answerer?: string;
+  userId?: string;
   answers: {
     questionType: string;
     answer: any;
@@ -130,4 +132,12 @@ export interface HomeFormResponse {
   difficulty: number;
   answers: number;
   isPublic: boolean;
+}
+
+export interface AnswersSummary {
+  allAnswers: number;
+  allAnswersPercentage: string;
+  allQuestions: number;
+  allCorrectQuestions: number;
+  allWrongQuestions: number;
 }

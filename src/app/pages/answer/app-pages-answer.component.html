@@ -8,7 +8,8 @@
         <div *ngIf="!pending">
           <mr-app-pages-answer-form
             [form]="formToAnswer"
-            [isLoggedIn]="false"
+            [isLoggedIn]="isLoggedIn"
+            [userId]="userId"
             [isPreview]="isPreview"
           ></mr-app-pages-answer-form>
         </div>

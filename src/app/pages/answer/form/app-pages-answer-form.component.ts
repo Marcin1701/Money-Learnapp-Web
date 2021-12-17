@@ -24,6 +24,9 @@ export class AppPagesAnswerFormComponent implements OnInit {
   @Input()
   isPreview: boolean;
 
+  @Input()
+  userId: string;
+
   answer: AnswersRequest = { formId: '', answers: [] };
   answerer: string;
   sendingAnswers = false;
@@ -69,6 +72,10 @@ export class AppPagesAnswerFormComponent implements OnInit {
   }
 
   private sendAnswers() {
+    if (this.userId.length) {
+      this.answer.userId = this.userId;
+    }
+    console.log(this.answer);
     this.sendingAnswers = true;
     this.httpService.addAnswers(this.answer).subscribe(results => {
       if (results) {

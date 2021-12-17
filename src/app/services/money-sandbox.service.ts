@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {
-  AccountResponse, AccountRole, AnswersRequest, FormRequest, FormResponse, FormToAnswerResponse, HomeFormResponse,
+  AccountResponse, AccountRole, AnswersRequest, AnswersSummary, FormRequest, FormResponse, FormToAnswerResponse, HomeFormResponse,
   JsonWebTokenResponse,
   LoginRequest,
   NewAccount,
@@ -76,6 +76,10 @@ export class MoneySandboxService {
       observe: 'response',
       headers: this.getHeaders()
     });
+  }
+
+  getAnswersSummary(): Observable<AnswersSummary> {
+    return this.http.get<AnswersSummary>(environment.apiUrl + '/answer/summary', { headers: this.getHeaders() });
   }
 
   private getHeaders(): HttpHeaders {

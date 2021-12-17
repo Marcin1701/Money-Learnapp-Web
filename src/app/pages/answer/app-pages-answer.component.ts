@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MoneySandboxService} from '../../services/money-sandbox.service';
 import {FormToAnswerResponse} from '../../spec/defs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'mr-app-pages-answer',
@@ -14,8 +15,12 @@ export class AppPagesAnswerComponent implements OnInit {
   formToAnswer: FormToAnswerResponse;
   pending = true;
   previewQuestions: any;
+  isLoggedIn = false;
+  userId = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private httpService: MoneySandboxService) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private httpService: MoneySandboxService,
+              private _matSnackBar: MatSnackBar) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params['preview'] && localStorage.getItem('preview_form')) {
         this.isPreview = params['preview'];
@@ -24,6 +29,18 @@ export class AppPagesAnswerComponent implements OnInit {
         this.mapLocalStorageFormToAnswerForm(localStorage.getItem('preview_form')!);
       }
     });
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.httpService.validateToken().subscribe(response => {
+        if (response) {
+          this.httpService.getAccount().subscribe(account => {
+            if (account) {
+              this.userId = account.id;
+            }
+          });
+        }
+      });
+    }
   }
 
   ngOnInit(): void {
