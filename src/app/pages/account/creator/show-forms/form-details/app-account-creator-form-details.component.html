@@ -1,1 +1,20 @@
+<div class="row">
+  <div class="col-md-7">
+    <div *ngIf="!form.isPublic">
+      Możesz zgłosić swój arkusz do upublicznienia, w tym celu wciśnij przycisk obok.
+      Jeśli administrator zatwierdzi Twój arkusz, będzie on widoczny na stronie głównej.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div *ngIf="!form.isPublic && !pendingPublish && !pending">
+      <button (click)="publish()" class="action-menu-button button-behaviour top-margin">
+        <span *ngIf="pending" aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+        Upublicznij
+      </button>
+    </div>
+    <div *ngIf="formPublicityResponse">
+      Arkusz zgłoszony {{ formPublicityResponse.requestedVerificationDate | date : 'short' }}
+    </div>
+  </div>
+</div>
 

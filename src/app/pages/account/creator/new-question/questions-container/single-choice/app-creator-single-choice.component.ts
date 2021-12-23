@@ -1,15 +1,15 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AppCreatorSingleChoiceDialogComponent } from './dialog/app-creator-single-choice-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {SingleChoice, SingleChoiceContent} from '../../../../../../spec/question-defs';
+import { SingleChoice, SingleChoiceContent } from '../../../../../../spec/question-defs';
 import { FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'mr-app-creator-single-choice',
   templateUrl: 'app-creator-single-choice.component.html',
-  styleUrls: ['app-creator-single-choice.component.scss'],
+  styleUrls: [ 'app-creator-single-choice.component.scss' ],
 })
 export class AppCreatorSingleChoiceComponent {
   singleChoice: SingleChoice;
@@ -20,15 +20,16 @@ export class AppCreatorSingleChoiceComponent {
   };
 
   singleChoiceFormGroup = this.formBuilder.group({
-    name: ['', Validators.required],
-    question: ['', Validators.required],
-    answerTime: ['', Validators.required]
+    name: [ '', Validators.required ],
+    question: [ '', Validators.required ],
+    answerTime: [ '', Validators.required ]
   });
 
   @Output()
   addQuestion: EventEmitter<SingleChoice> = new EventEmitter<SingleChoice>();
 
-  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar, private formBuilder: FormBuilder) {}
+  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar, private formBuilder: FormBuilder) {
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AppCreatorSingleChoiceDialogComponent, {

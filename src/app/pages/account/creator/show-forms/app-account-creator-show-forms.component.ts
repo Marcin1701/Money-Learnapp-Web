@@ -1,19 +1,19 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort, Sort} from '@angular/material/sort';
-import {MoneySandboxService} from '../../../../services/money-sandbox.service';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
-import {MatDialog} from '@angular/material/dialog';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {MatTableDataSource} from '@angular/material/table';
-import {FormResponse} from '../../../../spec/defs';
-import {AppAccountCreatorFormDetailsComponent} from './form-details/app-account-creator-form-details.component';
-import {Router} from '@angular/router';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MoneySandboxService } from '../../../../services/money-sandbox.service';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
+import { FormResponse } from '../../../../spec/defs';
+import { AppAccountCreatorFormDetailsComponent } from './form-details/app-account-creator-form-details.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mr-account-creator-new-question-component',
   templateUrl: 'app-account-creator-show-forms.component.html',
-  styleUrls: ['app-account-creator-show-forms.component.scss'],
+  styleUrls: [ 'app-account-creator-show-forms.component.scss' ],
 })
 export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewInit {
 
@@ -25,20 +25,21 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
 
   iconAction = false;
   pageSize = 8;
-  columns = ['index', 'name', 'answerTime', 'creationDate', 'numberOfQuestions', 'numberOfAnswers', 'isPublic', 'link', 'solve'];
+  columns = [ 'index', 'name', 'answerTime', 'creationDate', 'numberOfQuestions', 'numberOfAnswers', 'isPublic', 'link', 'solve' ];
   pending = true;
 
   constructor(private httpService: MoneySandboxService,
               private _liveAnnouncer: LiveAnnouncer,
               public dialog: MatDialog,
               private _snackBar: MatSnackBar,
-              private router: Router) {}
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.httpService.getForms().subscribe(forms => {
       this.pending = false;
       forms && forms.length ?
-        this.mapStudentResponseToStudentTableModel(forms) :
+        this.mapFormResponseToFormTableModel(forms) :
         this._snackBar.open('Nie posiadasz żadnych arkuszy', '', { duration: 1000 });
     });
   }
@@ -50,32 +51,10 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
 
   sortChange(sortState: Sort) {
     if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`).then(null);
+      this._liveAnnouncer.announce(`Sorted ${ sortState.direction }ending`).then(null);
     } else {
       this._liveAnnouncer.announce('Sorting cleared').then(null);
     }
-  }
-
-  private mapStudentResponseToStudentTableModel(forms: FormResponse[]) {
-    this.responseForms = forms;
-    this.createFormLinks();
-    this.forms.data = forms.map((form, index) => {
-      return {
-        index: index + 1,
-        name: form.name,
-        answerTime: form.answerTime,
-        creationDate: form.creationDate,
-        numberOfQuestions: form.questions,
-        numberOfAnswers: form.answers,
-        isPublic: form.isPublic ? 'Tak' : 'Nie',
-      } as FormTableModel;
-    });
-  }
-
-  private createFormLinks() {
-    this.responseForms.forEach(form => {
-      this.formLinks.push(window.location.href.replace('/creator/show-forms', '/answer?id=' + form.id));
-    });
   }
 
   applyFilter($event: KeyboardEvent) {
@@ -109,6 +88,28 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
 
   solve(index: number) {
     window.open(this.formLinks[index - 1], '_blank');
+  }
+
+  private mapFormResponseToFormTableModel(forms: FormResponse[]) {
+    this.responseForms = forms;
+    this.createFormLinks();
+    this.forms.data = forms.map((form, index) => {
+      return {
+        index: index + 1,
+        name: form.name,
+        answerTime: form.answerTime,
+        creationDate: form.creationDate,
+        numberOfQuestions: form.questions,
+        numberOfAnswers: form.answers,
+        isPublic: form.isPublic ? 'Tak' : 'Nie',
+      } as FormTableModel;
+    });
+  }
+
+  private createFormLinks() {
+    this.responseForms.forEach(form => {
+      this.formLinks.push(window.location.href.replace('/creator/show-forms', '/answer?id=' + form.id));
+    });
   }
 }
 

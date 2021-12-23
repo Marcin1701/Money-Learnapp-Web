@@ -1,10 +1,10 @@
 <div *ngIf="!sendingAnswers && !result">
   <ng-container *ngFor="let question of form?.questions; index as i">
-    <hr class="dotted" *ngIf="i > 0">
+    <hr *ngIf="i > 0" class="dotted">
     <ng-container *ngIf="question.type === 'SINGLE_CHOICE'">
       <mr-app-pages-answer-form-single-choice
-        [singleChoice]="question"
-        (singleChoiceChanged)="singleChoiceChanged($event)"></mr-app-pages-answer-form-single-choice>
+        (singleChoiceChanged)="singleChoiceChanged($event)"
+        [singleChoice]="question"></mr-app-pages-answer-form-single-choice>
     </ng-container>
     <ng-container>
 
@@ -16,7 +16,7 @@
 
     </ng-container>
   </ng-container>
-  <button *ngIf="!isPreview" type=submit class="action-menu-button button-behaviour" (click)="send()">Wyślij</button>
+  <button (click)="send()" *ngIf="!isPreview" class="action-menu-button button-behaviour" type=submit>Wyślij</button>
 </div>
 <div *ngIf="sendingAnswers && !result">
   <div class="spinner-container">
@@ -28,6 +28,6 @@
 </div>
 <div *ngIf="result">
   <mr-app-pages-answer-score [score]="result"></mr-app-pages-answer-score>
-  <button class="action-menu-button button-behaviour" (click)="return()">Powrót</button>
+  <button (click)="return()" class="action-menu-button button-behaviour">Powrót</button>
 </div>
 

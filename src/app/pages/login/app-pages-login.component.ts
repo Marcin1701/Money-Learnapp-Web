@@ -3,18 +3,18 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { LoginRequest } from '../../spec/defs';
 import { Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {RoleService} from '../../services/role.service';
+import { RoleService } from '../../services/role.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'mr-app-pages-login',
   templateUrl: 'app-pages-login.component.html',
-  styleUrls: ['app-pages-login.component.scss'],
+  styleUrls: [ 'app-pages-login.component.scss' ],
 })
 export class AppPagesLoginComponent {
   loginFormGroup = this.formBuilder.group({
-    login: ['', Validators.required],
-    password: ['', Validators.required],
+    login: [ '', Validators.required ],
+    password: [ '', Validators.required ],
   });
   pendingLogin = false;
 
@@ -24,7 +24,8 @@ export class AppPagesLoginComponent {
     private router: Router,
     private _snackBar: MatSnackBar,
     private roleService: RoleService,
-  ) {}
+  ) {
+  }
 
   onSubmit() {
     this.pendingLogin = true;

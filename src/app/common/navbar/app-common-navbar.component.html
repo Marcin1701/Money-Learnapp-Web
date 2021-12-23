@@ -1,11 +1,15 @@
 <div class="card text-center menu-container card-display">
   <div class="card-header"></div>
   <div class="card-body">
-    <button routerLink="/creator/new-question" class="action-menu-button button-behaviour top-margin">Nowe Pytanie</button>
-    <button routerLink="/creator/new-form" class="action-menu-button button-behaviour top-margin">Nowy Arkusz</button>
-    <button routerLink="/creator/show-questions" class="action-menu-button button-behaviour top-margin">Twoje Pytania</button>
-    <button routerLink="/creator/show-forms" class="action-menu-button button-behaviour top-margin">Twoje Arkusze</button>
+    <button class="action-menu-button button-behaviour top-margin" routerLink="/creator/new-question">Nowe Pytanie
+    </button>
+    <button class="action-menu-button button-behaviour top-margin" routerLink="/creator/new-form">Nowy Arkusz</button>
+    <button class="action-menu-button button-behaviour top-margin" routerLink="/creator/show-questions">Twoje Pytania
+    </button>
+    <button class="action-menu-button button-behaviour top-margin" routerLink="/creator/show-forms">Twoje Arkusze
+    </button>
     <button (click)="return()" class="action-menu-button button-behaviour top-margin">Wróć</button>
+    <button class="action-menu-button button-behaviour top-margin" routerLink="/">Start</button>
     <button (click)="logout()" class="action-menu-button logout-button top-margin bottom-margin">Wyloguj Się</button>
   </div>
   <div class="card-footer text-muted"></div>

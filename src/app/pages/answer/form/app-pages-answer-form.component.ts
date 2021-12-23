@@ -1,17 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AnswersRequest, FormToAnswerResponse, ResultsResponse} from '../../../spec/defs';
-import {MoneySandboxService} from '../../../services/money-sandbox.service';
-import {MatDialog} from '@angular/material/dialog';
-import {AppCreatorSingleChoiceDialogComponent} from '../../account/creator/new-question/questions-container/single-choice/dialog/app-creator-single-choice-dialog.component';
-import {AppPagesAnswerDialogComponent} from './answer-dialog/app-pages-answer-dialog.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { AnswersRequest, FormToAnswerResponse, ResultsResponse } from '../../../spec/defs';
+import { MoneySandboxService } from '../../../services/money-sandbox.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AppPagesAnswerDialogComponent } from './answer-dialog/app-pages-answer-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'mr-app-pages-answer-form',
   templateUrl: 'app-pages-answer-form.component.html',
-  styleUrls: ['./app-pages-answer-form.component.scss'],
+  styleUrls: [ './app-pages-answer-form.component.scss' ],
 })
 export class AppPagesAnswerFormComponent implements OnInit {
 
@@ -35,13 +34,14 @@ export class AppPagesAnswerFormComponent implements OnInit {
   constructor(private httpService: MoneySandboxService,
               public dialog: MatDialog,
               private _snackBar: MatSnackBar,
-              private router: Router) {}
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.answer.formId = this.form?.id;
   }
 
-  singleChoiceChanged($event: { id: string, value: number }) {
+  singleChoiceChanged($event: {id: string, value: number}) {
     this.removePreviousAnswer($event.id);
     this.answer.answers.push({
       questionType: 'SINGLE_CHOICE',
@@ -71,6 +71,10 @@ export class AppPagesAnswerFormComponent implements OnInit {
     }
   }
 
+  return() {
+    this.router.navigateByUrl('/').then(null);
+  }
+
   private sendAnswers() {
     if (this.userId.length) {
       this.answer.userId = this.userId;
@@ -96,9 +100,5 @@ export class AppPagesAnswerFormComponent implements OnInit {
         }
       });
     }
-  }
-
-  return() {
-    this.router.navigateByUrl('/').then(null);
   }
 }

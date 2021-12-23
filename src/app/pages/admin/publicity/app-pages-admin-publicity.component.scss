@@ -1,0 +1,25 @@
+.card {
+  width: 90%;
+}
+
+.header {
+  background: white;
+  color: black;
+}
+
+.table-positioning {
+  width: 100%;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.icon-action {
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+  }
+}

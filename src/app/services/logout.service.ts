@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {RoleService} from './role.service';
-import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Injectable } from '@angular/core';
+import { RoleService } from './role.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class LogoutService {

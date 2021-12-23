@@ -1,9 +1,45 @@
 <div>
   <div class="card text-center menu-container card-display">
     <div class="card-header">Poniżej widzisz arkusze, na które udzieliłeś odpowiedzi</div>
-    <div class="card-body">
-
+    <div *ngIf="!pending" class="card-body">
+      <mat-form-field appearance="outline">
+        <mat-label>Filtruj</mat-label>
+        <input #input (keyup)="applyFilter($event)" matInput>
+      </mat-form-field>
+      <table (matSortChange)="sortChange($event)" [dataSource]="forms" class="mat-elevation-z8 full-width table-positioning" mat-table
+             matSort>
+        <ng-container matColumnDef="index">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Nr</th>
+          <td *matCellDef="let form" mat-cell>{{form.index}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Nazwa</th>
+          <td *matCellDef="let form" mat-cell>{{form.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="answerTime">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Czas na odp.</th>
+          <td *matCellDef="let form" mat-cell>{{form.answerTime}}</td>
+        </ng-container>
+        <ng-container matColumnDef="creationDate">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Data utworz.</th>
+          <td *matCellDef="let form" mat-cell>{{form.creationDate | date: 'short'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="numberOfQuestions">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Liczba pyt.</th>
+          <td *matCellDef="let form" mat-cell>{{form.numberOfQuestions}}</td>
+        </ng-container>
+        <ng-container matColumnDef="isPublic">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Publiczny</th>
+          <td *matCellDef="let form" mat-cell>{{form.isPublic}}</td>
+        </ng-container>
+        <tr *matHeaderRowDef="columns" mat-header-row></tr>
+        <tr (click)="selectAnswer(row)" *matRowDef="let row; columns: columns;" mat-row></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
     </div>
-    <div class="card-footer">Kliknij w wiersz, aby podejrzeć szczegóły</div>
+    <div *ngIf="pending">
+      <mr-app-common-spinner></mr-app-common-spinner>
+    </div>
+    <div class="card-footer">Kliknij w arkusz, aby podejrzeć szczegóły odpowiedzi</div>
   </div>
 </div>

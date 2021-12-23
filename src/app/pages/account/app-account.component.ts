@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {AccountResponse} from '../../spec/defs';
-import {MoneySandboxService} from '../../services/money-sandbox.service';
-import {RoleService} from '../../services/role.service';
-import {LogoutService} from '../../services/logout.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountResponse } from '../../spec/defs';
+import { MoneySandboxService } from '../../services/money-sandbox.service';
+import { RoleService } from '../../services/role.service';
+import { LogoutService } from '../../services/logout.service';
 
 @Component({
   selector: 'mr-app-account',
   templateUrl: 'app-account.component.html',
-  styleUrls: ['app-account.component.scss'],
+  styleUrls: [ 'app-account.component.scss' ],
 })
 export class AppAccountComponent implements OnInit {
   token: string | null;
@@ -23,9 +23,17 @@ export class AppAccountComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
-      this.httpService.getAccount().subscribe(account => this.account = account);
-      this.isAdmin = this.roleService.getRole() === 'ADMIN';
-      console.log(this.roleService.getRole());
+      this.httpService.getAccount().subscribe(account => {
+        this.account = account;
+        this.httpService.getAccountRole().subscribe(role => {
+          if (role) {
+            this.roleService.setRole(role.role);
+            this.isAdmin = this.roleService.getRole() === 'ADMIN';
+          } else {
+            this.logout();
+          }
+        });
+      });
     } else {
       this.router.navigateByUrl('/').then(null);
     }

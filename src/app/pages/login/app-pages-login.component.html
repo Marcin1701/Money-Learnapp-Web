@@ -2,33 +2,36 @@
   <mat-card class="login-card">
     <span>
       <mat-card-title class="login-card-title">
-        <img src="assets/logo.png" alt="Szkatułkowy Ambaras!" />
+        <img alt="Szkatułkowy Ambaras!" src="assets/logo.png"/>
       </mat-card-title>
     </span>
     <span>
       <mat-card-content class="form-container">
         <div class="login-card-form">
-          <form [formGroup]="loginFormGroup" (ngSubmit)="loginFormGroup.markAllAsTouched(); onSubmit()">
+          <form (ngSubmit)="loginFormGroup.markAllAsTouched(); onSubmit()" [formGroup]="loginFormGroup">
             <div>
-              <mat-form-field class="login-card-form-field" appearance="outline">
+              <mat-form-field appearance="outline" class="login-card-form-field">
                 <mat-label>Email/Login</mat-label>
-                <input name="login" matInput formControlName="login" [placeholder]="'Wpisz adres e-mail lub login!'"/>
+                <input [placeholder]="'Wpisz adres e-mail lub login!'" formControlName="login" matInput name="login"/>
                 <mat-error>Podaj adres email lub login!</mat-error>
               </mat-form-field>
             </div>
             <div>
-              <mat-form-field class="login-card-form-field" appearance="outline">
+              <mat-form-field appearance="outline" class="login-card-form-field">
                 <mat-label>Hasło</mat-label>
-                <input matInput type="password" formControlName="password" [placeholder]="'Podaj swoje hasło!'"/>
+                <input [placeholder]="'Podaj swoje hasło!'" formControlName="password" matInput type="password"/>
                 <mat-error>Podaj swoje hasło!</mat-error>
               </mat-form-field>
             </div>
             <span class="button-container">
-              <button [class.invalid-button-background-color]="loginFormGroup.invalid" [disabled]="loginFormGroup.invalid"
+              <button [class.invalid-button-background-color]="loginFormGroup.invalid"
+                      [disabled]="loginFormGroup.invalid"
                       class="login-button-confirm log-in" type="submit">
-                <span *ngIf="pendingLogin" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span *ngIf="pendingLogin" aria-hidden="true" class="spinner-border spinner-border-sm"
+                      role="status"></span>
                 Zaloguj się!</button>
-              <button routerLink="/register" class="login-button-confirm sign-up" type="submit">Zarejestruj się!</button>
+              <button class="login-button-confirm sign-up" routerLink="/register"
+                      type="submit">Zarejestruj się!</button>
             </span>
           </form>
         </div>

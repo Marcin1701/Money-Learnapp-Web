@@ -1,12 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {LogoutService} from '../../services/logout.service';
-import {RoleService} from '../../services/role.service';
+import { LogoutService } from '../../services/logout.service';
 
 @Component({
   selector: 'mr-app-common-navbar',
   templateUrl: 'app-common-navbar.component.html',
-  styleUrls: ['app-common-navbar.component.scss'],
+  styleUrls: [ 'app-common-navbar.component.scss' ],
 })
 export class AppCommonNavbarComponent {
 

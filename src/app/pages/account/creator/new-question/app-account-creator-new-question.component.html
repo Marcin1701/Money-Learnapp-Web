@@ -1,20 +1,21 @@
 <div class="new-question-container">
   <div cdkDropListGroup>
     <div class="example-container card card-position select-question-type">
-      <div (mouseover)="disableItems()" cdkDropList [cdkDropListData]="items" class="example-list"
-           cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)">
-        <div class="example-box text-alignment" [cdkDragDisabled]="item.disabled" *ngFor="let item of items" cdkDrag>
+      <div (cdkDropListDropped)="drop($event)" (mouseover)="disableItems()" [cdkDropListData]="items" cdkDropList
+           cdkDropListSortingDisabled class="example-list">
+        <div *ngFor="let item of items" [cdkDragDisabled]="item.disabled" cdkDrag class="example-box text-alignment">
           {{ item.value }}
         </div>
       </div>
     </div>
     <div class="example-container card card-position select-question-type drop-area">
       <h2 class="text-alignment">Przeciągnij element tutaj!</h2>
-      <div cdkDropList [cdkDropListData]="selectedOption" class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngIf="selectedOption.length === 2" cdkDrag>
+      <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="selectedOption" cdkDropList class="example-list">
+        <div *ngIf="selectedOption.length === 2" cdkDrag class="example-box">
           <mr-app-creator-drag-and-drop *ngIf="selectedOption[0].value === 'Przeciąganie Elementów'">
           </mr-app-creator-drag-and-drop>
-          <mr-app-creator-single-choice *ngIf="selectedOption[0].value === 'Jednokrotny Wybór'" (addQuestion)="prepareQuestion($event)">
+          <mr-app-creator-single-choice (addQuestion)="prepareQuestion($event)"
+                                        *ngIf="selectedOption[0].value === 'Jednokrotny Wybór'">
           </mr-app-creator-single-choice>
           <mr-app-creator-sorted-list *ngIf="selectedOption[0].value === 'Lista Uporządkowana'">
           </mr-app-creator-sorted-list>

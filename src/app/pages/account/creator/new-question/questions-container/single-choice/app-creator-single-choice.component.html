@@ -1,9 +1,9 @@
 <div>
-  <form [formGroup]="singleChoiceFormGroup" (ngSubmit)="singleChoiceFormGroup.markAllAsTouched();">
+  <form (ngSubmit)="singleChoiceFormGroup.markAllAsTouched();" [formGroup]="singleChoiceFormGroup">
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Nazwa pytania</mat-label>
-        <input name="name" formControlName="name" matInput />
+        <input formControlName="name" matInput name="name"/>
         <mat-icon matSuffix>turned_in</mat-icon>
         <mat-error>Pole wymagane!</mat-error>
       </mat-form-field>
@@ -11,7 +11,7 @@
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Treść pytania</mat-label>
-        <input name="question" formControlName="question" matInput />
+        <input formControlName="question" matInput name="question"/>
         <mat-icon matSuffix>turned_in</mat-icon>
         <mat-error>Pole wymagane!</mat-error>
       </mat-form-field>
@@ -19,18 +19,18 @@
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Czas odpowiedzi</mat-label>
-        <input type="number" name="answerTime" formControlName="answerTime" matInput />
+        <input formControlName="answerTime" matInput name="answerTime" type="number"/>
         <mat-icon matSuffix>turned_in</mat-icon>
         <mat-error>Pole wymagane!</mat-error>
       </mat-form-field>
     </div>
     <div>
-      <button mat-raised-button (click)="openDialog()">Modyfikuj pytanie!</button>
+      <button (click)="openDialog()" mat-raised-button>Modyfikuj pytanie!</button>
     </div>
     <div>
-      <button mat-raised-button [disabled]="singleChoiceFormGroup.invalid ||
+      <button (click)="prepareQuestion(); addQuestion.emit(singleChoice)" [disabled]="singleChoiceFormGroup.invalid ||
       !singleChoiceContent.singleChoiceOptions.length"
-              (click)="prepareQuestion(); addQuestion.emit(singleChoice)"
+              mat-raised-button
       >Dodaj swoje pytanie
       </button>
     </div>

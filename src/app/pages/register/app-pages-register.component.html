@@ -2,100 +2,101 @@
   <mat-card class="login-card">
     <span>
       <mat-card-title class="login-card-title">
-        <img src="assets/logo.png" alt="Szkatułkowy Ambaras!" />
+        <img alt="Szkatułkowy Ambaras!" src="assets/logo.png"/>
       </mat-card-title>
     </span>
     <span>
       <mat-card-content class="form-container">
         <div class="login-card-form">
-          <form [formGroup]="registerAccountFormGroup" (ngSubmit)="registerAccountFormGroup.markAllAsTouched(); onSubmit()">
+          <form (ngSubmit)="registerAccountFormGroup.markAllAsTouched(); onSubmit()"
+                [formGroup]="registerAccountFormGroup">
             <span>
               <mat-form-field
-                class="login-card-form-field width-form"
-                appearance="outline">
+                appearance="outline"
+                class="login-card-form-field width-form">
                 <mat-label>Imię</mat-label>
                 <input
-                  name="firstName"
-                  matInput
-                  formControlName="firstName"
                   [placeholder]="'Podaj swoje imię'"
+                  formControlName="firstName"
+                  matInput
+                  name="firstName"
                 />
                 <mat-error>Pole wymagane!</mat-error>
               </mat-form-field>
               <mat-form-field
-                class="login-card-form-field width-form"
                 appearance="outline"
+                class="login-card-form-field width-form"
               >
                 <mat-label>Nazwisko</mat-label>
                 <input
-                  name="lastName"
-                  matInput
-                  formControlName="lastName"
                   [placeholder]="'Podaj nazwisko'"
+                  formControlName="lastName"
+                  matInput
+                  name="lastName"
                 />
                 <mat-error>Pole wymagane!</mat-error>
               </mat-form-field>
             </span>
             <span>
               <mat-form-field
-                class="login-card-form-field width-form"
                 appearance="outline"
+                class="login-card-form-field width-form"
               >
                 <mat-label>Email</mat-label>
                 <input
-                  name="email"
-                  type="email"
+                  [placeholder]="'Podaj email'"
                   formControlName="email"
                   matInput
-                  [placeholder]="'Podaj email'"
+                  name="email"
+                  type="email"
                 />
                 <mat-error>Pole wymagane!</mat-error>
               </mat-form-field>
               <mat-form-field
-                class="login-card-form-field width-form"
                 appearance="outline"
+                class="login-card-form-field width-form"
               >
                 <mat-label>Login</mat-label>
                 <input
-                  name="login"
-                  matInput
-                  formControlName="login"
                   [placeholder]="'Podaj login'"
+                  formControlName="login"
+                  matInput
+                  name="login"
                 />
                 <mat-error>Pole wymagane!</mat-error>
               </mat-form-field>
             </span>
             <span>
               <mat-form-field
-                class="login-card-form-field width-form"
                 appearance="outline"
+                class="login-card-form-field width-form"
               >
                 <mat-label>Hasło</mat-label>
                 <input
-                  name="password"
-                  type="password"
+                  [placeholder]="'Podaj swoje hasło'"
                   formControlName="password"
                   matInput
-                  [placeholder]="'Podaj swoje hasło'"
+                  name="password"
+                  type="password"
                 />
                 <mat-error>Podaj swoje hasło!</mat-error>
               </mat-form-field>
               <mat-form-field
-                class="login-card-form-field width-form"
                 appearance="outline"
+                class="login-card-form-field width-form"
               >
                 <mat-label>Powtórz hasło</mat-label>
                 <input
-                  type="password"
-                  matInput
                   [placeholder]="'Powtórz hasło'"
+                  matInput
+                  type="password"
                 />
                 <mat-error>Podaj swoje hasło!</mat-error>
               </mat-form-field>
             </span>
             <span
-              class="button-container"
               (click)="registerAccountFormGroup.markAllAsTouched()"
+              class="button-container"
             >
               <button
                 [class.invalid-button-background-color]="

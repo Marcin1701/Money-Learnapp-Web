@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
-  AccountResponse, AccountRole, AnswersRequest, AnswersSummary, FormRequest, FormResponse, FormToAnswerResponse, HomeFormResponse,
+  AccountResponse,
+  AccountRole,
+  AnswersRequest,
+  AnswersSummary,
+  FormPublicityResponse,
+  FormRequest,
+  FormResponse,
+  FormToAnswerResponse,
+  HomeFormResponse,
   JsonWebTokenResponse,
   LoginRequest,
   NewAccount,
-  Question, ResultsResponse,
+  Question,
+  ResultsResponse,
   SingleChoiceQuestionResponse,
 } from '../spec/defs';
 import { Observable } from 'rxjs';
@@ -15,16 +24,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MoneySandboxService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   validateToken(): Observable<JsonWebTokenResponse> {
     return this.http.get<JsonWebTokenResponse>(environment.apiUrl + '/entry/validate',
-      {headers: this.getHeaders()});
+      { headers: this.getHeaders() });
   }
 
   getAccount(): Observable<AccountResponse> {
     return this.http.get<AccountResponse>(environment.apiUrl + '/account',
-      {headers: this.getHeaders()});
+      { headers: this.getHeaders() });
   }
 
   getAccountRole(): Observable<AccountRole> {
@@ -52,7 +62,7 @@ export class MoneySandboxService {
 
   loadSingleChoiceQuestions(): Observable<SingleChoiceQuestionResponse[]> {
     return this.http.get<SingleChoiceQuestionResponse[]>(environment.apiUrl + '/question/single_choice',
-      {headers: this.getHeaders()});
+      { headers: this.getHeaders() });
   }
 
   getForms(): Observable<FormResponse[]> {
@@ -64,11 +74,16 @@ export class MoneySandboxService {
   }
 
   getFormToAnswerById(id: string): Observable<FormToAnswerResponse> {
-    return this.http.get<FormToAnswerResponse>(environment.apiUrl + '/answer/form', { params: { id: id }});
+    return this.http.get<FormToAnswerResponse>(environment.apiUrl + '/answer/form', { params: { id: id } });
   }
 
   addAnswers(answers: AnswersRequest): Observable<ResultsResponse> {
     return this.http.post<ResultsResponse>(environment.apiUrl + '/answer/send', answers);
+  }
+
+  getAnsweredForms(): Observable<FormResponse[]> {
+    return this.http.get<FormResponse[]>(environment.apiUrl + '/form/answers',
+      { headers: this.getHeaders() });
   }
 
   addForm(form: FormRequest) {
@@ -80,6 +95,24 @@ export class MoneySandboxService {
 
   getAnswersSummary(): Observable<AnswersSummary> {
     return this.http.get<AnswersSummary>(environment.apiUrl + '/answer/summary', { headers: this.getHeaders() });
+  }
+
+  isFormInPublish(id: string): Observable<FormPublicityResponse> {
+    return this.http.get<FormPublicityResponse>(environment.apiUrl + '/form/publish/check',
+      { params: { id: id }, headers: this.getHeaders() });
+  }
+
+  requestPublish(id: string): Observable<FormPublicityResponse> {
+    return this.http.get<FormPublicityResponse>(environment.apiUrl + '/form/publish',
+      { params: { id: id }, headers: this.getHeaders() });
+  }
+
+  getFormsWaitingForPublicity(): Observable<FormResponse[]> {
+    return this.http.get<FormResponse[]>(environment.apiUrl + '/form/publish/waiting', { headers: this.getHeaders() });
+  }
+
+  publishForm(id: string) {
+    return this.http.get(environment.apiUrl + '/form/publish/approve', { params: { id: id }, headers: this.getHeaders() });
   }
 
   private getHeaders(): HttpHeaders {

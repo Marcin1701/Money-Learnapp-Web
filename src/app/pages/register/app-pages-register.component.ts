@@ -1,23 +1,21 @@
 import { Component } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { NewAccount } from '../../spec/defs';
-import { MatRadioChange } from '@angular/material/radio';
-import { FormBuilder } from '@angular/forms';
 import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'mr-app-pages-register',
   templateUrl: 'app-pages-register.component.html',
-  styleUrls: ['app-pages-register.component.scss'],
+  styleUrls: [ 'app-pages-register.component.scss' ],
 })
 export class AppPagesRegisterComponent {
   registerAccountFormGroup = this.formBuilder.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    email: ['', Validators.required],
-    login: ['', Validators.required],
-    password: ['', Validators.required],
+    firstName: [ '', Validators.required ],
+    lastName: [ '', Validators.required ],
+    email: [ '', Validators.required ],
+    login: [ '', Validators.required ],
+    password: [ '', Validators.required ],
   });
   newAccount: NewAccount;
 
@@ -25,7 +23,8 @@ export class AppPagesRegisterComponent {
     private formBuilder: FormBuilder,
     private moneySandboxService: MoneySandboxService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   onSubmit() {
     this.moneySandboxService

@@ -1,54 +1,55 @@
 <div class="new-form-container">
-    <div>
-      <div class="card text-center menu-container card-display">
-        <div class="card-header">Uzupełnij informacje o swoim arkuszu</div>
-        <div class="card-body">
-          <form [formGroup]="newFormGroup" (ngSubmit)="newFormGroup.markAllAsTouched(); onSubmit()">
+  <div>
+    <div class="card text-center menu-container card-display">
+      <div class="card-header">Uzupełnij informacje o swoim arkuszu</div>
+      <div class="card-body">
+        <form (ngSubmit)="newFormGroup.markAllAsTouched(); onSubmit()" [formGroup]="newFormGroup">
             <span>
-              <mat-form-field class="name-input" appearance="outline">
+              <mat-form-field appearance="outline" class="name-input">
                 <mat-label>Nazwa arkusza</mat-label>
-                <input name="name" matInput formControlName="name" />
+                <input formControlName="name" matInput name="name"/>
               </mat-form-field>
             </span>
-            <span class="answer-input">
+          <span class="answer-input">
               <mat-form-field appearance="outline">
                 <mat-label>Sekund na odpowiedź</mat-label>
-                <input type=number [min]="10" name="answerTime" matInput formControlName="answerTime" />
+                <input [min]="10" formControlName="answerTime" matInput name="answerTime" type=number/>
               </mat-form-field>
             </span>
-            <span class="col-3">
+          <span class="col-3">
               <mat-form-field appearance="outline">
                 <mat-label>Trudność od 0 do 10</mat-label>
-                <input type=number [min]="0" [max]="10" name="difficulty" matInput formControlName="difficulty" />
+                <input [max]="10" [min]="0" formControlName="difficulty" matInput name="difficulty" type=number/>
               </mat-form-field>
             </span>
-          </form>
-        </div>
-        <div>
-          <mat-tab-group>
-            <mat-tab label="Jednokrotny Wybór" aria-label>
-              <mr-app-show-single-choice-component [select]="true" (selectItem)="addQuestion($event)"></mr-app-show-single-choice-component>
-            </mat-tab>
-            <mat-tab label="Wielokrotny Wybór">Wielokrotny Wybór - In progress...</mat-tab>
-            <mat-tab label="Lista Uporządkowana">Lista Uporządkowana - In progress...</mat-tab>
-            <mat-tab label="Przeciąganie Elementów">Przeciąganie Elementów - In progress...</mat-tab>
-          </mat-tab-group>
-        </div>
-        <span class="accept-buttons">
-          <button type=submit class="action-menu-button button-behaviour top-margin"
-                  [class.invalid-button-background-color]="newFormGroup.invalid || questionIds.length === 0"
-                  [disabled]="newFormGroup.invalid || questionIds.length === 0" (click)="onSubmit()">
-            <span *ngIf="pending" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Dodaj</button>
-          <button class="action-menu-button button-behaviour top-margin"
-                  [class.invalid-button-background-color]="newFormGroup.invalid || questionIds.length === 0"
-                  [disabled]="newFormGroup.invalid || questionIds.length === 0" (click)="preview()">Podgląd</button>
-        </span>
-        <div class="card-footer">
-          Kolejność wyboru jest kolejnością podczas odpowiedzi.
-          <br>
-          Stworzone przez Ciebie arkusze będą dostępne w zakładce 'Twoje arkusze'.
-          Możesz tam zgłosić arkusz do upublicznienia.
-        </div>
+        </form>
       </div>
+      <div>
+        <mat-tab-group>
+          <mat-tab aria-label label="Jednokrotny Wybór">
+            <mr-app-show-single-choice-component (selectItem)="addQuestion($event)"
+                                                 [select]="true"></mr-app-show-single-choice-component>
+          </mat-tab>
+          <mat-tab label="Wielokrotny Wybór">Wielokrotny Wybór - In progress...</mat-tab>
+          <mat-tab label="Lista Uporządkowana">Lista Uporządkowana - In progress...</mat-tab>
+          <mat-tab label="Przeciąganie Elementów">Przeciąganie Elementów - In progress...</mat-tab>
+        </mat-tab-group>
+      </div>
+      <span class="accept-buttons">
+          <button (click)="onSubmit()" [class.invalid-button-background-color]="newFormGroup.invalid || questionIds.length === 0"
+                  [disabled]="newFormGroup.invalid || questionIds.length === 0"
+                  class="action-menu-button button-behaviour top-margin" type=submit>
+            <span *ngIf="pending" aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>Dodaj</button>
+          <button (click)="preview()"
+                  [class.invalid-button-background-color]="newFormGroup.invalid || questionIds.length === 0"
+                  [disabled]="newFormGroup.invalid || questionIds.length === 0" class="action-menu-button button-behaviour top-margin">Podgląd</button>
+        </span>
+      <div class="card-footer">
+        Kolejność wyboru jest kolejnością podczas odpowiedzi.
+        <br>
+        Stworzone przez Ciebie arkusze będą dostępne w zakładce 'Twoje arkusze'.
+        Możesz tam zgłosić arkusz do upublicznienia.
+      </div>
+    </div>
   </div>
 </div>

@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {LogoutService} from '../../../services/logout.service';
-import {Router} from '@angular/router';
+import { Component } from '@angular/core';
+import { LogoutService } from '../../../services/logout.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mr-app-account-activity',
   templateUrl: 'app-account-activity.component.html',
-  styleUrls: ['app-account-activity.component.scss'],
+  styleUrls: [ 'app-account-activity.component.scss' ],
 })
 export class AppAccountActivityComponent {
 

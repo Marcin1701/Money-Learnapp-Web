@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {MoneySandboxService} from '../../../services/money-sandbox.service';
-import {FormResponse, HomeFormResponse} from '../../../spec/defs';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MoneySandboxService } from '../../../services/money-sandbox.service';
+import { HomeFormResponse } from '../../../spec/defs';
 
 
 @Component({
   selector: 'mr-app-pages-home-form-list',
   templateUrl: 'app-pages-home-form-list.component.html',
-  styleUrls: ['app-pages-home-form-list.component.scss']
+  styleUrls: [ 'app-pages-home-form-list.component.scss' ]
 })
 export class AppPagesHomeFormListComponent implements OnInit {
 
@@ -28,8 +28,8 @@ export class AppPagesHomeFormListComponent implements OnInit {
 
   answer(id: string) {
     window.open(this.router.serializeUrl(this.router.createUrlTree(
-        [`/answer`],
-        { queryParams: { id: id }})),
+        [ `/answer` ],
+        { queryParams: { id: id } })),
       '_blank');
   }
 }

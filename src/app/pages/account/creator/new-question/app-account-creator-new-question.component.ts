@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import {Question} from '../../../../spec/defs';
-import {MoneySandboxService} from '../../../../services/money-sandbox.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, } from '@angular/cdk/drag-drop';
+import { Question } from '../../../../spec/defs';
+import { MoneySandboxService } from '../../../../services/money-sandbox.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'mr-account-creator-new-question-component',
   templateUrl: 'app-account-creator-new-question.component.html',
-  styleUrls: ['app-account-creator-new-question.component.scss'],
+  styleUrls: [ 'app-account-creator-new-question.component.scss' ],
 })
 export class AppAccountCreatorNewQuestionComponent {
   items = [
@@ -22,13 +18,13 @@ export class AppAccountCreatorNewQuestionComponent {
   ];
 
   question: Question;
-  questionType = ['SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'LIST', 'DRAG_AND_DROP'];
-  selectedOption = [{ value: '', disabled: false }];
+  questionType = [ 'SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'LIST', 'DRAG_AND_DROP' ];
+  selectedOption = [ { value: '', disabled: false } ];
 
   constructor(private httpService: MoneySandboxService, private _snackBar: MatSnackBar) {
   }
 
-  drop(event: CdkDragDrop<{ disabled: boolean; value: string }[], any>) {
+  drop(event: CdkDragDrop<{disabled: boolean; value: string}[], any>) {
     this.disableItems();
     if (event.previousContainer === event.container) {
       moveItemInArray(

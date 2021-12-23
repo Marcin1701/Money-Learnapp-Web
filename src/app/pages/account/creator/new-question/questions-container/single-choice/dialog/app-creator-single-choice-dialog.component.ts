@@ -1,24 +1,18 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {
-  AppCreatorSingleChoiceComponent,
-} from '../app-creator-single-choice.component';
+import { AppCreatorSingleChoiceComponent, } from '../app-creator-single-choice.component';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatRadioChange } from '@angular/material/radio';
-import {SingleChoiceContent} from '../../../../../../../spec/question-defs';
+import { SingleChoiceContent } from '../../../../../../../spec/question-defs';
 
 @Component({
   selector: 'mr-app-creator-single-choice-dialog',
   templateUrl: 'app-creator-single-choice-dialog.component.html',
-  styleUrls: ['app-creator-single-choice-dialog.component.scss'],
+  styleUrls: [ 'app-creator-single-choice-dialog.component.scss' ],
 })
 export class AppCreatorSingleChoiceDialogComponent {
   singleChoiceFormGroup: FormGroup;
   correctSingleChoiceOptionIndex = 0;
-
-  get singleChoiceValues(): FormArray {
-    return this.singleChoiceFormGroup.get('singleChoiceValues') as FormArray;
-  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +32,10 @@ export class AppCreatorSingleChoiceDialogComponent {
     }
   }
 
+  get singleChoiceValues(): FormArray {
+    return this.singleChoiceFormGroup.get('singleChoiceValues') as FormArray;
+  }
+
   newSingleChoice(parameterValue?: string): FormGroup {
     return this.formBuilder.group({ value: parameterValue ? parameterValue : '' });
   }
@@ -54,7 +52,7 @@ export class AppCreatorSingleChoiceDialogComponent {
     this.singleChoiceContent.correctSingleChoiceOptionIndex =
       this.correctSingleChoiceOptionIndex;
     this.singleChoiceContent.singleChoiceOptions =
-      this.singleChoiceValues.value.map((item: { value: any; }) => item.value);
+      this.singleChoiceValues.value.map((item: {value: any;}) => item.value);
     this.dialogRef.close(this.singleChoiceContent);
   }
 

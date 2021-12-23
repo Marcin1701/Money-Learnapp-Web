@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {MoneySandboxService} from '../../services/money-sandbox.service';
-import {FormToAnswerResponse} from '../../spec/defs';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MoneySandboxService } from '../../services/money-sandbox.service';
+import { FormToAnswerResponse } from '../../spec/defs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'mr-app-pages-answer',
   templateUrl: 'app-pages-answer.component.html',
-  styleUrls: ['./app-pages-answer.component.scss'],
+  styleUrls: [ './app-pages-answer.component.scss' ],
 })
 export class AppPagesAnswerComponent implements OnInit {
 
@@ -54,7 +54,7 @@ export class AppPagesAnswerComponent implements OnInit {
             }
           });
         }
-       });
+      });
     }
   }
 

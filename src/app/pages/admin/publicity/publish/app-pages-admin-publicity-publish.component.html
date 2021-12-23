@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12">Czy na pewno chcesz upublicznić {{form.name}}?</div>
+  <br><br><br>
+  <div class="col-md-4">
+    <button (click)="publish()" class="action-menu-button button-behaviour width" type="submit">
+      <span *ngIf="pending" aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+      Tak
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button (click)="cancel()" class="action-menu-button button-behaviour width cancel" type="submit">
+      Nie
+    </button>
+  </div>
+</div>

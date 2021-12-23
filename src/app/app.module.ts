@@ -20,50 +20,75 @@ import { AppAccountCreatorComponent } from './pages/account/creator/app-account-
 import { AppAccountCreatorNewQuestionComponent } from './pages/account/creator/new-question/app-account-creator-new-question.component';
 import { AppAccountCreatorNewFormComponent } from './pages/account/creator/new-form/app-account-creator-new-form.component';
 import { AppAccountCreatorShowFormsComponent } from './pages/account/creator/show-forms/app-account-creator-show-forms.component';
-import { AppAccountCreatorShowQuestionsComponent } from './pages/account/creator/show-questions/app-account-creator-show-questions.component';
+import {
+  AppAccountCreatorShowQuestionsComponent
+} from './pages/account/creator/show-questions/app-account-creator-show-questions.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { AppCreatorSingleChoiceComponent } from './pages/account/creator/new-question/questions-container/single-choice/app-creator-single-choice.component';
-import { AppCreatorMultipleChoiceComponent } from './pages/account/creator/new-question/questions-container/multiple-choice/app-creator-multiple-choice.component';
-import { AppCreatorOrderedListComponent } from './pages/account/creator/new-question/questions-container/ordered-list/app-creator-ordered-list.component';
-import { AppCreatorDragAndDropComponent } from './pages/account/creator/new-question/questions-container/drag-and-drop/app-creator-drag-and-drop.component';
+import {
+  AppCreatorSingleChoiceComponent
+} from './pages/account/creator/new-question/questions-container/single-choice/app-creator-single-choice.component';
+import {
+  AppCreatorMultipleChoiceComponent
+} from './pages/account/creator/new-question/questions-container/multiple-choice/app-creator-multiple-choice.component';
+import {
+  AppCreatorOrderedListComponent
+} from './pages/account/creator/new-question/questions-container/ordered-list/app-creator-ordered-list.component';
+import {
+  AppCreatorDragAndDropComponent
+} from './pages/account/creator/new-question/questions-container/drag-and-drop/app-creator-drag-and-drop.component';
 import { MatIconModule } from '@angular/material/icon';
-import { AppCreatorSingleChoiceDialogComponent } from './pages/account/creator/new-question/questions-container/single-choice/dialog/app-creator-single-choice-dialog.component';
-import { AppCreatorMultipleChoiceDialogComponent } from './pages/account/creator/new-question/questions-container/multiple-choice/dialog/app-creator-multiple-choice-dialog.component';
+import {
+  AppCreatorSingleChoiceDialogComponent
+} from './pages/account/creator/new-question/questions-container/single-choice/dialog/app-creator-single-choice-dialog.component';
+import {
+  AppCreatorMultipleChoiceDialogComponent
+} from './pages/account/creator/new-question/questions-container/multiple-choice/dialog/app-creator-multiple-choice-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatTabsModule} from '@angular/material/tabs';
-import {AppShowSingleChoiceComponent} from './pages/account/creator/show-questions/single-choice/app-show-single-choice.component';
-import {MatTableModule} from '@angular/material/table';
-import {AppCommonNothingFoundComponent} from './common/nothing-found/app-common-nothing-found.component';
-import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
-import {CustomPaginator} from './common/custom-components/CustomPaginatorConfiguration';
-import {MatSelectModule} from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSortModule} from '@angular/material/sort';
-import {AppCommonSpinnerComponent} from './common/spinner/app-common-spinner.component';
-import {AppPagesAnswerComponent} from './pages/answer/app-pages-answer.component';
-import {AppAccountCreatorFormDetailsComponent} from './pages/account/creator/show-forms/form-details/app-account-creator-form-details.component';
-import {AppPagesHomeFormListComponent} from './pages/home/form-list/app-pages-home-form-list.component';
-import {AppPagesAnswerFormComponent} from './pages/answer/form/app-pages-answer-form.component';
-import {AppPagesAnswerFormSingleChoiceComponent} from './pages/answer/form/answers/single-choice-answer/app-pages-answer-form-single-choice.component';
-import {AppPagesAnswerFormOrderedListComponent} from './pages/answer/form/answers/ordered-list-answer/app-pages-answer-form-ordered-list.component';
-import {AppPagesAnswerFormMultipleChoiceComponent} from './pages/answer/form/answers/multiple-choice-answer/app-pages-answer-form-multiple-choice.component';
-import {AppPagesAnswerFormDragAndDropComponent} from './pages/answer/form/answers/drag-and-drop-answer/app-pages-answer-form-drag-and-drop.component';
-import {AppPagesAnswerDialogComponent} from './pages/answer/form/answer-dialog/app-pages-answer-dialog.component';
-import {AppCommonBigSpinnerComponent} from './common/big-spinner/app-common-big-spinner.component';
-import {AppPagesAnswerScoreComponent} from './pages/answer/form/score/app-pages-answer-score.component';
-import {RoleService} from './services/role.service';
-import {LogoutService} from './services/logout.service';
-import {AppPagesAdminUsersComponent} from './pages/admin/users/app-pages-admin-users.component';
-import {AppPagesAdminPublicityComponent} from './pages/admin/publicity/app-pages-admin-publicity.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {ClipboardModule} from '@angular/cdk/clipboard';
-import {AppPagesHomeMenuComponent} from './pages/home/menu/app-pages-home-menu.component';
-import {AppAccountActivityComponent} from './pages/account/activity/app-account-activity.component';
-import {AppAccountActivitySummaryComponent} from './pages/account/activity/summary/app-account-activity-summary.component';
-import {AppAccountActivityAnswersComponent} from './pages/account/activity/answers/app-account-activity-answers.component';
-import {AppAccountActivityAnswerersComponent} from './pages/account/activity/answerers/app-account-activity-answerers.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AppShowSingleChoiceComponent } from './pages/account/creator/show-questions/single-choice/app-show-single-choice.component';
+import { MatTableModule } from '@angular/material/table';
+import { AppCommonNothingFoundComponent } from './common/nothing-found/app-common-nothing-found.component';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { CustomPaginator } from './common/custom-components/CustomPaginatorConfiguration';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
+import { AppCommonSpinnerComponent } from './common/spinner/app-common-spinner.component';
+import { AppPagesAnswerComponent } from './pages/answer/app-pages-answer.component';
+import {
+  AppAccountCreatorFormDetailsComponent
+} from './pages/account/creator/show-forms/form-details/app-account-creator-form-details.component';
+import { AppPagesHomeFormListComponent } from './pages/home/form-list/app-pages-home-form-list.component';
+import { AppPagesAnswerFormComponent } from './pages/answer/form/app-pages-answer-form.component';
+import {
+  AppPagesAnswerFormSingleChoiceComponent
+} from './pages/answer/form/answers/single-choice-answer/app-pages-answer-form-single-choice.component';
+import {
+  AppPagesAnswerFormOrderedListComponent
+} from './pages/answer/form/answers/ordered-list-answer/app-pages-answer-form-ordered-list.component';
+import {
+  AppPagesAnswerFormMultipleChoiceComponent
+} from './pages/answer/form/answers/multiple-choice-answer/app-pages-answer-form-multiple-choice.component';
+import {
+  AppPagesAnswerFormDragAndDropComponent
+} from './pages/answer/form/answers/drag-and-drop-answer/app-pages-answer-form-drag-and-drop.component';
+import { AppPagesAnswerDialogComponent } from './pages/answer/form/answer-dialog/app-pages-answer-dialog.component';
+import { AppCommonBigSpinnerComponent } from './common/big-spinner/app-common-big-spinner.component';
+import { AppPagesAnswerScoreComponent } from './pages/answer/form/score/app-pages-answer-score.component';
+import { RoleService } from './services/role.service';
+import { LogoutService } from './services/logout.service';
+import { AppPagesAdminUsersComponent } from './pages/admin/users/app-pages-admin-users.component';
+import { AppPagesAdminPublicityComponent } from './pages/admin/publicity/app-pages-admin-publicity.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { AppPagesHomeMenuComponent } from './pages/home/menu/app-pages-home-menu.component';
+import { AppAccountActivityComponent } from './pages/account/activity/app-account-activity.component';
+import { AppAccountActivitySummaryComponent } from './pages/account/activity/summary/app-account-activity-summary.component';
+import { AppAccountActivityAnswersComponent } from './pages/account/activity/answers/app-account-activity-answers.component';
+import { AppAccountActivityAnswerersComponent } from './pages/account/activity/answerers/app-account-activity-answerers.component';
+import { AppPagesAdminPublicityPublishComponent } from './pages/admin/publicity/publish/app-pages-admin-publicity-publish.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +139,7 @@ import {AppAccountActivityAnswerersComponent} from './pages/account/activity/ans
     // Admin
     AppPagesAdminUsersComponent,
     AppPagesAdminPublicityComponent,
+    AppPagesAdminPublicityPublishComponent,
 
     // Common
     AppCommonNothingFoundComponent,
@@ -151,6 +177,7 @@ import {AppAccountActivityAnswerersComponent} from './pages/account/activity/ans
     RoleService,
     LogoutService
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
 })
-export class AppModule {}
+export class AppModule {
+}

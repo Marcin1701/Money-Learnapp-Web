@@ -22,6 +22,11 @@
   cursor: pointer;
 
   &:hover {
-   color: black;
+    color: black;
   }
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
 }

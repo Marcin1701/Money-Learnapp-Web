@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import {FormRequest} from '../../../../spec/defs';
-import {MoneySandboxService} from '../../../../services/money-sandbox.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { FormRequest } from '../../../../spec/defs';
+import { MoneySandboxService } from '../../../../services/money-sandbox.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mr-account-creator-new-form-component',
   templateUrl: 'app-account-creator-new-form.component.html',
-  styleUrls: ['app-account-creator-new-form.component.scss'],
+  styleUrls: [ 'app-account-creator-new-form.component.scss' ],
 })
 export class AppAccountCreatorNewFormComponent {
   newFormGroup = this.formBuilder.group({
-    name: ['', Validators.required],
-    answerTime: ['', Validators.required],
-    difficulty: ['', Validators.required],
+    name: [ '', Validators.required ],
+    answerTime: [ '', Validators.required ],
+    difficulty: [ '', Validators.required ],
   });
   questionIds: string[] = [];
   pending = false;
@@ -51,8 +51,8 @@ export class AppAccountCreatorNewFormComponent {
   preview() {
     localStorage.setItem('preview_form', JSON.stringify(this.mapFormGroupToFormRequest()));
     window.open(this.router.serializeUrl(this.router.createUrlTree(
-      [`/answer`],
-      { queryParams: { preview: 'true' }})),
+        [ `/answer` ],
+        { queryParams: { preview: 'true' } })),
       '_blank');
   }
 

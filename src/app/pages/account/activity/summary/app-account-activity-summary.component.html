@@ -2,24 +2,24 @@
   <div class="card text-center menu-container card-display">
     <div class="card-header">Poniższe statystyki dotyczą Twoich odpowiedzi</div>
     <div class="card-body"></div>
-      <div class="row" *ngIf="!pending">
-        <div class="col-md-8">
-          <div class="fw-bold">Wszystkich odpowiedzi: </div>
-          <div class="fw-bold">Całkowita średnia procentowa poprawnych odpowiedzi: </div>
-          <br>
-          <div>Ilość rozwiązanych zadań: </div>
-          <div>Ilość poprawnych odpowiedzi:</div>
-          <div>Ilość błędnych odpowiedzi:</div>
-        </div>
-        <div class="col-md-2">
-          <div class="fw-bold">{{answersSummary.allAnswers}}</div>
-          <div class="fw-bold">{{answersSummary.allAnswersPercentage}}</div>
-          <br>
-          <div>{{answersSummary.allQuestions}}</div>
-          <div>{{answersSummary.allCorrectQuestions}}</div>
-          <div>{{answersSummary.allWrongQuestions}}</div>
-        </div>
+    <div *ngIf="!pending" class="row">
+      <div class="col-md-8">
+        <div class="fw-bold">Wszystkich odpowiedzi:</div>
+        <div class="fw-bold">Całkowita średnia procentowa poprawnych odpowiedzi:</div>
+        <br>
+        <div>Ilość rozwiązanych zadań:</div>
+        <div>Ilość poprawnych odpowiedzi:</div>
+        <div>Ilość błędnych odpowiedzi:</div>
       </div>
+      <div class="col-md-2">
+        <div class="fw-bold">{{answersSummary.allAnswers}}</div>
+        <div class="fw-bold">{{answersSummary.allAnswersPercentage}}</div>
+        <br>
+        <div>{{answersSummary.allQuestions}}</div>
+        <div>{{answersSummary.allCorrectQuestions}}</div>
+        <div>{{answersSummary.allWrongQuestions}}</div>
+      </div>
+    </div>
     <div *ngIf="pending">
       <mr-app-common-spinner></mr-app-common-spinner>
     </div>

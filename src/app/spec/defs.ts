@@ -141,3 +141,8 @@ export interface AnswersSummary {
   allCorrectQuestions: number;
   allWrongQuestions: number;
 }
+
+export interface FormPublicityResponse {
+  pendingPublicity: boolean;
+  requestedVerificationDate: string;
+}
