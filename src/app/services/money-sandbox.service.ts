@@ -13,6 +13,7 @@ import {
   HomeFormResponse,
   JsonWebTokenResponse,
   LoginRequest,
+  MultipleChoiceQuestionResponse,
   NewAccount,
   Question,
   ResultsResponse,
@@ -62,6 +63,11 @@ export class MoneySandboxService {
 
   loadSingleChoiceQuestions(): Observable<SingleChoiceQuestionResponse[]> {
     return this.http.get<SingleChoiceQuestionResponse[]>(environment.apiUrl + '/question/single_choice',
+      { headers: this.getHeaders() });
+  }
+
+  loadMultipleChoiceQuestions(): Observable<MultipleChoiceQuestionResponse[]> {
+    return this.http.get<MultipleChoiceQuestionResponse[]>(environment.apiUrl + '/question/multiple_choice',
       { headers: this.getHeaders() });
   }
 

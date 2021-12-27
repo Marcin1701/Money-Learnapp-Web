@@ -1,0 +1,68 @@
+<div class="full-width" mat-dialog-title>
+  <span class="title-header"> Uzupełnij swoje pytanie: </span>
+  <span class="title-header secondary-title"> Poprawne odpowiedzi: </span>
+</div>
+<div>
+  <form
+    (ngSubmit)="multipleChoiceFormGroup.markAllAsTouched(); onSubmit()"
+    [formGroup]="multipleChoiceFormGroup"
+  >
+      <div formArrayName="multipleChoiceValues">
+        <div
+          *ngFor="let content of multipleChoiceValues.controls; index as i"
+          class="container"
+        >
+          <div class="row">
+            <div [formGroupName]="i" class="col-sm">
+              <mat-form-field appearance="outline">
+                <mat-label>Treść pytania</mat-label>
+                <input formControlName="value" matInput type="text"/>
+                <mat-error>Pole wymagane!</mat-error>
+              </mat-form-field>
+              <span>
+                <span
+                  (click)="addMultipleChoice()"
+                  *ngIf="i === multipleChoiceValues.controls.length - 1"
+                  class="add-option-icon"
+                ><mat-icon>add_circle</mat-icon></span
+                >
+                <span
+                  (click)="removeMultipleChoice(i)"
+                  *ngIf="multipleChoiceValues.controls.length > 1"
+                  class="delete-option-icon"
+                ><mat-icon>delete_forever</mat-icon></span
+                >
+              </span>
+            </div>
+            <div class="col-sm radio-correct">
+              <mat-checkbox
+                [checked]="shouldBeChecked(i)"
+                (change)="changeCorrectValue($event)"
+                [value]="i.toString()"
+              ></mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+  <div mat-dialog-actions>
+    <button
+      (click)="onNoClick()"
+      class="btn btn-danger"
+      mat-button
+      mat-raised-button
+    >
+      Anuluj
+    </button>
+    <button
+      (click)="onSubmit()"
+      cdkFocusInitial
+      class="btn btn-success"
+      mat-button
+      mat-raised-button
+      type="submit"
+    >
+      Utwórz
+    </button>
+  </div>
+</div>

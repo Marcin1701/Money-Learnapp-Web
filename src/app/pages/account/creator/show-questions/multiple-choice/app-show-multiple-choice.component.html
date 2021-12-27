@@ -1,0 +1,49 @@
+<ng-container *ngIf="!pending; else spinner">
+  <ng-container *ngIf="multipleChoiceQuestions.data.length; else noQuestions">
+    <div>
+      <table (matSortChange)="sortChange($event)" [dataSource]="multipleChoiceQuestions" class="mat-elevation-z8 full-width table-positioning" mat-table
+             matSort>
+        <ng-container *ngIf="select" matColumnDef="select">
+          <th *matHeaderCellDef mat-header-cell></th>
+          <td *matCellDef="let row" mat-cell>
+            <mat-checkbox (change)="$event ? selection.toggle(row) : null; selectItem.emit(questions[row.index - 1].id)"
+                          (click)="$event.stopPropagation()"
+                          [aria-label]="checkboxLabel(row)"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="index">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Nr</th>
+          <td *matCellDef="let question" mat-cell>{{question.index}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Nazwa Pytania</th>
+          <td *matCellDef="let question" mat-cell>{{question.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="text">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Pytanie</th>
+          <td *matCellDef="let question" mat-cell>{{question.text}}</td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Data Utworz.</th>
+          <td *matCellDef="let question" mat-cell>{{question.date | date: 'short' }}</td>
+        </ng-container>
+        <ng-container matColumnDef="optionCount">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Ilość opcji</th>
+          <td *matCellDef="let question" mat-cell>{{question.optionCount}}</td>
+        </ng-container>
+        <tr *matHeaderRowDef="columns" mat-header-row></tr>
+        <tr (click)="selection.toggle(row); selectItem.emit(questions[row.index - 1].id)" *matRowDef="let row; columns: columns;"
+            mat-row></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
+  </ng-container>
+  <ng-template #noQuestions>
+    <mr-app-common-nothing-found></mr-app-common-nothing-found>
+  </ng-template>
+</ng-container>
+<ng-template #spinner>
+  <mr-app-common-spinner></mr-app-common-spinner>
+</ng-template>

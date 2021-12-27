@@ -118,3 +118,8 @@
 ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: blue;
 }
+
+.card-background {
+  background-size: 100% 100%;
+  background-image: url("./../../../assets/card-background.png");
+}

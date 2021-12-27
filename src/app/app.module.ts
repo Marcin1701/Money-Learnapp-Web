@@ -89,6 +89,7 @@ import { AppAccountActivitySummaryComponent } from './pages/account/activity/sum
 import { AppAccountActivityAnswersComponent } from './pages/account/activity/answers/app-account-activity-answers.component';
 import { AppAccountActivityAnswerersComponent } from './pages/account/activity/answerers/app-account-activity-answerers.component';
 import { AppPagesAdminPublicityPublishComponent } from './pages/admin/publicity/publish/app-pages-admin-publicity-publish.component';
+import { AppShowMultipleChoiceComponent } from './pages/account/creator/show-questions/multiple-choice/app-show-multiple-choice.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +119,7 @@ import { AppPagesAdminPublicityPublishComponent } from './pages/admin/publicity/
     AppCreatorSingleChoiceDialogComponent,
     AppCreatorMultipleChoiceDialogComponent,
     AppShowSingleChoiceComponent,
+    AppShowMultipleChoiceComponent,
     AppAccountCreatorFormDetailsComponent,
 
     // Activity

@@ -19,7 +19,7 @@
           </mr-app-creator-single-choice>
           <mr-app-creator-sorted-list *ngIf="selectedOption[0].value === 'Lista Uporządkowana'">
           </mr-app-creator-sorted-list>
-          <mr-app-creator-multiple-choice *ngIf="selectedOption[0].value === 'Wielokrotny Wybór'">
+          <mr-app-creator-multiple-choice (addQuestion)="prepareQuestion($event)" *ngIf="selectedOption[0].value === 'Wielokrotny Wybór'">
           </mr-app-creator-multiple-choice>
         </div>
       </div>

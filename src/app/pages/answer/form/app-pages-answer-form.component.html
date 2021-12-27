@@ -6,8 +6,10 @@
         (singleChoiceChanged)="singleChoiceChanged($event)"
         [singleChoice]="question"></mr-app-pages-answer-form-single-choice>
     </ng-container>
-    <ng-container>
-
+    <ng-container *ngIf="question.type === 'MULTIPLE_CHOICE'">
+      <mr-app-pages-answer-form-multiple-choice
+        (multipleChoiceChanged)="multipleChoiceChanged($event)"
+        [multipleChoice]="question"></mr-app-pages-answer-form-multiple-choice>
     </ng-container>
     <ng-container>
 

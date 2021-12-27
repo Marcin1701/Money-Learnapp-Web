@@ -8,16 +8,18 @@
 @import "./scss-overrides/mat-form-filed.scss";
 @import "./scss-overrides/card.scss";
 
+@media (-webkit-device-pixel-ratio: 1) {
+  body, html {
+    zoom: 1.1;
+    -moz-transform: scale(1.1);
+    -moz-transform-origin: 0 0;
+  }
+}
+
 body, html {
   height: 100%;
   background-image: url("assets/background.png");
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }

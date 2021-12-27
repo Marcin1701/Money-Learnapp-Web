@@ -5,7 +5,14 @@
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  cursor: pointer
+  cursor: pointer;
+}
+
+.card-body {
+  overflow: hidden;
+  object-fit: cover;
+  background-size: 100% 100%;
+  background-image: url("../assets/card-background.png");
 }
 
 .card:before {

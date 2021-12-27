@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MoneySandboxService } from '../../../services/money-sandbox.service';
 import { HomeFormResponse } from '../../../spec/defs';
+import { AvatarsService } from '../../../services/avatars.service';
 
 
 @Component({
@@ -12,9 +13,10 @@ import { HomeFormResponse } from '../../../spec/defs';
 export class AppPagesHomeFormListComponent implements OnInit {
 
   forms: HomeFormResponse[];
+  formAvatars: string[] = [];
   pending = true;
 
-  constructor(private router: Router, private httpService: MoneySandboxService) {
+  constructor(private router: Router, private httpService: MoneySandboxService, private avatars: AvatarsService) {
   }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class AppPagesHomeFormListComponent implements OnInit {
       if (forms) {
         this.pending = false;
         this.forms = forms;
+        this.getRandomAvatarUrls();
       }
     });
   }
@@ -31,5 +34,9 @@ export class AppPagesHomeFormListComponent implements OnInit {
         [ `/answer` ],
         { queryParams: { id: id } })),
       '_blank');
+  }
+
+  private getRandomAvatarUrls() {
+    this.forms.forEach(() => this.formAvatars.push(this.avatars.getRandomAvatarUrl('./../../../../assets/avatars')));
   }
 }

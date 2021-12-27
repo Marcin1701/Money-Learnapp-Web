@@ -4,6 +4,7 @@ import { AccountResponse } from '../../spec/defs';
 import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { RoleService } from '../../services/role.service';
 import { LogoutService } from '../../services/logout.service';
+import { AvatarsService } from '../../services/avatars.service';
 
 @Component({
   selector: 'mr-app-account',
@@ -14,11 +15,13 @@ export class AppAccountComponent implements OnInit {
   token: string | null;
   isAdmin = false;
   account: AccountResponse;
+  avatarUrl: string;
 
   constructor(private router: Router,
               private httpService: MoneySandboxService,
               private roleService: RoleService,
-              private logoutService: LogoutService) {
+              private logoutService: LogoutService,
+              private avatars: AvatarsService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +32,7 @@ export class AppAccountComponent implements OnInit {
           if (role) {
             this.roleService.setRole(role.role);
             this.isAdmin = this.roleService.getRole() === 'ADMIN';
+            this.avatarUrl = this.getRandomAvatarUrl();
           } else {
             this.logout();
           }
@@ -41,5 +45,9 @@ export class AppAccountComponent implements OnInit {
 
   logout() {
     this.logoutService.logout();
+  }
+
+  getRandomAvatarUrl() {
+    return this.avatars.getRandomAvatarUrl('./../../../assets/avatars');
   }
 }

@@ -1,0 +1,11 @@
+.table-positioning {
+  width: 90%;
+  min-height: 70%;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}

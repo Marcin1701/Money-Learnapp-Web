@@ -15,7 +15,9 @@ export interface MultipleChoiceContent {
   correctMultipleChoiceOptionIndices: number[];
 }
 
-export interface MultipleChoice extends MultipleChoiceContent {
+export interface MultipleChoice {
   question: string;
   name: string;
+  answerTime: string;
+  value: MultipleChoiceContent;
 }

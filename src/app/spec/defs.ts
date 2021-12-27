@@ -48,6 +48,14 @@ export interface SingleChoiceQuestionResponse {
 
 export interface MultipleChoiceQuestionResponse {
   id: string;
+  creationDate: string;
+  question: {
+    answerTime: string;
+    correctMultipleChoiceOptionIndices: number[];
+    name: string;
+    question: string;
+    multipleChoiceOptions: string[];
+  };
 }
 
 export interface DragAndDropQuestionResponse {

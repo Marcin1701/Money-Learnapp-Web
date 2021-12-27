@@ -18,9 +18,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <ng-container *ngFor="let form of forms">
+                <ng-container *ngFor="let form of forms; index as i">
                   <tr (click)="answer(form.id)" class="answer-list-hover">
-                    <td><img alt="" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                    <td><img alt="" [src]="formAvatars[i]">
                       <div class="user-link">{{form.firstName}} {{form.lastName}}
                       </div>
                       <span *ngIf="form.email" class="user-subhead">

@@ -1,0 +1,12 @@
+<div class="question-container">
+  <div *ngIf="multipleChoice.question" class="question-name">
+    {{multipleChoice.question.question}}
+  </div>
+  <div class="checkbox-container">
+      <mat-checkbox (change)="checkMultipleChoice($event)"
+                    *ngFor="let choice of multipleChoice.question.multipleChoiceOptions"
+                    [value]="choice">
+        {{choice}}
+      </mat-checkbox>
+  </div>
+</div>

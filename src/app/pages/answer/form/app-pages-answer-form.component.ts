@@ -52,6 +52,17 @@ export class AppPagesAnswerFormComponent implements OnInit {
     });
   }
 
+  multipleChoiceChanged($event: {id: string; value: number[]}) {
+    this.removePreviousAnswer($event.id);
+    this.answer.answers.push({
+      questionType: 'MULTIPLE_CHOICE',
+      answer: {
+        questionId: $event.id,
+        optionChosen: $event.value
+      },
+    });
+  }
+
   send() {
     if (!this.isLoggedIn) {
       const dialogRef = this.dialog.open(AppPagesAnswerDialogComponent, {

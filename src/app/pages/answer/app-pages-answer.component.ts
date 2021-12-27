@@ -36,6 +36,7 @@ export class AppPagesAnswerComponent implements OnInit {
           this.httpService.getAccount().subscribe(account => {
             if (account) {
               this.userId = account.id;
+              this.isLoggedIn = true;
             }
           });
         }
