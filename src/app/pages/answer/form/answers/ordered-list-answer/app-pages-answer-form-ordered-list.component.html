@@ -1,0 +1,10 @@
+<div class="question-container">
+  <div *ngIf="orderedList.question" class="question-name">
+    {{orderedList.question.question}}
+  </div>
+  <div class="radio-container">
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let value of this.orderedListValues" cdkDrag>{{value}}</div>
+    </div>
+  </div>
+</div>

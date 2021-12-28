@@ -63,6 +63,28 @@ export class AppPagesAnswerFormComponent implements OnInit {
     });
   }
 
+  orderedListChanged($event: {id: string; value: string[]}) {
+    this.removePreviousAnswer($event.id);
+    this.answer.answers.push({
+      questionType: 'ORDERED_LIST',
+      answer: {
+        questionId: $event.id,
+        optionChosen: $event.value
+      },
+    });
+  }
+
+  dragAndDropChanged($event: {id: string; value: number}) {
+    this.removePreviousAnswer($event.id);
+    this.answer.answers.push({
+      questionType: 'DRAG_AND_DROP',
+      answer: {
+        questionId: $event.id,
+        optionChosen: $event.value
+      },
+    });
+  }
+
   send() {
     if (!this.isLoggedIn) {
       const dialogRef = this.dialog.open(AppPagesAnswerDialogComponent, {
@@ -90,7 +112,6 @@ export class AppPagesAnswerFormComponent implements OnInit {
     if (this.userId.length) {
       this.answer.userId = this.userId;
     }
-    console.log(this.answer);
     this.sendingAnswers = true;
     this.httpService.addAnswers(this.answer).subscribe(results => {
       if (results) {

@@ -9,8 +9,12 @@
         <mat-tab aria-label label="Wielokrotny Wybór">
           <mr-app-show-multiple-choice-component [select]="false"></mr-app-show-multiple-choice-component>
         </mat-tab>
-        <mat-tab label="Lista Uporządkowana">Lista Uporządkowana - In progress...</mat-tab>
-        <mat-tab label="Przeciąganie Elementów">Przeciąganie Elementów - In progress...</mat-tab>
+        <mat-tab aria-label label="Lista Uporządkowana">
+          <mr-app-show-ordered-list-component [select]="false"></mr-app-show-ordered-list-component>
+        </mat-tab>
+        <mat-tab aria-label label="Przeciąganie Elementów">
+          <mr-app-show-drag-and-drop-component [select]="false"></mr-app-show-drag-and-drop-component>
+        </mat-tab>
       </mat-tab-group>
     </div>
     <div class="card-footer"></div>

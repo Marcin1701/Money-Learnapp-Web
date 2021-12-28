@@ -35,11 +35,11 @@
         <tr *matHeaderRowDef="columns" mat-header-row></tr>
         <tr (click)="selectAnswer(row)" *matRowDef="let row; columns: columns;" mat-row></tr>
       </table>
-      <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
     </div>
     <div *ngIf="pending">
       <mr-app-common-spinner></mr-app-common-spinner>
     </div>
+    <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
     <div class="card-footer">Kliknij w arkusz, aby podejrzeć szczegóły odpowiedzi</div>
   </div>
 </div>

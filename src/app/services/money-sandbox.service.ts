@@ -6,6 +6,7 @@ import {
   AccountRole,
   AnswersRequest,
   AnswersSummary,
+  DragAndDropQuestionResponse,
   FormPublicityResponse,
   FormRequest,
   FormResponse,
@@ -15,6 +16,7 @@ import {
   LoginRequest,
   MultipleChoiceQuestionResponse,
   NewAccount,
+  OrderedListQuestionResponse,
   Question,
   ResultsResponse,
   SingleChoiceQuestionResponse,
@@ -68,6 +70,16 @@ export class MoneySandboxService {
 
   loadMultipleChoiceQuestions(): Observable<MultipleChoiceQuestionResponse[]> {
     return this.http.get<MultipleChoiceQuestionResponse[]>(environment.apiUrl + '/question/multiple_choice',
+      { headers: this.getHeaders() });
+  }
+
+  loadOrderedListQuestions(): Observable<OrderedListQuestionResponse[]> {
+    return this.http.get<OrderedListQuestionResponse[]>(environment.apiUrl + '/question/ordered_list',
+      { headers: this.getHeaders() });
+  }
+
+  loadDragAndDropQuestions(): Observable<DragAndDropQuestionResponse[]> {
+    return this.http.get<DragAndDropQuestionResponse[]>(environment.apiUrl + '/question/drag_and_drop',
       { headers: this.getHeaders() });
   }
 

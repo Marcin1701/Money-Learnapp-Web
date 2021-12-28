@@ -12,14 +12,17 @@
       <h2 class="text-alignment">Przeciągnij element tutaj!</h2>
       <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="selectedOption" cdkDropList class="example-list">
         <div *ngIf="selectedOption.length === 2" cdkDrag class="example-box">
-          <mr-app-creator-drag-and-drop *ngIf="selectedOption[0].value === 'Przeciąganie Elementów'">
+          <mr-app-creator-drag-and-drop (addQuestion)="prepareQuestion($event)"
+                                        *ngIf="selectedOption[0].value === 'Przeciąganie Elementów'">
           </mr-app-creator-drag-and-drop>
           <mr-app-creator-single-choice (addQuestion)="prepareQuestion($event)"
                                         *ngIf="selectedOption[0].value === 'Jednokrotny Wybór'">
           </mr-app-creator-single-choice>
-          <mr-app-creator-sorted-list *ngIf="selectedOption[0].value === 'Lista Uporządkowana'">
-          </mr-app-creator-sorted-list>
-          <mr-app-creator-multiple-choice (addQuestion)="prepareQuestion($event)" *ngIf="selectedOption[0].value === 'Wielokrotny Wybór'">
+          <mr-app-creator-ordered-list (addQuestion)="prepareQuestion($event)"
+                                       *ngIf="selectedOption[0].value === 'Lista Uporządkowana'">
+          </mr-app-creator-ordered-list>
+          <mr-app-creator-multiple-choice (addQuestion)="prepareQuestion($event)"
+                                          *ngIf="selectedOption[0].value === 'Wielokrotny Wybór'">
           </mr-app-creator-multiple-choice>
         </div>
       </div>

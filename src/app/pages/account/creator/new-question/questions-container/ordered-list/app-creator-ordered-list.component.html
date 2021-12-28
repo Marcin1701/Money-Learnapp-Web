@@ -1,5 +1,38 @@
-<mat-form-field appearance="outline">In progress...
-  <!--  <mat-label>Treść pytania</mat-label>
-    <input matInput />
-    <mat-icon matSuffix>turned_in</mat-icon>-->
-</mat-form-field>
+<div>
+  <form (ngSubmit)="orderedListFormGroup.markAllAsTouched();" [formGroup]="orderedListFormGroup">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Nazwa pytania</mat-label>
+        <input formControlName="name" matInput name="name"/>
+        <mat-icon matSuffix>turned_in</mat-icon>
+        <mat-error>Pole wymagane!</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Treść pytania</mat-label>
+        <input formControlName="question" matInput name="question"/>
+        <mat-icon matSuffix>turned_in</mat-icon>
+        <mat-error>Pole wymagane!</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Czas odpowiedzi</mat-label>
+        <input formControlName="answerTime" matInput name="answerTime" type="number"/>
+        <mat-icon matSuffix>turned_in</mat-icon>
+        <mat-error>Pole wymagane!</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <button (click)="openDialog()" mat-raised-button>Modyfikuj pytanie!</button>
+    </div>
+    <div>
+      <button (click)="prepareQuestion(); addQuestion.emit(orderedList)" [disabled]="orderedListFormGroup.invalid ||
+      !orderedListContent.orderedListOptions.length"
+              mat-raised-button
+      >Dodaj swoje pytanie
+      </button>
+    </div>
+  </form>
+</div>

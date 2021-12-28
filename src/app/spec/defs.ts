@@ -60,10 +60,26 @@ export interface MultipleChoiceQuestionResponse {
 
 export interface DragAndDropQuestionResponse {
   id: string;
+  creationDate: string;
+  question: {
+    answerTime: string;
+    name: string;
+    question: string;
+    balance: number;
+    optionName: string[];
+    optionCost: number[];
+  };
 }
 
 export interface OrderedListQuestionResponse {
   id: string;
+  creationDate: string;
+  question: {
+    answerTime: string;
+    name: string;
+    question: string;
+    orderedListOptions: string[];
+  };
 }
 
 export interface FormToAnswerResponse {

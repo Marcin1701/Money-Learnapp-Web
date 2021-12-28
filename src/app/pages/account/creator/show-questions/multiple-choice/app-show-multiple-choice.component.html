@@ -38,7 +38,6 @@
             mat-row></tr>
       </table>
     </div>
-    <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
   </ng-container>
   <ng-template #noQuestions>
     <mr-app-common-nothing-found></mr-app-common-nothing-found>
@@ -47,3 +46,4 @@
 <ng-template #spinner>
   <mr-app-common-spinner></mr-app-common-spinner>
 </ng-template>
+<mat-paginator class="paginator-container" [pageSizeOptions]="[3, 8, 10]" showFirstLastButtons></mat-paginator>

@@ -1,0 +1,38 @@
+<div class="question-container">
+  <div *ngIf="dragAndDrop.question" class="question-name">
+    {{dragAndDrop.question.question}}
+  </div>
+  <div class="drag-and-drop-container">
+    Na zakupy możesz wydać {{dragAndDrop.question.balance}} zł
+  </div>
+  <div class="drag-and-drop-container">
+    <div cdkDropListGroup class="row w-100">
+      <div class="example-container col-md-2">
+        <h4>Zakupy:</h4>
+        <div
+          cdkDropList
+          [cdkDropListData]="items"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of items" cdkDrag [cdkDragData]="item">{{item.optionName}}</div>
+        </div>
+      </div>
+      <div class="example-container col-md-2">
+        <h4>Koszyk:</h4>
+        <div
+          cdkDropList
+          [cdkDropListData]="shoppingCart"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of shoppingCart" cdkDrag [cdkDragData]="item">{{item.optionName}}</div>
+        </div>
+      </div>
+      <div class="example-container col-md-2">
+        <h4>Twoje zakupy kosztują: </h4>
+        <div>
+          <h1>{{currentBalance}} zł</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

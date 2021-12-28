@@ -26,7 +26,7 @@
       </div>
       <div>
         <mat-tab-group>
-          <mat-tab aria-label label="Jednokrotny Wybór">
+          <mat-tab label="Jednokrotny Wybór">
             <mr-app-show-single-choice-component (selectItem)="addQuestion($event)"
                                                  [select]="true"></mr-app-show-single-choice-component>
           </mat-tab>
@@ -34,18 +34,24 @@
             <mr-app-show-multiple-choice-component (selectItem)="addQuestion($event)"
                                                    [select]="true"></mr-app-show-multiple-choice-component>
           </mat-tab>
-          <mat-tab label="Lista Uporządkowana">Lista Uporządkowana - In progress...</mat-tab>
-          <mat-tab label="Przeciąganie Elementów">Przeciąganie Elementów - In progress...</mat-tab>
+          <mat-tab label="Lista Uporządkowana">
+            <mr-app-show-ordered-list-component (selectItem)="addQuestion($event)"
+                                                   [select]="true"></mr-app-show-ordered-list-component>
+          </mat-tab>
+          <mat-tab label="Przeciąganie Elementów">
+            <mr-app-show-drag-and-drop-component (selectItem)="addQuestion($event)"
+                                                [select]="true"></mr-app-show-drag-and-drop-component>
+          </mat-tab>
         </mat-tab-group>
       </div>
       <span class="accept-buttons">
           <button (click)="onSubmit()" [class.invalid-button-background-color]="newFormGroup.invalid || questionIds.length === 0"
                   [disabled]="newFormGroup.invalid || questionIds.length === 0"
-                  class="action-menu-button button-behaviour top-margin" type=submit>
+                  class="action-menu-button button-behaviour" type=submit>
             <span *ngIf="pending" aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>Dodaj</button>
           <button (click)="preview()"
                   [class.invalid-button-background-color]="newFormGroup.invalid || questionIds.length === 0"
-                  [disabled]="newFormGroup.invalid || questionIds.length === 0" class="action-menu-button button-behaviour top-margin">Podgląd</button>
+                  [disabled]="newFormGroup.invalid || questionIds.length === 0" class="action-menu-button button-behaviour">Podgląd</button>
         </span>
       <div class="card-footer">
         Kolejność wyboru jest kolejnością podczas odpowiedzi.

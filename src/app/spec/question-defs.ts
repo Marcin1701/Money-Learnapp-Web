@@ -21,3 +21,29 @@ export interface MultipleChoice {
   answerTime: string;
   value: MultipleChoiceContent;
 }
+
+export interface OrderedListContent {
+  orderedListOptions: string[];
+}
+
+export interface OrderedList {
+  question: string;
+  name: string;
+  answerTime: string;
+  value: OrderedListContent;
+}
+
+export interface DragAndDropContent {
+  allDragAndDropOptions: {
+    optionName: string;
+    optionCost: number;
+  }[];
+  balance: number | null;
+}
+
+export interface DragAndDrop {
+  question: string;
+  name: string;
+  answerTime: string;
+  value: DragAndDropContent;
+}

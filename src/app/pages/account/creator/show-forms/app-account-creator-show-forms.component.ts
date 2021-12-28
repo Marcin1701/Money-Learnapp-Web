@@ -31,8 +31,7 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
   constructor(private httpService: MoneySandboxService,
               private _liveAnnouncer: LiveAnnouncer,
               public dialog: MatDialog,
-              private _snackBar: MatSnackBar,
-              private router: Router) {
+              private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {

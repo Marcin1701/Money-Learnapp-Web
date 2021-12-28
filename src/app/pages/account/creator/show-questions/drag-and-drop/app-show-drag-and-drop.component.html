@@ -1,7 +1,7 @@
 <ng-container *ngIf="!pending; else spinner">
-  <ng-container *ngIf="singleChoiceQuestions.data.length; else noQuestions">
+  <ng-container *ngIf="dragAndDropQuestions.data.length; else noQuestions">
     <div>
-      <table (matSortChange)="sortChange($event)" [dataSource]="singleChoiceQuestions" class="mat-elevation-z8 full-width table-positioning" mat-table
+      <table (matSortChange)="sortChange($event)" [dataSource]="dragAndDropQuestions" class="mat-elevation-z8 full-width table-positioning" mat-table
              matSort>
         <ng-container *ngIf="select" matColumnDef="select">
           <th *matHeaderCellDef mat-header-cell></th>

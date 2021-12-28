@@ -18,7 +18,7 @@ export class AppAccountCreatorNewQuestionComponent {
   ];
 
   question: Question;
-  questionType = [ 'SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'LIST', 'DRAG_AND_DROP' ];
+  questionType = [ 'SINGLE_CHOICE', 'MULTIPLE_CHOICE', 'ORDERED_LIST', 'DRAG_AND_DROP' ];
   selectedOption = [ { value: '', disabled: false } ];
 
   constructor(private httpService: MoneySandboxService, private _snackBar: MatSnackBar) {
@@ -72,10 +72,10 @@ export class AppAccountCreatorNewQuestionComponent {
         question = this.createQuestion(this.questionType[1], questionContent);
         break;
       case 'Lista Uporządkowana':
-        question = this.createQuestion(this.questionType[3], questionContent);
+        question = this.createQuestion(this.questionType[2], questionContent);
         break;
       case 'Przeciąganie Elementów':
-        question = this.createQuestion(this.questionType[4], questionContent);
+        question = this.createQuestion(this.questionType[3], questionContent);
         break;
     }
     this.httpService.addQuestion(question).subscribe(

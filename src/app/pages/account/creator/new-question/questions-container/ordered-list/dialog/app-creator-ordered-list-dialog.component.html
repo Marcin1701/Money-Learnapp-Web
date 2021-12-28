@@ -1,0 +1,62 @@
+<div class="full-width" mat-dialog-title>
+  <div class="mat-card-subtitle">
+    Dodane przez Ciebie produkty muszą być ułożone w odpowiedniej kolejności, zgodnej z Twoim zadaniem.
+    Podczas rozwiązywania arkusza kolejność zostanie wymieszana.
+    Zadanie polega na odpowiednim ułożeniu produktów w liście poprzez przeciąganie ich.
+  </div>
+  <div class="title-header radio-correct">Uzupełnij możliwości w swoim pytaniu:</div>
+</div>
+<div>
+  <form
+    (ngSubmit)="orderedListFormGroup.markAllAsTouched(); onSubmit()"
+    [formGroup]="orderedListFormGroup">
+    <div formArrayName="orderedListValues">
+      <div
+        *ngFor="let content of orderedListValues.controls; index as i"
+        class="container">
+        <div class="row">
+          <div [formGroupName]="i" class="col-md-10">
+            Produkt {{ i + 1 }}
+            <mat-form-field appearance="outline" class="w-75">
+              <mat-label>Tutaj wpisz nazwę swojego produktu lub przedmiotu</mat-label>
+              <input formControlName="value" matInput type="text"/>
+              <mat-error>Pole wymagane!</mat-error>
+            </mat-form-field>
+            <span>
+                <span
+                  (click)="addOrderedList()"
+                  *ngIf="i === orderedListValues.controls.length - 1"
+                  class="add-option-icon"
+                ><mat-icon>add_circle</mat-icon></span
+                >
+                <span
+                  (click)="removeOrderedList(i)"
+                  *ngIf="orderedListValues.controls.length > 1"
+                  class="delete-option-icon"
+                ><mat-icon>delete_forever</mat-icon></span
+                >
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div mat-dialog-actions>
+    <button
+      (click)="onNoClick()"
+      class="btn btn-danger"
+      mat-button
+      mat-raised-button>
+      Anuluj
+    </button>
+    <button
+      (click)="onSubmit()"
+      cdkFocusInitial
+      class="btn btn-success"
+      mat-button
+      mat-raised-button
+      type="submit">
+      Utwórz
+    </button>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: 'app-account-activity-answers.component.html',
   styleUrls: [ 'app-account-activity-answers.component.scss' ],
 })
-export class AppAccountActivityAnswersComponent implements OnInit {
+export class AppAccountActivityAnswersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   forms = new MatTableDataSource<FormTableModel>();
@@ -29,6 +29,11 @@ export class AppAccountActivityAnswersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getForms();
+  }
+
+  ngAfterViewInit(): void {
+    this.forms.paginator = this.paginator;
+    this.forms.sort = this.sort;
   }
 
   sortChange(sortState: Sort) {

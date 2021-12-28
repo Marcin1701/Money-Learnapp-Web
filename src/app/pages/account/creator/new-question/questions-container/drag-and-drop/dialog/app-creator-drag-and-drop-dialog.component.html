@@ -1,0 +1,79 @@
+<div class="full-width" mat-dialog-title>
+  <div class="mat-card-subtitle">
+    Dodaj przedmioty, które umieścisz w koszyku. Przy uzupełnianiu będziesz musiał tak zrobić zakupy, aby
+    zmieścić się w budżecie który podałeś. Pamiętaj, żeby całkowita kwota Twoich produktów przekroczyła budżet.
+    <div class="warning">Nazwy produktów nie mogą się powtarzać</div>
+  </div>
+  <div class="title-header radio-correct">Uzupełnij swoje pytanie:</div>
+</div>
+<div>
+  <form
+    (ngSubmit)="dragAndDropFormGroup.markAllAsTouched(); onSubmit()"
+    [formGroup]="dragAndDropFormGroup">
+    <mat-form-field appearance="outline" class="w-50">
+      <mat-label>Budżet</mat-label>
+      <input formControlName="balance" matInput type="number"/>
+      <mat-error>Pole wymagane!</mat-error>
+    </mat-form-field>
+    <span>
+      Twoje produkty kosztują w sumie: {{currentBalance}}
+    </span>
+    <div formArrayName="dragAndDropValues">
+      <div
+        *ngFor="let content of dragAndDropValues.controls; index as i"
+        class="container">
+        <div class="row">
+          <div [formGroupName]="i" class="col-md-12">
+            <span>
+              <mat-form-field appearance="outline" class="item-name">
+                <mat-label>Nazwa Przedmiotu</mat-label>
+                <input formControlName="optionName" matInput type="text"/>
+                <mat-error>Pole wymagane!</mat-error>
+              </mat-form-field>
+            </span>
+            <span class="item-cost">
+              <mat-form-field appearance="outline">
+                <mat-label>Cena przedmiotu</mat-label>
+                <input formControlName="optionCost" matInput type="number"/>
+                <mat-error>Pole wymagane!</mat-error>
+              </mat-form-field>
+            </span>
+            <span>
+                <span
+                  (click)="addDragAndDrop()"
+                  *ngIf="i === dragAndDropValues.controls.length - 1"
+                  class="add-option-icon"
+                ><mat-icon>add_circle</mat-icon></span
+                >
+                <span
+                  (click)="removeDragAndDrop(i)"
+                  *ngIf="dragAndDropValues.controls.length > 1"
+                  class="delete-option-icon"
+                ><mat-icon>delete_forever</mat-icon></span
+                >
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div mat-dialog-actions>
+    <button
+      (click)="onNoClick()"
+      class="btn btn-danger"
+      mat-button
+      mat-raised-button>
+      Anuluj
+    </button>
+    <button
+      [disabled]="isIncorrect()"
+      (click)="onSubmit()"
+      cdkFocusInitial
+      class="btn btn-success"
+      mat-button
+      mat-raised-button
+      type="submit">
+      Utwórz
+    </button>
+  </div>
+</div>

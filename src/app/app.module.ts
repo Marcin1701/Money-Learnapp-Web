@@ -90,6 +90,12 @@ import { AppAccountActivityAnswersComponent } from './pages/account/activity/ans
 import { AppAccountActivityAnswerersComponent } from './pages/account/activity/answerers/app-account-activity-answerers.component';
 import { AppPagesAdminPublicityPublishComponent } from './pages/admin/publicity/publish/app-pages-admin-publicity-publish.component';
 import { AppShowMultipleChoiceComponent } from './pages/account/creator/show-questions/multiple-choice/app-show-multiple-choice.component';
+import {
+  AppCreatorOrderedListDialogComponent
+} from './pages/account/creator/new-question/questions-container/ordered-list/dialog/app-creator-ordered-list-dialog.component';
+import { AppShowOrderedListComponent } from './pages/account/creator/show-questions/ordered-list/app-show-ordered-list.component';
+import { AppCreatorDragAndDropDialogComponent } from './pages/account/creator/new-question/questions-container/drag-and-drop/dialog/app-creator-drag-and-drop-dialog.component';
+import { AppShowDragAndDropComponent } from './pages/account/creator/show-questions/drag-and-drop/app-show-drag-and-drop.component';
 
 @NgModule({
   declarations: [
@@ -118,8 +124,12 @@ import { AppShowMultipleChoiceComponent } from './pages/account/creator/show-que
     AppCreatorDragAndDropComponent,
     AppCreatorSingleChoiceDialogComponent,
     AppCreatorMultipleChoiceDialogComponent,
+    AppCreatorOrderedListDialogComponent,
+    AppCreatorDragAndDropDialogComponent,
     AppShowSingleChoiceComponent,
     AppShowMultipleChoiceComponent,
+    AppShowOrderedListComponent,
+    AppShowDragAndDropComponent,
     AppAccountCreatorFormDetailsComponent,
 
     // Activity

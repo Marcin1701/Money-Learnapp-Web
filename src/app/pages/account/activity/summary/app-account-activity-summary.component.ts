@@ -20,7 +20,6 @@ export class AppAccountActivitySummaryComponent implements OnInit {
     this.httpService.getAnswersSummary().subscribe(summary => {
       if (summary) {
         this.answersSummary = summary;
-        console.log(this.answersSummary);
         this.pending = false;
       }
     });

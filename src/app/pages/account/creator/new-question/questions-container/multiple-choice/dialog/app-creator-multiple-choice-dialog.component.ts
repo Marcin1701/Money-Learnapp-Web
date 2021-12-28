@@ -19,6 +19,7 @@ export class AppCreatorMultipleChoiceDialogComponent {
     public dialogRef: MatDialogRef<AppCreatorMultipleChoiceComponent>,
     @Inject(MAT_DIALOG_DATA) public multipleChoiceContent: MultipleChoiceContent
   ) {
+
     this.multipleChoiceFormGroup = this.formBuilder.group({
       correctMultipleChoiceOptionIndices: this.formBuilder.array([], Validators.required),
       multipleChoiceValues: this.formBuilder.array([], Validators.required),
@@ -59,7 +60,7 @@ export class AppCreatorMultipleChoiceDialogComponent {
     this.multipleChoiceContent.correctMultipleChoiceOptionIndices =
       this.correctMultipleChoiceOptions;
     this.multipleChoiceContent.multipleChoiceOptions =
-      this.multipleChoiceValues.value.map((item: {value: any;}) => item.value);
+      this.multipleChoiceValues.value.map((item: {value: any; }) => item.value);
     this.dialogRef.close(this.multipleChoiceContent);
   }
 
@@ -75,7 +76,6 @@ export class AppCreatorMultipleChoiceDialogComponent {
     } else {
       this.correctMultipleChoiceOptions = this.correctMultipleChoiceOptions.filter(option => option !== value);
     }
-    console.log(this.correctMultipleChoiceOptions);
   }
 
   shouldBeChecked(i: number) {

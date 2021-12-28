@@ -11,11 +11,15 @@
         (multipleChoiceChanged)="multipleChoiceChanged($event)"
         [multipleChoice]="question"></mr-app-pages-answer-form-multiple-choice>
     </ng-container>
-    <ng-container>
-
+    <ng-container *ngIf="question.type === 'ORDERED_LIST'">
+      <mr-app-pages-answer-form-ordered-list
+        (orderedListChanged)="orderedListChanged($event)"
+        [orderedList]="question"></mr-app-pages-answer-form-ordered-list>
     </ng-container>
-    <ng-container>
-
+    <ng-container *ngIf="question.type === 'DRAG_AND_DROP'">
+      <mr-app-pages-answer-form-drag-and-drop
+        (dragAndDropChanged)="dragAndDropChanged($event)"
+        [dragAndDrop]="question"></mr-app-pages-answer-form-drag-and-drop>
     </ng-container>
   </ng-container>
   <button (click)="send()" *ngIf="!isPreview" class="action-menu-button button-behaviour" type=submit>Wyślij</button>

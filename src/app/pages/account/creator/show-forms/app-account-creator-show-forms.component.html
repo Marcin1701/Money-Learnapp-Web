@@ -64,11 +64,11 @@
         <tr *matHeaderRowDef="columns" mat-header-row></tr>
         <tr (click)="selectForm(row)" *matRowDef="let row; columns: columns;" mat-row></tr>
       </table>
-      <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
     </div>
     <ng-template #spinner>
       <mr-app-common-spinner></mr-app-common-spinner>
     </ng-template>
+    <mat-paginator [pageSizeOptions]="[6, 8, 10]" showFirstLastButtons></mat-paginator>
     <div class="card-footer text-muted">
       Kliknij w wiersz, aby podejrzeć szczegóły.
     </div>
