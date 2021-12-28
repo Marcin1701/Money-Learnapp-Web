@@ -30,10 +30,8 @@ export class AppPagesHomeFormListComponent implements OnInit {
   }
 
   answer(id: string) {
-    window.open(this.router.serializeUrl(this.router.createUrlTree(
-        [ `/answer` ],
-        { queryParams: { id: id } })),
-      '_blank');
+    localStorage.setItem('form_id', id);
+    this.router.navigateByUrl('answer').then(null);
   }
 
   private getRandomAvatarUrls() {

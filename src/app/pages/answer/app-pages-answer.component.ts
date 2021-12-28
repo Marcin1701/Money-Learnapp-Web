@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { FormToAnswerResponse } from '../../spec/defs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,6 +19,7 @@ export class AppPagesAnswerComponent implements OnInit {
   userId = '';
 
   constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
               private httpService: MoneySandboxService,
               private _matSnackBar: MatSnackBar) {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -46,16 +47,18 @@ export class AppPagesAnswerComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.isPreview) {
-      this.activatedRoute.queryParams.subscribe(params => {
-        if (params['id']) {
-          this.httpService.getFormToAnswerById(params['id']).subscribe(form => {
-            if (form) {
-              this.pending = false;
-              this.formToAnswer = form;
-            }
-          });
-        }
-      });
+      const formId = localStorage.getItem('form_id');
+      if (formId) {
+        localStorage.removeItem('form_id');
+        this.httpService.getFormToAnswerById(formId).subscribe(form => {
+          if (form) {
+            this.pending = false;
+            this.formToAnswer = form;
+          }
+        });
+      } else {
+        this.router.navigateByUrl('/').then(null);
+      }
     }
   }
 
