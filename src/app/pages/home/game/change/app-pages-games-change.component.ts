@@ -115,7 +115,7 @@ export class AppPagesGamesChangeComponent implements OnInit {
 
   private openDialog(message: string) {
     const dialogRef = this.dialog.open(AppPagesGamesMoneyDialogComponent, {
-      width: '300px',
+      width: '500px',
       height: '200px',
       data: message,
     });

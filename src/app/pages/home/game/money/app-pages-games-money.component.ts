@@ -107,8 +107,8 @@ export class AppPagesGamesMoneyComponent implements OnInit {
 
   private openDialog(message: string) {
     const dialogRef = this.dialog.open(AppPagesGamesMoneyDialogComponent, {
-      width: '300px',
-      height: '200px',
+      width: '450px',
+      height: '135px',
       data: message,
     });
     dialogRef.afterClosed().subscribe(() => {

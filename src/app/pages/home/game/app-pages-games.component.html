@@ -10,7 +10,7 @@
             class="example-radio-group"
             [(ngModel)]="gameDifficulty">
             <mat-radio-button class="example-radio-button" *ngFor="let difficulty of difficulties" [value]="difficulty">
-              <span class="choice-font">{{difficulty}}</span>
+              <div class="choice-font">{{difficulty}}</div>
             </mat-radio-button>
           </mat-radio-group>
         </div>
@@ -21,7 +21,7 @@
             class="example-radio-group"
             [(ngModel)]="game">
             <mat-radio-button class="example-radio-button" *ngFor="let game of games" [value]="game">
-              <span class="choice-font">{{game}}</span>
+              <div class="choice-font">{{game}}</div>
             </mat-radio-button>
           </mat-radio-group>
         </div>
