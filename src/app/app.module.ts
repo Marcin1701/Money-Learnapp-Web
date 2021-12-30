@@ -94,8 +94,14 @@ import {
   AppCreatorOrderedListDialogComponent
 } from './pages/account/creator/new-question/questions-container/ordered-list/dialog/app-creator-ordered-list-dialog.component';
 import { AppShowOrderedListComponent } from './pages/account/creator/show-questions/ordered-list/app-show-ordered-list.component';
-import { AppCreatorDragAndDropDialogComponent } from './pages/account/creator/new-question/questions-container/drag-and-drop/dialog/app-creator-drag-and-drop-dialog.component';
+import {
+  AppCreatorDragAndDropDialogComponent
+} from './pages/account/creator/new-question/questions-container/drag-and-drop/dialog/app-creator-drag-and-drop-dialog.component';
 import { AppShowDragAndDropComponent } from './pages/account/creator/show-questions/drag-and-drop/app-show-drag-and-drop.component';
+import { AppPagesGamesComponent } from './pages/home/game/app-pages-games.component';
+import { AppPagesGamesMoneyComponent } from './pages/home/game/money/app-pages-games-money.component';
+import { AppPagesGamesMoneyDialogComponent } from './pages/home/game/game-over-dialog/app-pages-games-money-dialog.component';
+import { AppPagesGamesChangeComponent } from './pages/home/game/change/app-pages-games-change.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +117,12 @@ import { AppShowDragAndDropComponent } from './pages/account/creator/show-questi
     AppPagesHomeComponent,
     AppPagesHomeFormListComponent,
     AppPagesHomeMenuComponent,
+
+    // Games
+    AppPagesGamesComponent,
+    AppPagesGamesMoneyComponent,
+    AppPagesGamesMoneyDialogComponent,
+    AppPagesGamesChangeComponent,
 
     // Creator
     AppAccountCreatorComponent,

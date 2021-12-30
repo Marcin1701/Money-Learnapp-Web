@@ -6,7 +6,7 @@ import { MatRadioChange } from '@angular/material/radio';
 import { SingleChoiceContent } from '../../../../../../../spec/question-defs';
 
 @Component({
-  selector: 'mr-app-creator-single-choice-dialog',
+  selector: 'mr-app-creator-single-choice-game-over-dialog',
   templateUrl: 'app-creator-single-choice-dialog.component.html',
   styleUrls: [ 'app-creator-single-choice-dialog.component.scss' ],
 })

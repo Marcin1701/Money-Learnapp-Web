@@ -1,0 +1,54 @@
+.games-container {
+  margin-top: 3%;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.example-radio-group {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  margin: 15px 0;
+}
+
+.card-position {
+  width: 90%;
+  height: 515px;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.font {
+  margin-top: 2%;
+  font-size: 2rem;
+  color: silver;
+}
+
+.invalid-button-background-color {
+  background-color: #504747;
+  cursor: default;
+
+  &:hover {
+    background-color: #504747;
+  }
+
+  &:active {
+    background-color: #504747;
+    box-shadow: 0 5px #666;
+  }
+}
+
+.button-position {
+  margin-top: 10%;
+  margin-left: 5%;
+}
+
+.choice-font {
+  margin-top: 2%;
+  font-size: 1.5rem;
+}

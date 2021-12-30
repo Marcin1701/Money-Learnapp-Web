@@ -5,7 +5,7 @@ import { DragAndDropContent } from 'src/app/spec/question-defs';
 import { AppCreatorDragAndDropComponent } from '../app-creator-drag-and-drop.component';
 
 @Component({
-  selector: 'mr-app-creator-drag-and-drop-dialog',
+  selector: 'mr-app-creator-drag-and-drop-game-over-dialog',
   templateUrl: 'app-creator-drag-and-drop-dialog.component.html',
   styleUrls: [ 'app-creator-drag-and-drop-dialog.component.scss' ],
 })

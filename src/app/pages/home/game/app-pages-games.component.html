@@ -1,0 +1,47 @@
+<div class="games-container">
+  <div class="card text-center card-display card-position">
+    <div class="card-header"></div>
+    <div class="card-body">
+      <div class="game-selection" *ngIf="!inGame">
+        <div>
+          <label class="font">Wybierz poziom trudności:</label>
+          <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="gameDifficulty">
+            <mat-radio-button class="example-radio-button" *ngFor="let difficulty of difficulties" [value]="difficulty">
+              <span class="choice-font">{{difficulty}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div>
+          <label class="font">Wybierz grę:</label>
+          <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="game">
+            <mat-radio-button class="example-radio-button" *ngFor="let game of games" [value]="game">
+              <span class="choice-font">{{game}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div>
+          <button [class.invalid-button-background-color]="isInvalid()"
+                  [disabled]="isInvalid()"
+                  (click)="toggleSelection()"
+                  class="action-menu-button button-behaviour w-25 button-position" type="submit">
+            Graj!</button>
+        </div>
+      </div>
+      <div class="game-container" *ngIf="inGame">
+        <ng-container *ngIf="game === games[0]">
+          <mr-app-pages-games-money-component [difficulty]="gameDifficulty"></mr-app-pages-games-money-component>
+        </ng-container>
+        <ng-container *ngIf="game === games[1]">
+          <mr-app-pages-games-change-component [difficulty]="gameDifficulty"></mr-app-pages-games-change-component>
+        </ng-container>
+      </div>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+</div>

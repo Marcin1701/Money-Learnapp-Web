@@ -5,7 +5,7 @@ import { AppCreatorSingleChoiceComponent } from '../../single-choice/app-creator
 import { OrderedListContent } from '../../../../../../../spec/question-defs';
 
 @Component({
-  selector: 'mr-app-creator-ordered-list-dialog',
+  selector: 'mr-app-creator-ordered-list-game-over-dialog',
   templateUrl: 'app-creator-ordered-list-dialog.component.html',
   styleUrls: [ 'app-creator-ordered-list-dialog.component.scss' ],
 })

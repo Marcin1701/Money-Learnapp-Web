@@ -1,0 +1,38 @@
+<div class="card-title">
+    {{headerDialog}}
+</div>
+<div cdkDropListGroup>
+  <div class="example-container">
+    <div
+      cdkDropList
+      [cdkDropListData]="items"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <span class="example-box container-money" [cdkDragData]="item" *ngFor="let item of items" cdkDrag>
+        <ng-container *ngIf="item.path.includes('B_')">
+          <img width="160px" height="80px" [src]="item.path" [alt]="item.value"/>
+        </ng-container>
+        <ng-container *ngIf="item.path.includes('M_')">
+          <img width="65px" height="65px" [src]="item.path" [alt]="item.value"/>
+        </ng-container>
+      </span>
+    </div>
+  </div>
+  <div class="example-container">
+    <div
+      cdkDropList
+      [cdkDropListData]="answers"
+      class="example-list drop-box"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" cdkDrag [cdkDragDisabled]="true">
+        <div>
+          <img width="250" height="250" [src]="'./../../../../../assets/cashier.png'" alt="" />
+          <div class="annie-dialog">
+            {{annieDialog}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

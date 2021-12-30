@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { Router } from '@angular/router';
 import { AccountResponse } from '../../spec/defs';
@@ -7,6 +7,7 @@ import { LogoutService } from '../../services/logout.service';
 @Component({
   selector: 'mr-app-pages-home',
   templateUrl: 'app-pages-home.component.html',
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppPagesHomeComponent implements OnInit {
   isLoggedIn = false;

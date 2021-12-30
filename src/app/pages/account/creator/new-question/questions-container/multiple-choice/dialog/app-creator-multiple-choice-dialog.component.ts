@@ -6,7 +6,7 @@ import { AppCreatorMultipleChoiceComponent } from '../app-creator-multiple-choic
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'mr-app-creator-multiple-choice-dialog',
+  selector: 'mr-app-creator-multiple-choice-game-over-dialog',
   templateUrl: 'app-creator-multiple-choice-dialog.component.html',
   styleUrls: [ 'app-creator-multiple-choice-dialog.component.scss' ],
 })

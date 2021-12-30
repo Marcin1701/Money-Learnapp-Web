@@ -4,7 +4,7 @@ import { AppPagesAnswerFormComponent } from '../app-pages-answer-form.component'
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'mr-app-pages-answer-dialog',
+  selector: 'mr-app-pages-answer-game-over-dialog',
   templateUrl: 'app-pages-answer-dialog.component.html',
   styleUrls: [ './app-pages-answer-dialog.component.scss' ],
 })
