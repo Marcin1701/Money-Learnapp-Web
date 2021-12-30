@@ -133,6 +133,10 @@ export class MoneySandboxService {
     return this.http.get(environment.apiUrl + '/form/publish/approve', { params: { id: id }, headers: this.getHeaders() });
   }
 
+  getPdfReport() {
+    return this.http.get(environment.apiUrl + '/answer/pdf', { headers: this.getHeaders(), responseType: 'blob' });
+  }
+
   private getHeaders(): HttpHeaders {
     // tslint:disable-next-line:no-non-null-assertion
     return new HttpHeaders().set('Authorization', localStorage.getItem('token')!);

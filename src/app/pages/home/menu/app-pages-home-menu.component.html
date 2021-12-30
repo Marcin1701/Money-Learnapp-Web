@@ -28,13 +28,11 @@
             </ul>
           </li>
           <li class="nav-item dropdown margin-right">
-            <a class="nav-link dropdown-toggle action-menu-button button-behaviour option-position"
-               data-bs-toggle="dropdown" href="#">
+            <a class="nav-link action-menu-button button-behaviour option-position" (click)="generateReport()">
               <mat-icon>local_printshop</mat-icon>
-              <span class="nav-option">Raporty</span></a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"> ... </a></li>
-            </ul>
+              <span *ngIf="pendingReport" aria-hidden="true" class="spinner-border spinner-border-sm nav-option"
+                    role="status"></span>
+              <span class="nav-option">Raport</span></a>
           </li>
           <li *ngIf="isAdmin" class="nav-item margin-right">
             <a class="nav-link action-menu-button button-behaviour option-position" data-bs-toggle="dropdown"

@@ -8,7 +8,11 @@
       </button>
       <button class="action-menu-button button-behaviour top-margin" routerLink="/activity">Przeglądaj Aktywność
       </button>
-      <button class="action-menu-button button-behaviour top-margin" href="#">Wygeneruj Raporty</button>
+      <button class="action-menu-button button-behaviour top-margin" (click)="generateReport()">
+        <span *ngIf="pendingReport" aria-hidden="true" class="spinner-border spinner-border-sm"
+              role="status"></span>
+        Wygeneruj Raport
+      </button>
       <button *ngIf="isAdmin" class="action-menu-button button-behaviour top-margin" routerLink="/admin/publicity">
         Upublicznienia
       </button>

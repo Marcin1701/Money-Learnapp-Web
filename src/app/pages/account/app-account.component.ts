@@ -5,6 +5,7 @@ import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { RoleService } from '../../services/role.service';
 import { LogoutService } from '../../services/logout.service';
 import { AvatarsService } from '../../services/avatars.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'mr-app-account',
@@ -16,12 +17,14 @@ export class AppAccountComponent implements OnInit {
   isAdmin = false;
   account: AccountResponse;
   avatarUrl: string;
+  pendingReport = false;
 
   constructor(private router: Router,
               private httpService: MoneySandboxService,
               private roleService: RoleService,
               private logoutService: LogoutService,
-              private avatars: AvatarsService) {
+              private avatars: AvatarsService,
+              private _matSnackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -49,5 +52,17 @@ export class AppAccountComponent implements OnInit {
 
   getRandomAvatarUrl() {
     return this.avatars.getRandomAvatarUrl('./../../../assets/avatars');
+  }
+
+  generateReport() {
+    this.pendingReport = true;
+    this.httpService.getPdfReport().subscribe((response: Blob) => {
+      const file = new Blob([ response ], { type: 'application/pdf' });
+      const fileURL = URL.createObjectURL(file);
+      this.pendingReport = false;
+      window.open(fileURL, '_blank');
+    }, () => {
+      this._matSnackBar.open('Wystąpił błąd', 'Ok', { duration: 1000 });
+    });
   }
 }
