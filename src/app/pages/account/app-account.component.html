@@ -27,18 +27,18 @@
     <div class="card-header"></div>
     <div class="container mt-5">
       <div class="row d-flex justify-content-center">
-        <div class="col-md-7">
-          <div class="card p-3 py-4">
+        <div class="col-md-14">
+          <div class="card p-3 py-4 margin-profile">
             <div class="text-center"><img alt="" class="rounded-circle" [src]="avatarUrl" width="100"></div>
-            <div class="text-center mt-3"><span
+            <div class="text-center mt-3" *ngIf="account"><span
               class="bg-secondary p-1 px-4 rounded text-white">{{account.lastName}} {{account.firstName}}</span>
               <div class="px-4 mt-1">
                 <p>Adres email: {{account.email}}</p>
                 <p>Login: {{account.login}}</p>
                 <p>Dołączyłeś: {{account.creationDate | date : 'short'}}</p>
               </div>
-              <div class="buttons">
-                <button class="btn btn-outline-primary px-4 top-margin">Ustawienia</button>
+              <div >
+                <button class="action-menu-button button-behaviour top-margin" (click)="openSettingDialog()">Ustawienia</button>
               </div>
             </div>
           </div>

@@ -1,38 +1,30 @@
 <div>
   <form (ngSubmit)="dragAndDropFormGroup.markAllAsTouched();" [formGroup]="dragAndDropFormGroup">
-    <div>
-      <mat-form-field appearance="outline">
+    <div class="form-field">
+      <mat-form-field appearance="outline" class="w-100">
         <mat-label>Nazwa pytania</mat-label>
         <input formControlName="name" matInput name="name"/>
-        <mat-icon matSuffix>turned_in</mat-icon>
+        <mat-icon matSuffix matTooltip="Nazwij swoje pytanie np. Produkty"> contact_support </mat-icon>
         <mat-error>Pole wymagane!</mat-error>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="outline">
+    <div class="form-field">
+      <mat-form-field appearance="outline" class="w-100">
         <mat-label>Treść pytania</mat-label>
         <input formControlName="question" matInput name="question"/>
-        <mat-icon matSuffix>turned_in</mat-icon>
+        <mat-icon matSuffix matTooltip="Zadaj polecenie np. Uporządkuj produkty od najtańszego do najdroższego."> contact_support </mat-icon>
         <mat-error>Pole wymagane!</mat-error>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Czas odpowiedzi</mat-label>
-        <input formControlName="answerTime" matInput name="answerTime" type="number"/>
-        <mat-icon matSuffix>turned_in</mat-icon>
-        <mat-error>Pole wymagane!</mat-error>
-      </mat-form-field>
-    </div>
-    <div>
+    <span>
       <button (click)="openDialog()" mat-raised-button>Modyfikuj pytanie!</button>
-    </div>
-    <div>
+    </span>
+    <span class="button-margin">
       <button (click)="prepareQuestion(); addQuestion.emit(dragAndDrop)" [disabled]="dragAndDropFormGroup.invalid ||
       !dragAndDropContent.allDragAndDropOptions?.length"
               mat-raised-button
       >Dodaj swoje pytanie
       </button>
-    </div>
+    </span>
   </form>
 </div>

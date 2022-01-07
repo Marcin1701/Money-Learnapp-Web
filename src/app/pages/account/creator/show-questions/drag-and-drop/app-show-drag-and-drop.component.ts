@@ -42,7 +42,7 @@ export class AppShowDragAndDropComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.select ?
       this.columns = [ 'select', 'index', 'name', 'text', 'date', 'optionCount' ] :
-      this.columns = [ 'index', 'name', 'text', 'date', 'optionCount' ];
+      this.columns = [ 'index', 'name', 'text', 'date', 'optionCount', 'delete' ];
     this.httpService.loadDragAndDropQuestions().subscribe(result => {
       this.pending = false;
       if (result.length) {
@@ -82,6 +82,18 @@ export class AppShowDragAndDropComponent implements OnInit, AfterViewInit {
         date: question.creationDate,
         optionCount: question.question.optionCost.length,
       } as DragAndDropTableModel;
+    });
+  }
+
+  deleteQuestion(question: DragAndDropTableModel) {
+    const toDelete = this.questions[question.index - 1];
+    this.httpService.deleteQuestion(toDelete.id).subscribe(response => {
+      if (response.status === 200) {
+        this.dragAndDropQuestions.data.splice(question.index - 1, 1)
+        this.dragAndDropQuestions.data = this.dragAndDropQuestions.data;
+      }
+    }, () => {
+      this._snackBar.open('Wystąpił nieoczekiwany błąd', 'Ok', { duration: 1000 });
     });
   }
 }

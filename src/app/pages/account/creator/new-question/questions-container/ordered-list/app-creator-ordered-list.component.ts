@@ -20,7 +20,6 @@ export class AppCreatorOrderedListComponent {
   orderedListFormGroup = this.formBuilder.group({
     name: [ '', Validators.required ],
     question: [ '', Validators.required ],
-    answerTime: [ '', Validators.required ]
   });
 
   @Output()
@@ -48,7 +47,6 @@ export class AppCreatorOrderedListComponent {
     this.orderedList = {
       name: this.orderedListFormGroup.controls['name'].value,
       question: this.orderedListFormGroup.controls['question'].value,
-      answerTime: this.orderedListFormGroup.controls['answerTime'].value.toString(),
       value: this.orderedListContent,
     };
   }

@@ -1,38 +1,30 @@
 <div>
   <form (ngSubmit)="multipleChoiceFormGroup.markAllAsTouched();" [formGroup]="multipleChoiceFormGroup">
-    <div>
-      <mat-form-field appearance="outline">
+    <div class="form-field">
+      <mat-form-field appearance="outline" class="w-100">
         <mat-label>Nazwa pytania</mat-label>
         <input formControlName="name" matInput name="name"/>
-        <mat-icon matSuffix>turned_in</mat-icon>
+        <mat-icon matSuffix matTooltip="Nazwij swoje pytanie np. Bank"> contact_support </mat-icon>
         <mat-error>Pole wymagane!</mat-error>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="outline">
+    <div class="form-field">
+      <mat-form-field appearance="outline" class="w-100">
         <mat-label>Treść pytania</mat-label>
         <input formControlName="question" matInput name="question"/>
-        <mat-icon matSuffix>turned_in</mat-icon>
+        <mat-icon matSuffix matTooltip="Zadaj pytanie np. Jakie są największe bank w polsce?"> contact_support </mat-icon>
         <mat-error>Pole wymagane!</mat-error>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Czas odpowiedzi</mat-label>
-        <input formControlName="answerTime" matInput name="answerTime" type="number"/>
-        <mat-icon matSuffix>turned_in</mat-icon>
-        <mat-error>Pole wymagane!</mat-error>
-      </mat-form-field>
-    </div>
-    <div>
-      <button (click)="openDialog()" mat-raised-button>Modyfikuj pytanie!</button>
-    </div>
-    <div>
+    <span>
+      <button (click)="openDialog()" mat-raised-button>Dodaj opcje</button>
+    </span>
+    <span class="button-margin">
       <button (click)="prepareQuestion(); addQuestion.emit(multipleChoice)" [disabled]="multipleChoiceFormGroup.invalid ||
       !multipleChoiceContent.multipleChoiceOptions.length"
               mat-raised-button
       >Dodaj swoje pytanie
       </button>
-    </div>
+    </span>
   </form>
 </div>

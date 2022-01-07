@@ -8,11 +8,13 @@
 }
 
 .example-container {
-  width: 400px;
+  width: 500px;
   max-width: 100%;
   margin: 0 25px 25px 0;
   display: inline-block;
   vertical-align: top;
+  align-items: center;
+  justify-content: center;
 }
 
 .example-list {
@@ -31,7 +33,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
   cursor: move;
   background: white;
@@ -70,6 +72,11 @@
 
 .text-alignment {
   text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.items-alignment {
   align-items: center;
   justify-content: center;
 }

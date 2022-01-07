@@ -22,7 +22,6 @@ export class AppCreatorSingleChoiceComponent {
   singleChoiceFormGroup = this.formBuilder.group({
     name: [ '', Validators.required ],
     question: [ '', Validators.required ],
-    answerTime: [ '', Validators.required ]
   });
 
   @Output()
@@ -54,7 +53,6 @@ export class AppCreatorSingleChoiceComponent {
     this.singleChoice = {
       name: this.singleChoiceFormGroup.controls['name'].value,
       question: this.singleChoiceFormGroup.controls['question'].value,
-      answerTime: this.singleChoiceFormGroup.controls['answerTime'].value.toString(),
       value: this.singleChoiceContent,
     };
   }

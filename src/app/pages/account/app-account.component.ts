@@ -6,6 +6,8 @@ import { RoleService } from '../../services/role.service';
 import { LogoutService } from '../../services/logout.service';
 import { AvatarsService } from '../../services/avatars.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { AppAccountSettingsDialogComponent } from './settings-dialog/app-account-settings-dialog.component';
 
 @Component({
   selector: 'mr-app-account',
@@ -24,26 +26,12 @@ export class AppAccountComponent implements OnInit {
               private roleService: RoleService,
               private logoutService: LogoutService,
               private avatars: AvatarsService,
-              private _matSnackBar: MatSnackBar) {
+              private _matSnackBar: MatSnackBar,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token')) {
-      this.httpService.getAccount().subscribe(account => {
-        this.account = account;
-        this.httpService.getAccountRole().subscribe(role => {
-          if (role) {
-            this.roleService.setRole(role.role);
-            this.isAdmin = this.roleService.getRole() === 'ADMIN';
-            this.avatarUrl = this.getRandomAvatarUrl();
-          } else {
-            this.logout();
-          }
-        });
-      });
-    } else {
-      this.router.navigateByUrl('/').then(null);
-    }
+    this.loadAccountInfo();
   }
 
   logout() {
@@ -64,5 +52,34 @@ export class AppAccountComponent implements OnInit {
     }, () => {
       this._matSnackBar.open('Wystąpił błąd', 'Ok', { duration: 1000 });
     });
+  }
+
+  openSettingDialog() {
+    const dialogRef = this.dialog.open(AppAccountSettingsDialogComponent, {
+      width: '500px',
+      data: this.account,
+    });
+    dialogRef.afterClosed().subscribe(() => {
+        this.loadAccountInfo();
+    });
+  }
+
+  private loadAccountInfo() {
+    if (localStorage.getItem('token')) {
+      this.httpService.getAccount().subscribe(account => {
+        this.account = account;
+        this.httpService.getAccountRole().subscribe(role => {
+          if (role) {
+            this.roleService.setRole(role.role);
+            this.isAdmin = this.roleService.getRole() === 'ADMIN';
+            this.avatarUrl = this.getRandomAvatarUrl();
+          } else {
+            this.logout();
+          }
+        });
+      });
+    } else {
+      this.router.navigateByUrl('/').then(null);
+    }
   }
 }

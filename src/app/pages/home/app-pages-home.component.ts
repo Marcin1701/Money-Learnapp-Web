@@ -3,6 +3,7 @@ import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { Router } from '@angular/router';
 import { AccountResponse } from '../../spec/defs';
 import { LogoutService } from '../../services/logout.service';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'mr-app-pages-home',

@@ -42,7 +42,7 @@ export class AppShowOrderedListComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.select ?
       this.columns = [ 'select', 'index', 'name', 'text', 'date', 'optionCount' ] :
-      this.columns = [ 'index', 'name', 'text', 'date', 'optionCount' ];
+      this.columns = [ 'index', 'name', 'text', 'date', 'optionCount', 'delete' ];
     this.httpService.loadOrderedListQuestions().subscribe(result => {
       this.pending = false;
       if (result.length) {
@@ -82,6 +82,18 @@ export class AppShowOrderedListComponent implements OnInit, AfterViewInit {
         date: question.creationDate,
         optionCount: question.question.orderedListOptions.length,
       } as OrderedListTableModel;
+    });
+  }
+
+  deleteQuestion(question: OrderedListTableModel) {
+    const toDelete = this.questions[question.index - 1];
+    this.httpService.deleteQuestion(toDelete.id).subscribe(response => {
+      if (response.status === 200) {
+        this.orderedListQuestions.data.splice(question.index - 1, 1)
+        this.orderedListQuestions.data = this.orderedListQuestions.data;
+      }
+    }, () => {
+      this._snackBar.open('Wystąpił nieoczekiwany błąd', 'Ok', { duration: 1000 });
     });
   }
 }

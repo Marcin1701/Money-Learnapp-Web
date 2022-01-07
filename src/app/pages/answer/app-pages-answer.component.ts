@@ -47,30 +47,47 @@ export class AppPagesAnswerComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.isPreview) {
-      const formId = localStorage.getItem('form_id');
-      if (formId) {
-        localStorage.removeItem('form_id');
-        this.httpService.getFormToAnswerById(formId).subscribe(form => {
-          if (form) {
-            this.pending = false;
-            this.formToAnswer = form;
-          }
-        });
-      } else {
-        this.router.navigateByUrl('/').then(null);
-      }
+      this.activatedRoute.queryParams.subscribe(params => {
+        if (params['id'] && !localStorage.getItem('form_id') && !localStorage.getItem('preview_form')) {
+          this.getForm(params['id']);
+        } else if (localStorage.getItem('form_id')) {
+          const formId = localStorage.getItem('form_id');
+          this.getForm(formId!);
+        } else {
+          this.router.navigateByUrl('/').then(null);
+        }
+      });
     }
   }
 
+  private getForm(formId: string) {
+    this.httpService.getFormToAnswerById(formId).subscribe(form => {
+      if (form) {
+        this.pending = false;
+        this.formToAnswer = form;
+      }
+    });
+  }
+
   private mapLocalStorageFormToAnswerForm(form: string) {
+    this.pending = true;
+    localStorage.removeItem('preview_form');
     const localStorageForm = JSON.parse(form);
-    this.formToAnswer = {
-      id: '1',
-      name: localStorageForm.name,
-      difficulty: localStorageForm.difficulty,
-      creationDate: 'TODAY',
-      // TODO MAPOWANIE NA PYTANIA
-      questions: []
+    const questionIds = {
+      ids: localStorageForm.questionIds
     };
+    this.httpService.getQuestionsToPreview(questionIds).subscribe(questions => {
+      if (questions) {
+        this.pending = false;
+        this.formToAnswer = {
+          id: '1',
+          name: localStorageForm.name,
+          difficulty: localStorageForm.difficulty,
+          creationDate: 'TODAY',
+          answerTime: localStorageForm.answerTime,
+          questions: questions
+        };
+      }
+    })
   }
 }

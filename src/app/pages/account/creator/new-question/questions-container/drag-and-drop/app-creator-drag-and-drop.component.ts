@@ -21,7 +21,6 @@ export class AppCreatorDragAndDropComponent {
   dragAndDropFormGroup = this.formBuilder.group({
     name: [ '', Validators.required ],
     question: [ '', Validators.required ],
-    answerTime: [ '', Validators.required ]
   });
 
   @Output()
@@ -49,7 +48,6 @@ export class AppCreatorDragAndDropComponent {
     this.dragAndDrop = {
       name: this.dragAndDropFormGroup.controls['name'].value,
       question: this.dragAndDropFormGroup.controls['question'].value,
-      answerTime: this.dragAndDropFormGroup.controls['answerTime'].value.toString(),
       value: this.dragAndDropContent,
     };
   }

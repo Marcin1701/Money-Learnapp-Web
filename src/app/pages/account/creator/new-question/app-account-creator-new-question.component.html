@@ -1,6 +1,7 @@
 <div class="new-question-container">
   <div cdkDropListGroup>
     <div class="example-container card card-position select-question-type">
+      <h2 class="text-alignment">Wybierz:</h2>
       <div (cdkDropListDropped)="drop($event)" (mouseover)="disableItems()" [cdkDropListData]="items" cdkDropList
            cdkDropListSortingDisabled class="example-list">
         <div *ngFor="let item of items" [cdkDragDisabled]="item.disabled" cdkDrag class="example-box text-alignment">
@@ -9,7 +10,7 @@
       </div>
     </div>
     <div class="example-container card card-position select-question-type drop-area">
-      <h2 class="text-alignment">Przeciągnij element tutaj!</h2>
+      <h2 class="text-alignment">Przeciągnij tutaj:</h2>
       <div (cdkDropListDropped)="drop($event)" [cdkDropListData]="selectedOption" cdkDropList class="example-list">
         <div *ngIf="selectedOption.length === 2" cdkDrag class="example-box">
           <mr-app-creator-drag-and-drop (addQuestion)="prepareQuestion($event)"
@@ -28,5 +29,4 @@
       </div>
     </div>
   </div>
-  <div></div>
 </div>

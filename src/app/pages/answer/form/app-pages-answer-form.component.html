@@ -1,4 +1,7 @@
-<div *ngIf="!sendingAnswers && !result">
+<div class="answer-timer" *ngIf="time">
+  <h1>Pozostały czas: {{time}}</h1>
+</div>
+<div *ngIf="!sendingAnswers && !result && form">
   <ng-container *ngFor="let question of form?.questions; index as i">
     <hr *ngIf="i > 0" class="dotted">
     <ng-container *ngIf="question.type === 'SINGLE_CHOICE'">

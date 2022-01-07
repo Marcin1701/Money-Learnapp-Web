@@ -7,6 +7,10 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatDialog } from '@angular/material/dialog';
+import {
+  AppCommonQuestionDeleteConfirmationDialogComponent
+} from '../../../../../common/question-delete-confirmation-dialog/app-common-question-delete-confirmation-dialog.component';
 
 @Component({
   selector: 'mr-app-show-single-choice-component',
@@ -31,7 +35,10 @@ export class AppShowSingleChoiceComponent implements OnInit, AfterViewInit {
 
   columns: string[];
 
-  constructor(private httpService: MoneySandboxService, private _snackBar: MatSnackBar, private _liveAnnouncer: LiveAnnouncer) {
+  constructor(private httpService: MoneySandboxService,
+              private _snackBar: MatSnackBar,
+              private _liveAnnouncer: LiveAnnouncer,
+              private dialog: MatDialog) {
   }
 
   ngAfterViewInit(): void {
@@ -42,7 +49,7 @@ export class AppShowSingleChoiceComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.select ?
       this.columns = [ 'select', 'index', 'name', 'text', 'date', 'optionCount' ] :
-      this.columns = [ 'index', 'name', 'text', 'date', 'optionCount' ];
+      this.columns = [ 'index', 'name', 'text', 'date', 'optionCount', 'delete' ];
     this.httpService.loadSingleChoiceQuestions().subscribe(result => {
       this.pending = false;
       if (result.length) {
@@ -82,6 +89,29 @@ export class AppShowSingleChoiceComponent implements OnInit, AfterViewInit {
         date: question.creationDate,
         optionCount: question.question.singleChoiceOptions.length,
       } as SingleChoiceTableModel;
+    });
+  }
+
+  deleteConfirmationDialog(question: SingleChoiceTableModel) {
+    const dialogRef = this.dialog.open(AppCommonQuestionDeleteConfirmationDialogComponent, {
+      width: '350px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'DELETE') {
+        this.deleteQuestion(question);
+      }
+    });
+  }
+
+  deleteQuestion(question: SingleChoiceTableModel) {
+    const toDelete = this.questions[question.index - 1];
+    this.httpService.deleteQuestion(toDelete.id).subscribe(response => {
+      if (response.status === 200) {
+        this.singleChoiceQuestions.data.splice(question.index - 1, 1)
+        this.singleChoiceQuestions.data = this.singleChoiceQuestions.data;
+      }
+    }, () => {
+      this._snackBar.open('Wystąpił nieoczekiwany błąd', 'Ok', { duration: 1000 });
     });
   }
 }

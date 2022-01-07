@@ -102,6 +102,10 @@ import { AppPagesGamesComponent } from './pages/home/game/app-pages-games.compon
 import { AppPagesGamesMoneyComponent } from './pages/home/game/money/app-pages-games-money.component';
 import { AppPagesGamesMoneyDialogComponent } from './pages/home/game/game-over-dialog/app-pages-games-money-dialog.component';
 import { AppPagesGamesChangeComponent } from './pages/home/game/change/app-pages-games-change.component';
+import {
+  AppCommonQuestionDeleteConfirmationDialogComponent
+} from './common/question-delete-confirmation-dialog/app-common-question-delete-confirmation-dialog.component';
+import { AppAccountSettingsDialogComponent } from './pages/account/settings-dialog/app-account-settings-dialog.component';
 
 @NgModule({
   declarations: [
@@ -112,6 +116,7 @@ import { AppPagesGamesChangeComponent } from './pages/home/game/change/app-pages
     AppPagesLoginComponent,
     AppPagesRegisterComponent,
     AppAccountComponent,
+    AppAccountSettingsDialogComponent,
 
     // Home
     AppPagesHomeComponent,
@@ -169,7 +174,8 @@ import { AppPagesGamesChangeComponent } from './pages/home/game/change/app-pages
     AppCommonNothingFoundComponent,
     AppCommonNavbarComponent,
     AppCommonSpinnerComponent,
-    AppCommonBigSpinnerComponent
+    AppCommonBigSpinnerComponent,
+    AppCommonQuestionDeleteConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,

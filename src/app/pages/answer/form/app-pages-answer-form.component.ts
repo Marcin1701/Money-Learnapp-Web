@@ -30,6 +30,8 @@ export class AppPagesAnswerFormComponent implements OnInit {
   answerer: string;
   sendingAnswers = false;
   result: ResultsResponse;
+  time = 0;
+  interval: any;
 
   constructor(private httpService: MoneySandboxService,
               public dialog: MatDialog,
@@ -38,7 +40,26 @@ export class AppPagesAnswerFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.answer.formId = this.form?.id;
+    if (this.form) {
+      this.answer.formId = this.form?.id;
+      this.time = this.form.answerTime;
+      if (!this.isPreview) {
+        this.startTimer();
+      }
+    }
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.time > 0) {
+        this.time = this.time - 1;
+      }
+      if (this.time === 0) {
+        clearInterval(this.interval);
+        this._snackBar.open('Upłynął czas', '', { duration: 2000 })
+        this.send();
+      }
+    }, 1000);
   }
 
   singleChoiceChanged($event: {id: string, value: number}) {
@@ -86,7 +107,7 @@ export class AppPagesAnswerFormComponent implements OnInit {
   }
 
   send() {
-    if (!this.isLoggedIn) {
+    if (!this.isLoggedIn && !this.isPreview) {
       const dialogRef = this.dialog.open(AppPagesAnswerDialogComponent, {
         width: '300px',
         height: '200px',

@@ -33,6 +33,16 @@
           <th *matHeaderCellDef mat-header-cell mat-sort-header>Ilość opcji</th>
           <td *matCellDef="let question" mat-cell>{{question.optionCount}}</td>
         </ng-container>
+        <ng-container matColumnDef="delete">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header></th>
+          <td *matCellDef="let question" mat-cell>
+            <i (click)="deleteQuestion(question)"
+               class="red-icon"
+               matTooltip="Usuń pytanie">
+              <mat-icon>delete_outline</mat-icon>
+            </i>
+          </td>
+        </ng-container>
         <tr *matHeaderRowDef="columns" mat-header-row></tr>
         <tr (click)="selection.toggle(row); selectItem.emit(questions[row.index - 1].id)" *matRowDef="let row; columns: columns;"
             mat-row></tr>

@@ -18,6 +18,8 @@ import {
   NewAccount,
   OrderedListQuestionResponse,
   Question,
+  QuestionIdsRequest,
+  QuestionPreviewResponse,
   ResultsResponse,
   SingleChoiceQuestionResponse,
 } from '../spec/defs';
@@ -38,6 +40,10 @@ export class MoneySandboxService {
   getAccount(): Observable<AccountResponse> {
     return this.http.get<AccountResponse>(environment.apiUrl + '/account',
       { headers: this.getHeaders() });
+  }
+
+  updateAccount(account: AccountResponse) {
+    return this.http.put(environment.apiUrl + '/account', account, { observe: 'response', headers: this.getHeaders() });
   }
 
   getAccountRole(): Observable<AccountRole> {
@@ -80,6 +86,11 @@ export class MoneySandboxService {
 
   loadDragAndDropQuestions(): Observable<DragAndDropQuestionResponse[]> {
     return this.http.get<DragAndDropQuestionResponse[]>(environment.apiUrl + '/question/drag_and_drop',
+      { headers: this.getHeaders() });
+  }
+
+  getQuestionsToPreview(questions: QuestionIdsRequest): Observable<QuestionPreviewResponse[]> {
+    return this.http.post<QuestionPreviewResponse[]>(environment.apiUrl + '/question/preview', questions,
       { headers: this.getHeaders() });
   }
 
@@ -135,6 +146,14 @@ export class MoneySandboxService {
 
   getPdfReport() {
     return this.http.get(environment.apiUrl + '/answer/pdf', { headers: this.getHeaders(), responseType: 'blob' });
+  }
+
+  deleteForm(id: string) {
+    return this.http.delete(environment.apiUrl + '/form', { observe: 'response', params: { id: id }, headers: this.getHeaders() });
+  }
+
+  deleteQuestion(id: string) {
+    return this.http.delete(environment.apiUrl + '/question', { observe: 'response', params: { id: id }, headers: this.getHeaders() });
   }
 
   private getHeaders(): HttpHeaders {

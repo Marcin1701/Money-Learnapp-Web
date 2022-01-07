@@ -6,7 +6,6 @@ export interface SingleChoiceContent {
 export interface SingleChoice {
   question: string;
   name: string;
-  answerTime: string;
   value: SingleChoiceContent;
 }
 
@@ -18,7 +17,6 @@ export interface MultipleChoiceContent {
 export interface MultipleChoice {
   question: string;
   name: string;
-  answerTime: string;
   value: MultipleChoiceContent;
 }
 
@@ -29,7 +27,6 @@ export interface OrderedListContent {
 export interface OrderedList {
   question: string;
   name: string;
-  answerTime: string;
   value: OrderedListContent;
 }
 
@@ -44,6 +41,5 @@ export interface DragAndDropContent {
 export interface DragAndDrop {
   question: string;
   name: string;
-  answerTime: string;
   value: DragAndDropContent;
 }

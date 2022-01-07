@@ -1,0 +1,46 @@
+<div>
+  <form (ngSubmit)="accountFormGroup.markAllAsTouched();" [formGroup]="accountFormGroup">
+    <div class="form-field">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Twój login</mat-label>
+        <input formControlName="login" matInput name="login" [value]="this.accountFormGroup.controls['login'].value"/>
+        <mat-error>Pole wymagane!</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Imię</mat-label>
+        <input formControlName="firstName" matInput name="firstName" [value]="this.accountFormGroup.controls['firstName'].value"/>
+        <mat-error>Pole wymagane!</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Nazwisko</mat-label>
+        <input formControlName="lastName" matInput name="lastName" [value]="this.accountFormGroup.controls['lastName'].value"/>
+        <mat-error>Pole wymagane!</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Adres email</mat-label>
+        <input formControlName="email" matInput name="email" [value]="this.accountFormGroup.controls['email'].value"/>
+        <mat-error>Pole wymagane!</mat-error>
+      </mat-form-field>
+    </div>
+    <span class="button-margin">
+      <button (click)="closeDialog()"
+              color="warn"
+              mat-raised-button>Anuluj
+      </button>
+    </span>
+    <span class="button-margin">
+        <button (click)="apply()"
+                [disabled]="accountFormGroup.invalid"
+                mat-raised-button>
+          <span *ngIf="pending"><mr-app-common-spinner></mr-app-common-spinner></span>
+            Zatwierdź
+        </button>
+    </span>
+  </form>
+</div>

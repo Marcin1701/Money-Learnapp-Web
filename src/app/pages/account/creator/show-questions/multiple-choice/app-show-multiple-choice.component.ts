@@ -41,7 +41,7 @@ export class AppShowMultipleChoiceComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.select ?
       this.columns = [ 'select', 'index', 'name', 'text', 'date', 'optionCount' ] :
-      this.columns = [ 'index', 'name', 'text', 'date', 'optionCount' ];
+      this.columns = [ 'index', 'name', 'text', 'date', 'optionCount', 'delete' ];
     this.httpService.loadMultipleChoiceQuestions().subscribe(result => {
       this.pending = false;
       if (result.length) {
@@ -81,6 +81,18 @@ export class AppShowMultipleChoiceComponent implements OnInit, AfterViewInit {
         date: question.creationDate,
         optionCount: question.question.multipleChoiceOptions.length,
       } as MultipleChoiceTableModel;
+    });
+  }
+
+  deleteQuestion(question: MultipleChoiceTableModel) {
+    const toDelete = this.questions[question.index - 1];
+    this.httpService.deleteQuestion(toDelete.id).subscribe(response => {
+      if (response.status === 200) {
+        this.multipleChoiceQuestions.data.splice(question.index - 1, 1)
+        this.multipleChoiceQuestions.data = this.multipleChoiceQuestions.data;
+      }
+    }, () => {
+      this._snackBar.open('Wystąpił nieoczekiwany błąd', 'Ok', { duration: 1000 });
     });
   }
 }

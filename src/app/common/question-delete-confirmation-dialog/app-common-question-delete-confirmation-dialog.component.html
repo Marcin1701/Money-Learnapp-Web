@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Czy na pewno chcesz usunąć to pytanie?</h1>
+<div mat-dialog-content>
+  Usunięte pytania zniknie z Twoich arkuszy. Arkusze te przestaną być publiczne.
+  Jeśli w arkuszu nie będzie żadnych pytań to również zostanie on usunięty.
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Nie</button>
+  <button mat-button color="warn" (click)="onConfirm()" >Tak</button>
+</div>

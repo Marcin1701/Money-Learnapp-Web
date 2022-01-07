@@ -34,6 +34,16 @@ export interface Question {
   structure: any;
 }
 
+export interface QuestionIdsRequest {
+  ids: string[];
+}
+
+export interface QuestionPreviewResponse {
+  id: string;
+  creationDate: string;
+  question: any;
+}
+
 export interface SingleChoiceQuestionResponse {
   id: string;
   creationDate: string;
@@ -88,6 +98,7 @@ export interface FormToAnswerResponse {
   questions: any[];
   difficulty: number;
   creationDate: string;
+  answerTime: number;
 }
 
 export interface FormResponse {

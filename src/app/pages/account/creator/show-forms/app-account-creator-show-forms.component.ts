@@ -8,7 +8,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormResponse } from '../../../../spec/defs';
 import { AppAccountCreatorFormDetailsComponent } from './form-details/app-account-creator-form-details.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'mr-account-creator-new-question-component',
@@ -25,7 +24,8 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
 
   iconAction = false;
   pageSize = 8;
-  columns = [ 'index', 'name', 'answerTime', 'creationDate', 'numberOfQuestions', 'numberOfAnswers', 'isPublic', 'link', 'solve' ];
+  columns = [ 'index', 'name', 'answerTime', 'creationDate',
+    'numberOfQuestions', 'numberOfAnswers', 'isPublic', 'delete', 'link', 'solve' ];
   pending = true;
 
   constructor(private httpService: MoneySandboxService,
@@ -86,6 +86,7 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
   }
 
   solve(index: number) {
+    localStorage.setItem('form_id', this.responseForms[index - 1].id);
     window.open(this.formLinks[index - 1], '_blank');
   }
 
@@ -108,6 +109,19 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
   private createFormLinks() {
     this.responseForms.forEach(form => {
       this.formLinks.push(window.location.href.replace('/creator/show-forms', '/answer?id=' + form.id));
+    });
+  }
+
+  deleteForm(form: FormTableModel) {
+    const formToDelete = this.responseForms[form.index - 1];
+    this.httpService.deleteForm(formToDelete.id).subscribe(response => {
+      if (response.status === 200) {
+        this.responseForms.splice(form.index - 1, 1);
+        this.forms.data.splice(form.index - 1, 1)
+        this.forms.data = this.forms.data;
+      }
+    }, () => {
+      this._snackBar.open('Wystąpił nieoczekiwany błąd', 'Ok', { duration: 1000 });
     });
   }
 }

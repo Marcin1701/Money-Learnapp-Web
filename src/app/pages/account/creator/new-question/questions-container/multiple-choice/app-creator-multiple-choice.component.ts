@@ -20,7 +20,6 @@ export class AppCreatorMultipleChoiceComponent {
   multipleChoiceFormGroup = this.formBuilder.group({
     name: [ '', Validators.required ],
     question: [ '', Validators.required ],
-    answerTime: [ '', Validators.required ]
   });
 
   @Output()
@@ -48,7 +47,6 @@ export class AppCreatorMultipleChoiceComponent {
     this.multipleChoice = {
       name: this.multipleChoiceFormGroup.controls['name'].value,
       question: this.multipleChoiceFormGroup.controls['question'].value,
-      answerTime: this.multipleChoiceFormGroup.controls['answerTime'].value.toString(),
       value: this.multipleChoiceContent,
     };
   }

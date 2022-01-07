@@ -1,6 +1,6 @@
 <div class="full-width" mat-dialog-title>
-  <span class="title-header"> Uzupełnij swoje pytanie: </span>
-  <span class="title-header secondary-title"> Poprawne odpowiedzi: </span>
+  <span class="title-header"> Uzupełnij opcje: </span>
+  <span class="title-header secondary-title"> Zaznacz poprawne odpowiedzi: </span>
 </div>
 <div>
   <form
@@ -15,7 +15,7 @@
           <div class="row">
             <div [formGroupName]="i" class="col-sm">
               <mat-form-field appearance="outline">
-                <mat-label>Treść pytania</mat-label>
+                <mat-label>Treść opcji</mat-label>
                 <input formControlName="value" matInput type="text"/>
                 <mat-error>Pole wymagane!</mat-error>
               </mat-form-field>
