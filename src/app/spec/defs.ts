@@ -24,6 +24,30 @@ export interface AccountResponse {
   creationDate: string;
 }
 
+export interface AccountDetailsResponse {
+  singleChoiceCount: number;
+  multipleChoiceCount: number;
+  orderedListCount: number;
+  dragAndDropCount: number;
+  totalAnswers: number;
+  latestAnswerDate: string;
+  sheetsCreated: number;
+  publicSheets: number;
+}
+
+export interface FormManageResponse {
+  formId: string;
+  login: string;
+  firstName: string;
+  lastName: string;
+  name: string;
+  answerTime: number;
+  creationDate: string;
+  numberOfQuestions: number;
+  numberOfAnswers: number;
+  isPublic: boolean;
+}
+
 export interface JsonWebTokenResponse {
   jsonWebToken: string;
 }

@@ -56,7 +56,9 @@ export class AppPagesAnswerFormComponent implements OnInit {
       }
       if (this.time === 0) {
         clearInterval(this.interval);
-        this._snackBar.open('Upłynął czas', '', { duration: 2000 })
+        if (this.router.url.includes('answer')) {
+          this._snackBar.open('Upłynął czas', '', { duration: 2000 })
+        }
         this.send();
       }
     }, 1000);
@@ -107,21 +109,23 @@ export class AppPagesAnswerFormComponent implements OnInit {
   }
 
   send() {
-    if (!this.isLoggedIn && !this.isPreview) {
-      const dialogRef = this.dialog.open(AppPagesAnswerDialogComponent, {
-        width: '300px',
-        height: '200px',
-        data: this.answerer,
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (result) {
-          this.answer.answerer = result;
-          this.sendAnswers();
-        }
-        dialogRef.close();
-      });
-    } else {
-      this.sendAnswers();
+    if (this.router.url.includes('answer')) {
+      if (!this.isLoggedIn && !this.isPreview) {
+        const dialogRef = this.dialog.open(AppPagesAnswerDialogComponent, {
+          width: '300px',
+          height: '200px',
+          data: this.answerer,
+        });
+        dialogRef.afterClosed().subscribe((result) => {
+          if (result) {
+            this.answer.answerer = result;
+            this.sendAnswers();
+          }
+          dialogRef.close();
+        });
+      } else {
+        this.sendAnswers();
+      }
     }
   }
 

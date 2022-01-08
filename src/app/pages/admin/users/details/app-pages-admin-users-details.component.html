@@ -1,0 +1,91 @@
+<div class="dialog-container">
+  <div class="header">
+    <h2>Szczegóły użytkownika:</h2>
+  </div>
+  <ng-container *ngIf="!pending">
+    <div class="body">
+      <div class="row">
+        <div class="col-md-3 bold-font">
+          Dane użytkownika<br><br>
+          Login<br>
+          Imię<br>
+          Nazwisko<br>
+          Email<br>
+          Data utworzenia<br>
+        </div>
+        <div class="col-md-3">
+          <br><br>
+          {{user.login}}<br>
+          {{user.firstName}}<br>
+          {{user.lastName}}<br>
+          {{user.email}}<br>
+          {{user.creationDate | date: 'short'}}<br>
+        </div>
+        <ng-container *ngIf="accountDetails">
+          <div class="col-md-4 bold-font">
+            Utworzone pytania<br><br>
+            Jednokrotny wybór<br>
+            Wielokrotny wybór<br>
+            Lista uporządkowana<br>
+            Przeciąganie elementów<br>
+          </div>
+          <div class="col-md-2">
+            <br><br>
+            {{accountDetails.singleChoiceCount}}<br>
+            {{accountDetails.multipleChoiceCount}}<br>
+            {{accountDetails.orderedListCount}}<br>
+            {{accountDetails.dragAndDropCount}}<br>
+          </div>
+        </ng-container>
+      </div>
+      <ng-container *ngIf="accountDetails">
+        <div class="row">
+          <div class="col-md-3 bold-font">
+            <br><br>
+            Aktywność<br><br>
+            Udzielonych odpowiedzi<br>
+            Data ostatniej odpowiedzi<br>
+            Utworzonych arkuszy<br>
+            <ng-container *ngIf="accountDetails.sheetsCreated">
+              Arkuszy publicznych<br>
+            </ng-container>
+          </div>
+          <div class="col-md-3">
+            <br><br><br><br>
+            {{accountDetails.totalAnswers}}<br>
+            <ng-container *ngIf="accountDetails.latestAnswerDate === 'Brak odpowiedzi'">
+              {{accountDetails.latestAnswerDate}}<br>
+            </ng-container>
+            <ng-container *ngIf="accountDetails.latestAnswerDate !== 'Brak odpowiedzi'">
+              {{accountDetails.latestAnswerDate | date: 'short'}}<br>
+            </ng-container>
+            {{accountDetails.sheetsCreated}}<br>
+            <ng-container *ngIf="accountDetails.sheetsCreated">
+              {{accountDetails.publicSheets}}<br>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="pending">
+    <mr-app-common-big-spinner></mr-app-common-big-spinner>
+  </ng-container>
+  <div class="action-buttons">
+    <h2 class="red-color">Usuń dane użytkownika</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <button (click)="deleteAll()" class="action-menu-button button-behaviour">Usuń konto</button>
+      </div>
+      <div class="col-md-3">
+        <button (click)="deleteForms()" class="action-menu-button button-behaviour">Usuń arkusze</button>
+      </div>
+      <div class="col-md-3">
+        <button (click)="deleteQuestions()" class="action-menu-button button-behaviour">Usuń pytania</button>
+      </div>
+      <div class="col-md-3">
+        <button (click)="deleteAnswers()" class="action-menu-button button-behaviour">Usuń odpowiedzi</button>
+      </div>
+    </div>
+  </div>
+</div>

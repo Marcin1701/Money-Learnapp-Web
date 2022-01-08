@@ -19,6 +19,7 @@ import { AppAccountActivityComponent } from './pages/account/activity/app-accoun
 import { AppAccountActivitySummaryComponent } from './pages/account/activity/summary/app-account-activity-summary.component';
 import { AppAccountActivityAnswersComponent } from './pages/account/activity/answers/app-account-activity-answers.component';
 import { AppAccountActivityAnswerersComponent } from './pages/account/activity/answerers/app-account-activity-answerers.component';
+import { AppPagesAdminFormsComponent } from './pages/admin/forms/app-pages-admin-forms.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,10 @@ const routes: Routes = [
       {
         path: 'publicity',
         component: AppPagesAdminPublicityComponent,
+      },
+      {
+        path: 'forms',
+        component: AppPagesAdminFormsComponent,
       }
     ]
   },

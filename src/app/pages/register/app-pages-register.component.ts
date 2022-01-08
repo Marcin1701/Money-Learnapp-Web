@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { NewAccount } from '../../spec/defs';
 import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'mr-app-pages-register',
@@ -22,14 +23,18 @@ export class AppPagesRegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private moneySandboxService: MoneySandboxService,
-    private router: Router
+    private router: Router,
+    private _matSnackBar: MatSnackBar
   ) {
   }
 
   onSubmit() {
     this.moneySandboxService
       .register(this.mapRegisterAccountFormGroupIntoNewAccount())
-      .subscribe(() => this.router.navigateByUrl('/'));
+      .subscribe(() => {
+        this._matSnackBar.open('Rejestracja pomyślna. Możesz się zalogować.', 'Ok', { duration: 3000 });
+        this.router.navigateByUrl('/');
+      });
   }
 
   private mapRegisterAccountFormGroupIntoNewAccount(): NewAccount {

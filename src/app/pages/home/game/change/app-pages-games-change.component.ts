@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AppPagesGamesMoneyDialogComponent } from '../game-over-dialog/app-pages-games-money-dialog.component';
@@ -9,9 +9,16 @@ import { AppPagesGamesMoneyDialogComponent } from '../game-over-dialog/app-pages
   templateUrl: 'app-pages-games-change.component.html',
   styleUrls: [ 'app-pages-games-change.component.scss' ]
 })
-export class AppPagesGamesChangeComponent implements OnInit {
+export class AppPagesGamesChangeComponent implements OnInit, OnChanges {
   @Input()
   difficulty: string;
+
+  @Input()
+  insideGame: boolean;
+
+  @Output()
+  gameEnded: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   annieDialog: string;
   headerDialog: string;
 
@@ -31,6 +38,12 @@ export class AppPagesGamesChangeComponent implements OnInit {
   ngOnInit() {
     this.headerDialog = 'Przeciągaj banknoty i monety aby zapłacić za zakupy. Pamiętaj, żeby użyć jednego banknotu lub jednej monety!';
     this.annieDialog = ('Hmm... za Twoje zakupy poproszę ' + this.setBalance() + ' zł.');
+  }
+
+  ngOnChanges(): void {
+    if (!this.insideGame) {
+      this.gameEnded.emit(true);
+    }
   }
 
   drop(event: CdkDragDrop<{path: string; value: number}[], any>) {
@@ -114,14 +127,18 @@ export class AppPagesGamesChangeComponent implements OnInit {
   }
 
   private openDialog(message: string) {
-    const dialogRef = this.dialog.open(AppPagesGamesMoneyDialogComponent, {
-      width: '500px',
-      height: '200px',
-      data: message,
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      dialogRef.close();
-    });
+    if (this.insideGame) {
+      const dialogRef = this.dialog.open(AppPagesGamesMoneyDialogComponent, {
+        width: '500px',
+        height: '200px',
+        data: message,
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        dialogRef.close();
+      });
+    } else {
+      this.gameEnded.emit(true);
+    }
   }
 
   private loadCoinsAndBills() {

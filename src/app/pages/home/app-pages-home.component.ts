@@ -13,6 +13,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 export class AppPagesHomeComponent implements OnInit {
   isLoggedIn = false;
   user: AccountResponse;
+  insideGame = false;
 
   constructor(private router: Router,
               private httpService: MoneySandboxService,
@@ -36,5 +37,9 @@ export class AppPagesHomeComponent implements OnInit {
 
   logout() {
     this.logoutService.logout();
+  }
+
+  changeTab($event: MatTabChangeEvent) {
+    this.insideGame = $event.index === 1;
   }
 }

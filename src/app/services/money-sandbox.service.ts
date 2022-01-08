@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
+  AccountDetailsResponse,
   AccountResponse,
   AccountRole,
   AnswersRequest,
   AnswersSummary,
   DragAndDropQuestionResponse,
+  FormManageResponse,
   FormPublicityResponse,
   FormRequest,
   FormResponse,
@@ -48,6 +50,49 @@ export class MoneySandboxService {
 
   getAccountRole(): Observable<AccountRole> {
     return this.http.get<AccountRole>(environment.apiUrl + '/account/role', { headers: this.getHeaders() });
+  }
+
+  getAccounts(): Observable<AccountResponse[]> {
+    return this.http.get<AccountResponse[]>(environment.apiUrl + '/account/all', { headers: this.getHeaders() });
+  }
+
+  getAccountDetails(id: string): Observable<AccountDetailsResponse> {
+    return this.http.get<AccountDetailsResponse>(environment.apiUrl + '/account/details', {
+      params: { id: id },
+      headers: this.getHeaders()
+    });
+  }
+
+  deleteAccount(id: string) {
+    return this.http.delete(environment.apiUrl + '/account', {
+      params: { id: id },
+      headers: this.getHeaders(),
+      observe: 'response'
+    });
+  }
+
+  deleteAccountForms(id: string) {
+    return this.http.delete(environment.apiUrl + '/account/forms', {
+      params: { id: id },
+      headers: this.getHeaders(),
+      observe: 'response'
+    });
+  }
+
+  deleteAccountQuestions(id: string) {
+    return this.http.delete(environment.apiUrl + '/account/questions', {
+      params: { id: id },
+      headers: this.getHeaders(),
+      observe: 'response'
+    });
+  }
+
+  deleteAccountAnswers(id: string) {
+    return this.http.delete(environment.apiUrl + '/account/answers', {
+      params: { id: id },
+      headers: this.getHeaders(),
+      observe: 'response'
+    });
   }
 
   login(loginRequest: LoginRequest): Observable<JsonWebTokenResponse> {
@@ -122,6 +167,10 @@ export class MoneySandboxService {
     });
   }
 
+  getManageForms(): Observable<FormManageResponse[]> {
+    return this.http.get<FormManageResponse[]>(environment.apiUrl + '/form/manage', { headers: this.getHeaders() });
+  }
+
   getAnswersSummary(): Observable<AnswersSummary> {
     return this.http.get<AnswersSummary>(environment.apiUrl + '/answer/summary', { headers: this.getHeaders() });
   }
@@ -134,6 +183,14 @@ export class MoneySandboxService {
   requestPublish(id: string): Observable<FormPublicityResponse> {
     return this.http.get<FormPublicityResponse>(environment.apiUrl + '/form/publish',
       { params: { id: id }, headers: this.getHeaders() });
+  }
+
+  adminDeleteForm(id: string) {
+    return this.http.delete(environment.apiUrl + '/form/admin', {
+      params: { id: id },
+      headers: this.getHeaders(),
+      observe: 'response'
+    });
   }
 
   getFormsWaitingForPublicity(): Observable<FormResponse[]> {

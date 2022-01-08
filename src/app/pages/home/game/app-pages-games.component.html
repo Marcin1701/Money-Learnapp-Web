@@ -35,10 +35,16 @@
       </div>
       <div class="game-container" *ngIf="inGame">
         <ng-container *ngIf="game === games[0]">
-          <mr-app-pages-games-money-component [difficulty]="gameDifficulty"></mr-app-pages-games-money-component>
+          <mr-app-pages-games-money-component [difficulty]="gameDifficulty"
+                                              [insideGame]="insideGame && inGame"
+                                              (gameEnded)="gameEnded()">
+          </mr-app-pages-games-money-component>
         </ng-container>
         <ng-container *ngIf="game === games[1]">
-          <mr-app-pages-games-change-component [difficulty]="gameDifficulty"></mr-app-pages-games-change-component>
+          <mr-app-pages-games-change-component [difficulty]="gameDifficulty"
+                                               [insideGame]="insideGame && inGame"
+                                               (gameEnded)="gameEnded()">
+          </mr-app-pages-games-change-component>
         </ng-container>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 
 @Component({
@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: [ 'app-pages-games.component.scss' ]
 })
 export class AppPagesGamesComponent {
+  @Input()
+  insideGame: boolean;
+
   difficulties = ['Łatwy', 'Średni', 'Trudny'];
   games = ['Skarb Stefana', 'Zakupy u Ani'];
   gameDifficulty: string;
@@ -20,5 +23,10 @@ export class AppPagesGamesComponent {
 
   toggleSelection() {
     this.inGame = true;
+    this.insideGame = true;
+  }
+
+  gameEnded() {
+    this.inGame = false;
   }
 }

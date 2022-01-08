@@ -106,6 +106,8 @@ import {
   AppCommonQuestionDeleteConfirmationDialogComponent
 } from './common/question-delete-confirmation-dialog/app-common-question-delete-confirmation-dialog.component';
 import { AppAccountSettingsDialogComponent } from './pages/account/settings-dialog/app-account-settings-dialog.component';
+import { AppPagesAdminUsersDetailsComponent } from './pages/admin/users/details/app-pages-admin-users-details.component';
+import { AppPagesAdminFormsComponent } from './pages/admin/forms/app-pages-admin-forms.component';
 
 @NgModule({
   declarations: [
@@ -167,6 +169,8 @@ import { AppAccountSettingsDialogComponent } from './pages/account/settings-dial
 
     // Admin
     AppPagesAdminUsersComponent,
+    AppPagesAdminUsersDetailsComponent,
+    AppPagesAdminFormsComponent,
     AppPagesAdminPublicityComponent,
     AppPagesAdminPublicityPublishComponent,
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { AppPagesGamesMoneyDialogComponent } from '../game-over-dialog/app-pages-games-money-dialog.component';
@@ -9,9 +9,15 @@ import { AppPagesGamesMoneyDialogComponent } from '../game-over-dialog/app-pages
   templateUrl: './app-pages-games-money.component.html',
   styleUrls: [ './app-pages-games-money.component.scss' ]
 })
-export class AppPagesGamesMoneyComponent implements OnInit {
+export class AppPagesGamesMoneyComponent implements OnInit, OnChanges {
   @Input()
   difficulty: string;
+
+  @Input()
+  insideGame: boolean;
+
+  @Output()
+  gameEnded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   pathPrefix = './../../../../../assets/money/';
   items: {path: string, value: number}[] = [];
@@ -28,11 +34,17 @@ export class AppPagesGamesMoneyComponent implements OnInit {
   ngOnInit() {
     let money = 0;
     while (money < 100) {
-      money = Math.floor(Math.random() * 1000)
+      money = Math.floor(Math.random() * 1000);
     }
     const pennies = Math.floor(Math.random() * 100);
     this.balance = parseFloat(money + '.' + pennies);
     this.startTimer();
+  }
+
+  ngOnChanges(): void {
+    if (!this.insideGame) {
+      this.gameEnded.emit(true);
+    }
   }
 
   drop(event: CdkDragDrop<{path: string; value: number}[], any>) {
@@ -71,7 +83,7 @@ export class AppPagesGamesMoneyComponent implements OnInit {
         this.time = 30;
         break;
       case 'Trudny':
-        this.time = 10;
+        this.time = 3;
         break;
       default:
         this.time = 30;
@@ -106,13 +118,17 @@ export class AppPagesGamesMoneyComponent implements OnInit {
   }
 
   private openDialog(message: string) {
-    const dialogRef = this.dialog.open(AppPagesGamesMoneyDialogComponent, {
-      width: '450px',
-      height: '135px',
-      data: message,
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      dialogRef.close();
-    });
+    if (this.insideGame) {
+      const dialogRef = this.dialog.open(AppPagesGamesMoneyDialogComponent, {
+        width: '450px',
+        height: '135px',
+        data: message,
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        dialogRef.close();
+      });
+    } else {
+      this.gameEnded.emit(true);
+    }
   }
 }

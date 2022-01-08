@@ -39,10 +39,15 @@
                routerLink="/admin/publicity"><mat-icon>public</mat-icon>
               <span class="nav-option">Upublicznienia</span> </a>
           </li>
-          <li *ngIf="isAdmin" class="nav-item margin-right">
-            <a class="nav-link action-menu-button button-behaviour option-position" data-bs-toggle="dropdown"
-               routerLink="/admin/users"><mat-icon>settings</mat-icon>
-              <span class="nav-option">Zarządzanie</span> </a>
+          <li *ngIf="isAdmin" class="nav-item dropdown margin-right">
+            <a class="nav-link dropdown-toggle action-menu-button button-behaviour option-position"
+               data-bs-toggle="dropdown" href="#">
+              <mat-icon> local_activity</mat-icon>
+              <span class="nav-option">Zarządzanie</span></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/admin/users">Użytkownicy</a></li>
+              <li><a class="dropdown-item" routerLink="/admin/forms">Arkusze</a></li>
+            </ul>
           </li>
         </ul>
       </div>

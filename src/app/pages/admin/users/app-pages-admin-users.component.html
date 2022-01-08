@@ -1,3 +1,55 @@
 <header class="header sticky-top">
   <mr-app-pages-home-menu [isLoggedIn]="true"></mr-app-pages-home-menu>
 </header>
+<div>
+  <div class="card text-center menu-container card-display">
+    <div class="card-header">Poniżej widzisz użytkowników, którzy posiadają konto w serwisie. </div>
+    <div *ngIf="!pending; else spinner" class="card-body">
+      <span>
+        <mat-form-field appearance="outline">
+        <mat-label>Filtruj</mat-label>
+        <input #input (keyup)="applyFilter($event)" matInput>
+      </mat-form-field>
+      </span>
+      <span class="button-container">
+        <button (click)="redirectToForms()" class="action-menu-button button-behaviour">Arkusze</button>
+      </span>
+      <table (matSortChange)="sortChange($event)" [dataSource]="users" class="mat-elevation-z8 full-width table-positioning" mat-table
+             matSort>
+        <ng-container matColumnDef="index">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Nr</th>
+          <td *matCellDef="let user" mat-cell>{{user.index}}</td>
+        </ng-container>
+        <ng-container matColumnDef="login">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Login</th>
+          <td *matCellDef="let user" mat-cell>{{user.login}}</td>
+        </ng-container>
+        <ng-container matColumnDef="firstName">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Imię</th>
+          <td *matCellDef="let user" mat-cell>{{user.firstName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Nazwisko</th>
+          <td *matCellDef="let user" mat-cell>{{user.lastName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Email</th>
+          <td *matCellDef="let user" mat-cell>{{user.email}}</td>
+        </ng-container>
+        <ng-container matColumnDef="creationDate">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>Data utworz. konta</th>
+          <td *matCellDef="let user" mat-cell>{{user.creationDate | date: 'short'}}</td>
+        </ng-container>
+        <tr *matHeaderRowDef="columns" mat-header-row></tr>
+        <tr (click)="userDetails(row)" *matRowDef="let row; columns: columns;" mat-row></tr>
+      </table>
+    </div>
+    <ng-template #spinner>
+      <mr-app-common-spinner></mr-app-common-spinner>
+    </ng-template>
+    <mat-paginator [pageSizeOptions]="[4, 8, 10]" showFirstLastButtons></mat-paginator>
+    <div class="card-footer text-muted">
+      Kliknij w wiersz, aby zobaczyć szczegóły.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.bold-font {
+  font-weight: 500;
+}
+
+.action-buttons {
+  width: 100%;
+  margin-top: 5%;
+}
+
+.action-menu-button {
+  width: 100%;
+  background-color: red;
+
+  &:hover {
+    background-color: #d52f2f;
+  }
+}
+
+.red-color {
+  color: red;
+}
