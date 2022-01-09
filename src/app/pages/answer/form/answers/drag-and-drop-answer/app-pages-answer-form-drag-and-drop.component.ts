@@ -28,9 +28,9 @@ export class AppPagesAnswerFormDragAndDropComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      if (event.previousContainer.id === 'cdk-drop-list-0') {
+      if (event.previousContainer.id === 'items') {
         this.currentBalance += event.item.data.optionCost;
-      } else if (event.previousContainer.id === 'cdk-drop-list-1') {
+      } else if (event.previousContainer.id === 'shopping-cart') {
         this.currentBalance -= event.item.data.optionCost;
       }
       transferArrayItem(

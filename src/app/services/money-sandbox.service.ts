@@ -25,7 +25,7 @@ import {
   ResultsResponse,
   SingleChoiceQuestionResponse,
 } from '../spec/defs';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -49,7 +49,10 @@ export class MoneySandboxService {
   }
 
   getAccountRole(): Observable<AccountRole> {
-    return this.http.get<AccountRole>(environment.apiUrl + '/account/role', { headers: this.getHeaders() });
+    if (localStorage.getItem('token')) {
+      return this.http.get<AccountRole>(environment.apiUrl + '/account/role', { headers: this.getHeaders() });
+    }
+    return of();
   }
 
   getAccounts(): Observable<AccountResponse[]> {
@@ -215,6 +218,10 @@ export class MoneySandboxService {
 
   private getHeaders(): HttpHeaders {
     // tslint:disable-next-line:no-non-null-assertion
-    return new HttpHeaders().set('Authorization', localStorage.getItem('token')!);
+    if (localStorage.getItem('token')) {
+      return new HttpHeaders().set('Authorization', localStorage.getItem('token')!);
+    } else {
+      return new HttpHeaders();
+    }
   }
 }

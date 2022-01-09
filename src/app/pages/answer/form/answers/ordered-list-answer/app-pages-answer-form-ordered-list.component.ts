@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { OrderedListQuestionResponse } from '../../../../../spec/defs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ShuffleArrayService } from '../../../../../services/shuffle-array.service';
 
 
 @Component({
@@ -17,9 +18,12 @@ export class AppPagesAnswerFormOrderedListComponent implements OnInit {
 
   orderedListValues: string[];
 
+  constructor(private shuffleArray: ShuffleArrayService) {
+  }
+
   ngOnInit(): void {
     this.orderedListValues = this.orderedList.question.orderedListOptions;
-    this.shuffleOrderList();
+    this.orderedListValues = this.shuffleArray.shuffleArray(this.orderedListValues);
     this.checkOrderedList();
   }
 
@@ -33,15 +37,5 @@ export class AppPagesAnswerFormOrderedListComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.orderedListValues, event.previousIndex, event.currentIndex);
     this.checkOrderedList();
-  }
-
-  private shuffleOrderList() {
-    let currentIndex = this.orderedListValues.length,  randomIndex;
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [this.orderedListValues[currentIndex], this.orderedListValues[randomIndex]] =
-      [this.orderedListValues[randomIndex], this.orderedListValues[currentIndex]];
-    }
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MoneySandboxService } from '../../services/money-sandbox.service';
 import { FormToAnswerResponse } from '../../spec/defs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ShuffleArrayService } from '../../services/shuffle-array.service';
 
 @Component({
   selector: 'mr-app-pages-answer',
@@ -21,7 +22,8 @@ export class AppPagesAnswerComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private httpService: MoneySandboxService,
-              private _matSnackBar: MatSnackBar) {
+              private _matSnackBar: MatSnackBar,
+              private shuffleArray: ShuffleArrayService) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (params['preview'] && localStorage.getItem('preview_form')) {
         this.isPreview = params['preview'];
@@ -65,6 +67,7 @@ export class AppPagesAnswerComponent implements OnInit {
       if (form) {
         this.pending = false;
         this.formToAnswer = form;
+        this.formToAnswer.questions = this.shuffleArray.shuffleArray(this.formToAnswer.questions);
       }
     });
   }

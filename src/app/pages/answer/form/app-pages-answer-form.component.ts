@@ -109,6 +109,8 @@ export class AppPagesAnswerFormComponent implements OnInit {
   }
 
   send() {
+    clearInterval(this.interval);
+    this.time = 0;
     if (this.router.url.includes('answer')) {
       if (!this.isLoggedIn && !this.isPreview) {
         const dialogRef = this.dialog.open(AppPagesAnswerDialogComponent, {

@@ -13,6 +13,7 @@
           cdkDropList
           [cdkDropListData]="items"
           class="example-list"
+          [id]="'items'"
           (cdkDropListDropped)="drop($event)">
           <div class="example-box" *ngFor="let item of items" cdkDrag [cdkDragData]="item">{{item.optionName}}</div>
         </div>
@@ -23,6 +24,7 @@
           cdkDropList
           [cdkDropListData]="shoppingCart"
           class="example-list"
+          [id]="'shopping-cart'"
           (cdkDropListDropped)="drop($event)">
           <div class="example-box" *ngFor="let item of shoppingCart" cdkDrag [cdkDragData]="item">{{item.optionName}}</div>
         </div>
