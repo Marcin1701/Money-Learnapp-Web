@@ -11,8 +11,11 @@
 .card-body {
   overflow: hidden;
   object-fit: cover;
-  background-size: 100% 100%;
-  //background-image: url("../assets/card-background.png");
+  background-size: 20% 100%;
+  background-image: url("../assets/money-svgrepo-com.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right;
 }
 
 .card:before {
