@@ -91,6 +91,6 @@ export class AppPagesAnswerComponent implements OnInit {
           questions: questions
         };
       }
-    })
+    });
   }
 }

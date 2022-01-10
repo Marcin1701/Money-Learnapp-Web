@@ -58,7 +58,7 @@ export class AppAccountSettingsDialogComponent {
       } else {
         this._matSnackBar.open('Wystąpił nieoczekiwany błąd', 'Ok', { duration: 3000 });
       }
-    })
+    });
   }
 
   closeDialog() {

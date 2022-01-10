@@ -57,7 +57,7 @@ export class AppPagesAnswerFormComponent implements OnInit {
       if (this.time === 0) {
         clearInterval(this.interval);
         if (this.router.url.includes('answer')) {
-          this._snackBar.open('Upłynął czas', '', { duration: 2000 })
+          this._snackBar.open('Upłynął czas', '', { duration: 2000 });
         }
         this.send();
       }

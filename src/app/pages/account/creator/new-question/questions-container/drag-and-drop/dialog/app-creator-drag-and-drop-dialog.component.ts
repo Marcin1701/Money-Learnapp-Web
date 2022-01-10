@@ -65,7 +65,7 @@ export class AppCreatorDragAndDropDialogComponent implements DoCheck {
         return {
           optionName: item.optionName,
           optionCost: item.optionCost
-        }
+        };
       });
     this.dialogRef.close(this.dragAndDropContent);
   }
@@ -79,7 +79,7 @@ export class AppCreatorDragAndDropDialogComponent implements DoCheck {
       return {
         optionName: item.optionName,
         optionCost: item.optionCost
-      }
+      };
     });
     if (!values[0].optionName.length || !values[0].optionCost) {
       return true;

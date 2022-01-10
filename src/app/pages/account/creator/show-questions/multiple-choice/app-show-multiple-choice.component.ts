@@ -88,7 +88,7 @@ export class AppShowMultipleChoiceComponent implements OnInit, AfterViewInit {
     const toDelete = this.questions[question.index - 1];
     this.httpService.deleteQuestion(toDelete.id).subscribe(response => {
       if (response.status === 200) {
-        this.multipleChoiceQuestions.data.splice(question.index - 1, 1)
+        this.multipleChoiceQuestions.data.splice(question.index - 1, 1);
         this.multipleChoiceQuestions.data = this.multipleChoiceQuestions.data;
       }
     }, () => {

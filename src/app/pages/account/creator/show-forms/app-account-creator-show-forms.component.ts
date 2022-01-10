@@ -117,7 +117,7 @@ export class AppAccountCreatorShowFormsComponent implements OnInit, AfterViewIni
     this.httpService.deleteForm(formToDelete.id).subscribe(response => {
       if (response.status === 200) {
         this.responseForms.splice(form.index - 1, 1);
-        this.forms.data.splice(form.index - 1, 1)
+        this.forms.data.splice(form.index - 1, 1);
         this.forms.data = this.forms.data;
       }
     }, () => {

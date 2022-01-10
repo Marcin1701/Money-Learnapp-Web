@@ -52,7 +52,7 @@ export class AppCreatorSingleChoiceDialogComponent {
     this.singleChoiceContent.correctSingleChoiceOptionIndex =
       this.correctSingleChoiceOptionIndex;
     this.singleChoiceContent.singleChoiceOptions =
-      this.singleChoiceValues.value.map((item: {value: any;}) => item.value);
+      this.singleChoiceValues.value.map((item: { value: any; }) => item.value);
     this.dialogRef.close(this.singleChoiceContent);
   }
 
