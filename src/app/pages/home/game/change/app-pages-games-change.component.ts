@@ -36,7 +36,7 @@ export class AppPagesGamesChangeComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.headerDialog = 'Przeciągaj banknoty i monety aby zapłacić za zakupy. Pamiętaj, żeby użyć jednego banknotu lub jednej monety!';
+    this.headerDialog = 'Przeciągaj banknoty i monety aby zapłacić za zakupy.';
     this.annieDialog = ('Hmm... za Twoje zakupy poproszę ' + this.setBalance() + ' zł.');
   }
 
@@ -62,7 +62,7 @@ export class AppPagesGamesChangeComponent implements OnInit, OnChanges {
       );
       if (this.firstPayment) {
         if (this.toPay > event.item.data.value) {
-          this.openDialog('Oj... To wygląda na pomyłkę.');
+          this.openDialog('Użyj jednego banknotu lub monety!');
         } else {
           this.payedValue = event.item.data.value;
           this.change = event.item.data.value - this.toPay;

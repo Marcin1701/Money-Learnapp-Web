@@ -1,5 +1,7 @@
 <div class="card-title">
     {{headerDialog}}
+  <br>
+  <span *ngIf="firstPayment" class="warning-text">Pamiętaj, żeby użyć tylko jednego banknotu lub jednej monety!</span>
 </div>
 <div cdkDropListGroup>
   <div class="example-container">
