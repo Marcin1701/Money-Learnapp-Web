@@ -83,7 +83,7 @@ export class AppPagesGamesMoneyComponent implements OnInit, OnChanges {
         this.time = 30;
         break;
       case 'Trudny':
-        this.time = 3;
+        this.time = 10;
         break;
       default:
         this.time = 30;
