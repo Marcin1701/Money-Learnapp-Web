@@ -77,13 +77,13 @@ export class AppPagesGamesMoneyComponent implements OnInit, OnChanges {
   private startTimer() {
     switch (this.difficulty) {
       case 'Łatwy':
-        this.time = 60;
+        this.time = 90;
         break;
       case 'Średni':
-        this.time = 30;
+        this.time = 60;
         break;
       case 'Trudny':
-        this.time = 10;
+        this.time = 30;
         break;
       default:
         this.time = 30;
